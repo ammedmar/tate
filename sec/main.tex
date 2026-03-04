@@ -1,0 +1,97 @@
+% !TEX root = ../tate.tex
+
+\section{Main}
+
+Let \(\k\) be a field, let \(G\) be a finite group, and set \(R = \k[G]\).
+We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure in which weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
+
+The \defn{derived category} \(\sD(R)\) is its homotopy category, the localization of \(\Ch(R)\) at quasi-isomorphisms.
+The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\sD(R)\).
+A \defn{distinguished triangle} in \(\sD(R)\) is a diagram isomorphic to the image of a cone triangle
+\[
+A \xrightarrow{f} B \to \cone(f) \to A[1]
+\]
+in \(\Ch(R)\).
+These distinguished triangles endow \(\sD(R)\) with its canonical triangulated structure.
+
+The functors
+\[
+(-)_G = \k \ \otimes_R \, -
+\qquad \text{and} \qquad
+(-)^G = \Hom_R(\k, -)
+\]
+from \(\Ch(R)\) to \(\Ch(\k)\) induce the \defn{derived coinvariants} and \defn{derived invariants} functors from \(\sD(R)\) to \(\sD(\k)\).
+Explicitly, given on \(M \in \sD(R)\),
+\[
+M_{hG} \coloneqq W \otimes_R M
+\qquad \text{and} \qquad
+M^{hG} \coloneqq \Hom_R(W, M),
+\]
+where \(W \xrightarrow{\sim} \k\) is a cofibrant resolution.
+The homology groups of \(M_{hG}\) and \(M^{hG}\) recover group homology \(H_*(G; M)\) and group cohomology \(H^*(G; M)\), respectively.
+
+There is a natural transformation
+\[
+\mathrm{Nm} \colon (-)_{hG} \to (-)^{hG}
+\]
+in \(\sD(\k)\) called the \defn{norm map}, which derives the classical map \(M_G \to M^G\)
+given by the action of the norm element \(N = \sum_{g \in G} g \in R\).
+Concretely, since \(\Hom_R(\k, R) \cong \k\),
+the \(R\)-dual \(W^\vee = \Hom_R(W, R)\) is itself a cofibrant resolution of \(\k\);
+any chain homotopy equivalence \(W \xrightarrow{\sim} W^\vee\) then induces the norm map via
+\[
+W \otimes_R M \longrightarrow W^\vee \otimes_R M \cong \Hom_R(W, M),
+\]
+where the final isomorphism holds because \(W\) consists of finitely generated projectives.
+
+The \defn{Tate construction} is the cofiber
+\[
+M^{tG} \coloneqq \cofib(\Nm),
+\]
+and its homology groups are the \defn{Tate cohomology groups} \(\hat{H}^*(G; M)\).
+The resulting cofiber sequence
+\[
+M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
+\]
+in \(\sD(\k)\) is the distinguished triangle relating group homology,
+group cohomology, and Tate cohomology.
+
+\subsection{Complete resolutions and an explicit model}
+
+A complete resolution of \(\k\) over \(R\) is a chain complex \(W^{\mathrm{st}} \in \Ch(R)\) satisfying the following properties.
+Each \(W^{\mathrm{st}}_n\) is projective over \(R\).
+The complex \(W^{\mathrm{st}}\) is acyclic.
+There exists a projective resolution \(W \to \k\) and a chain map \(W \to W^{\mathrm{st}}\) that is an isomorphism in all sufficiently large degrees.
+There exists a projective resolution \(W' \to \k\) and a chain map \(W^{\mathrm{st}} \to W'\) that is an isomorphism in all sufficiently small degrees.
+
+\begin{definition}
+	Let \(W^{\mathrm{st}}\) be a complete resolution of \(\k\) over \(R\).
+	For \(M \in \Ch(R)\) define
+	\[
+	T(M) = \Hom_R(W^{\mathrm{st}},M).
+	\]
+\end{definition}
+
+\begin{proposition}
+	For \(M \in \sD(R)\) there is a natural isomorphism in \(\sD(\k)\)
+	\[
+	T(M) \simeq M^{tG}.
+	\]
+\end{proposition}
+
+\begin{proof}
+	Let \(W^{\mathrm{st}}_{\ge 0}\) and \(W^{\mathrm{st}}_{<0}\) be the brutal truncations of \(W^{\mathrm{st}}\).
+	There is a short exact sequence
+	\[
+	0 \to W^{\mathrm{st}}_{<0} \to W^{\mathrm{st}} \to W^{\mathrm{st}}_{\ge 0} \to 0.
+	\]
+	Applying \(\Hom_R(-,M)\) yields a distinguished triangle in \(\sD(\k)\).
+	The complex \(W^{\mathrm{st}}_{\ge 0}\) is a projective resolution of \(\k\), hence \(\Hom_R(W^{\mathrm{st}}_{\ge 0},M)\) represents \(M^{hG}\).
+	The complex \(W^{\mathrm{st}}_{<0}\) represents \(\Sigma^{-1} M_{hG}\).
+	Rotating the triangle yields
+	\[
+	M_{hG} \to M^{hG} \to \Hom_R(W^{\mathrm{st}},M) \to \Sigma M_{hG}.
+	\]
+	The first morphism agrees with the norm by naturality and by evaluation on \(M = R\).
+	Hence \(\Hom_R(W^{\mathrm{st}},M)\) represents \(M^{tG}\).
+\end{proof}
