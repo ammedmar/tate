@@ -1,9 +1,10 @@
 % !TEX root = ../tate.tex
 
 \section{Main}
+
 Let \(\k\) be a field, let \(G\) be a finite group, and set \(R = \k[G]\).
-We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure in which weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
-This category is pointed, with zero object the zero complex~\(0\).
+We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
+This category is pointed, with zero object the complex~\(0\).
 For a map \(f \colon X \to Y\) in \(\Ch(R)\), the \defn{cofibre} \(\cofib(f)\) and \defn{fibre} \(\fib(f)\) are defined by the pushout and pullback squares
 \[
 \begin{tikzcd}
@@ -38,6 +39,7 @@ M^{hG} \coloneqq \Hom_R(W, M),
 \]
 where \(W \xrightarrow{\sim} \k\) is a cofibrant resolution.
 The homology groups of \(M_{hG}\) and \(M^{hG}\) recover group homology \(H_*(G; M)\) and group cohomology \(H^*(G; M)\), respectively.
+
 There is a natural transformation
 \[
 \Nm \colon (-)_{hG} \to (-)^{hG}
@@ -48,16 +50,33 @@ Concretely, since \(\Hom_R(\k, R) \cong \k\), the \(R\)-dual \(W^\vee = \Hom_R(W
 W \otimes_R M \longrightarrow W^\vee \otimes_R M \cong \Hom_R(W, M),
 \]
 where the final isomorphism holds because \(W\) consists of finitely generated projectives.
-The \defn{Tate construction} is the functor \((-)^{tG} \colon \sD(R) \to \sD(\k)\) defined by
-\[
-M^{tG} \coloneqq \hocofib(\Nm \colon M_{hG} \to M^{hG}),
-\]
-and its homology groups are the \defn{Tate cohomology groups} \(\widehat{H}^*(G; M)\).
+
+The \defn{Tate construction} is the functor \((-)^{tG} \defeq \hocofib(\Nm) \colon \sD(R) \to \sD(\k)\).
+The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat{H}^*(G; M)\) when \(M\) is concentrated in degree 0.
 The resulting cofibre sequence
 \[
 M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
 \]
-in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology when \(M\) is concentrated in degree 0.
+in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology \anibal{or homology?}.
 
-\subsection{Explicit models}
+\subsection{Explicit models for \(\cyc_p\) over \(\Fp\)}
 
+Let \(p\) be a prime and \(\cyc_p = \angles{\rho \mid \rho^p}\) be the cyclic group of order \(p\).
+We work over the field \(\Fp\) with \(p\) elements and denote \(R = \Fp[\cyc_p]\).
+Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\).
+A cofibrant resolution \(W \xrightarrow{\sim} \Fp\) is given by the complex
+\[
+W = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
+\]
+where each \(R\set{e_i}\) is a free \(R\)-module of rank one concentrated in homological degree \(i \geq 0\).
+Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual \(W^\vee = \Hom_R(W, R)\) is the complex
+\[
+W^\vee = \cdots \xla{T} R\set{e_2^\vee} \xla{N} R\set{e_1^\vee} \xla{T} R\set{e_0^\vee}.
+\]
+
+The norm map \(\Nm \colon M_{h\cyc_p} \to M^{h\cyc_p}\) is induced by the chain homotopy equivalence \(N_W \colon W \xrightarrow{\sim} W^\vee\) which is \(0\) in positive and negative degrees and sends \(e_0\) to \(N(e_0^\vee)\).
+
+The mapping cone of \(N_W\) is isomorphic to
+\[
+\widehat{W} = \cdots \xla{N} R\set{e_{-1}} \xla{T} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots.
+\]
