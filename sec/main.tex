@@ -59,39 +59,65 @@ The resulting cofibre sequence
 \[
 M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
 \]
-in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology \anibal{or homology?}.
+in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology. %It is cohomology indeed.
 
 \subsection{Explicit models for \(\cyc_p\) over \(\Fp\)}
 
 Let \(p\) be a prime and \(\cyc_p = \angles{\rho \mid \rho^p}\) be the cyclic group of order \(p\).
 We work over the field \(\Fp\) with \(p\) elements and denote \(R = \Fp[\cyc_p]\).
 Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\), as introduceed before.
-A cofibrant resolution \(W \xrightarrow{\sim} \Fp\) is given by the complex
+A cofibrant resolution \(W(p) \xrightarrow{\sim} \Fp\) is given by the complex
 \[
-W = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
+W(p) = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
 \]
 where each \(R\set{e_i}\) is a free \(R\)-module of rank one concentrated in homological degree \(i \geq 0\).
-Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual \(W^\vee = \Hom_R(W, R)\) is the complex
+Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual \(W^\vee(p) = \Hom_R(W, R)\) is the complex
 \[
-W^\vee = \cdots \xla{T} R\set{e_2^\vee} \xla{N} R\set{e_1^\vee} \xla{T} R\set{e_0^\vee}.
+W^\vee(p) = \cdots \xla{T} R\set{e_2^\vee} \xla{N} R\set{e_1^\vee} \xla{T} R\set{e_0^\vee}.
 \]
 
-Let \(N_W \colon W \xrightarrow{\sim} W^\vee\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N e_0^\vee\).
+Let \(N_{W(p)} \colon W(p) \xrightarrow{\sim} W^\vee(p)\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N e_0^\vee\).
 Its mapping cone is isomorphic to
 \[
-\cone(N_W) \, \cong \, \widehat{W} = \cdots \xla{N} R\set{e_{-1}} \xla{T} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots
+\cone(N_{W(p)}) \, \cong \, \widehat{W}(p) = \cdots \xla{N} R\set{e_{-1}} \xla{T} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots
 \]
 with \(e_i\) in degree \(i\).
 
 Consider the cofibre sequence
 \[
-W \to W^\vee \to \widehat W.
+W(p) \to W^\vee(p) \to \widehat W(p).
 \]
 For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a cofibre sequence representing
-\[
+\begin{equation}
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
-\]
+\label{CofibreM}
+\end{equation}
 
 \subsection{Diagonals}
+
+Let $C$ be a chain complex. An \defn{unstable $p$-cyclic diagonal} on  $C$, or \defn{unstable $p$-diagonal} for short, is a $\cyc_p$-equivariant chain map
+	\[
+	\mu \colon W(p) \otimes C \to C^{\otimes p},
+	\]
+where the $\cyc_p$-action on the domain is given by multiplication on the first factor and on the codomain consists of cyclically permuting the factors.
+
+The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat W(p)$, which we denote by
+\[
+W^{\mathrm st}(p) \, := \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
+\]
+with $e_i$ in degree $i$. An \defn{stable $p$-cyclic diagonal} on  $C$, or simply a\defn{stable $p$-diagonal}, is a $\cyc_p$-equivariant chain map
+	\[
+	\mu \colon W^{\mathrm st}(p) \otimes C \to C^{\otimes p}.
+	\]
+	
+We can recover both notions of diagonals from the cofibre sequence \eqref{CofibreM} by setting $M=\Hom(C,C^{\otimes p})$, which gives
+\[
+W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p), \Hom(C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p), \Hom(C,C^{\otimes p})),
+\]
+and by hom-tensor adjunction
+\[
+\Hom_R(W^\vee(p)\otimes C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p)\otimes C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p)\otimes C,C^{\otimes p})).
+\]
+Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
 
 ...
