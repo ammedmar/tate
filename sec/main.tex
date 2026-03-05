@@ -2,6 +2,8 @@
 
 \section{Main}
 
+\subsection{The Tate construction}
+
 Let \(\k\) be a field, let \(G\) be a finite group, and set \(R = \k[G]\).
 We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
 This category is pointed, with zero object the complex~\(0\).
@@ -63,7 +65,7 @@ in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology \an
 
 Let \(p\) be a prime and \(\cyc_p = \angles{\rho \mid \rho^p}\) be the cyclic group of order \(p\).
 We work over the field \(\Fp\) with \(p\) elements and denote \(R = \Fp[\cyc_p]\).
-Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\).
+Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\), as introduceed before.
 A cofibrant resolution \(W \xrightarrow{\sim} \Fp\) is given by the complex
 \[
 W = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
@@ -74,9 +76,22 @@ Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual
 W^\vee = \cdots \xla{T} R\set{e_2^\vee} \xla{N} R\set{e_1^\vee} \xla{T} R\set{e_0^\vee}.
 \]
 
-The norm map \(\Nm \colon M_{h\cyc_p} \to M^{h\cyc_p}\) is induced by the chain homotopy equivalence \(N_W \colon W \xrightarrow{\sim} W^\vee\) which is \(0\) in positive and negative degrees and sends \(e_0\) to \(N(e_0^\vee)\).
-
-The mapping cone of \(N_W\) is isomorphic to
+Let \(N_W \colon W \xrightarrow{\sim} W^\vee\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N e_0^\vee\).
+Its mapping cone is isomorphic to
 \[
-\widehat{W} = \cdots \xla{N} R\set{e_{-1}} \xla{T} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots.
+\cone(N_W) \, \cong \, \widehat{W} = \cdots \xla{N} R\set{e_{-1}} \xla{T} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots
 \]
+with \(e_i\) in degree \(i\).
+
+Consider the cofibre sequence
+\[
+W \to W^\vee \to \widehat W.
+\]
+For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a cofibre sequence representing
+\[
+M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
+\]
+
+\subsection{Diagonals}
+
+...
