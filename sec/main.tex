@@ -1,5 +1,40 @@
 % !TEX root = ../tate.tex
 
+\section{Preliminaries}
+Let $R$ be a commutative ring, and consider the category $R$-Mod of $R$-modules. It has a closed symmetric monoidal structre where the monoidal product is the $R$-tensor of modules 
+\[
+M\otimes_R N= (M\otimes N)/(r m \otimes n) \sim (m\otimes r n),
+\]
+for $M$ and $N$ $R$-modules. Note that $M\otimes_R N$ is again an $R$-module by setting $r(m\otimes n)=rm\otimes n=m\otimes rn$. The internal hom $\Hom_R(M,N)$ has also an $R$-module structure given by $(r f)(m) = f(r m) = r f(m)$.
+
+Furthermore, for $R$-modules $M$, $N$, and $P$, we have the hom-tensor adjunction
+\[
+\Hom_R(M\otimes_R N, P)\cong \Hom_R(M,\Hom_R(N,P)).
+\]
+\subsection{The non-commutative case} There is a generalisation of $\otimes_R$ when $R$ is not commutative. This is of interest because in classical finite  group homology one works over the ring 
+$\Z [G]$, for $G$ a finite group, which is not commutative unless $G$ is abelian.
+
+ Let $M$ be a right $R$-module and $N$ a left $R$-module, then $\otimes_R$ is defined as
+ \[
+ M\otimes_R N= (M\otimes N)/(m r\otimes n)\sim(m\otimes rn).
+ \]
+\begin{remark*} Observe that $M\otimes_R N$ is just an abelian group, with no module structure. We can think of  $\otimes_R$ as monoidal product in a category of bimodules, with objects triplets $(R, S, N)$ where $R$ and $S$ are rings and $N$ is a $(R,S)$-bimodule. Thus, for objects $(T, R, M)$ and $(R, S, N)$, their monoidal product is the object $(T,S,M\otimes_R N)$, so that $M\otimes_R N$ is a $(T, S)$-bimodule with left $T$-action given by $t(m\otimes n)=tm\otimes n$ and right $S$-action $(m\otimes n)s=m\otimes n s$.
+\end{remark*}
+
+If $M$ is a left $\Z[G]$-module, we can turn $M$ into a right $\Z[G]$-module by setting $m \cdot g=g^{-1}m$. Thus, for $M$ and $N$ left $\Z[G]$-modules, we define the abelian group
+\[
+M\otimes_G N := M\otimes_{\Z[G]} N=(M\otimes N)/(g^{-1}m\otimes n)\sim (m\otimes g n).
+\]
+Observe that replacing $m$ by $gm$ in the quotient relation gives $(m\otimes n) \sim (gm\otimes gn)$, which means that 
+\[
+M\otimes_G N = (M\otimes N)_G= \Z\otimes_{\Z[G]}(M\otimes N),
+\]
+the coinvariants of $M\otimes N$ with respect to the diagonal left $G$-action $g\cdot (m\otimes n)= gm\otimes gn$. 
+
+There is also a diagonal action on $\Hom(M,N)$ given by $(g\cdot f)(m)=g f(g^{-1}m)$, which gives the equivalence between $G$-equivariant maps and invariants
+\[
+\Hom_G(M,N)(\Hom(M,N))^G.
+\]
 \section{Main}
 
 \subsection{The Tate construction}
@@ -92,32 +127,48 @@ For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a co
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 \label{CofibreM}
 \end{equation}
-
-\subsection{Diagonals}
-
-Let $C$ be a chain complex. An \defn{unstable $p$-cyclic diagonal} on  $C$, or \defn{unstable $p$-diagonal} for short, is a $\cyc_p$-equivariant chain map
-	\[
-	\mu \colon W(p) \otimes C \to C^{\otimes p},
-	\]
-where the $\cyc_p$-action on the domain is given by multiplication on the first factor and on the codomain consists of cyclically permuting the factors.
-
-The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat W(p)$, which we denote by
+%
+%\subsection{Diagonals}
+%
+%Let $C$ be a chain complex. An \defn{unstable $p$-cyclic diagonal} on  $C$, or \defn{unstable $p$-diagonal} for short, is a $\cyc_p$-equivariant chain map
+%	\[
+%	\mu \colon W(p) \otimes C \to C^{\otimes p},
+%	\]
+%where the $\cyc_p$-action on the domain is given by multiplication on the first factor and on the codomain consists of cyclically permuting the factors.
+%
+%The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat W(p)$, which we denote by
+%\[
+%W^{\mathrm st}(p) \, := \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
+%\]
+%with $e_i$ in degree $i$. An \defn{stable $p$-cyclic diagonal} on  $C$, or simply a\defn{stable $p$-diagonal}, is a $\cyc_p$-equivariant chain map
+%	\[
+%	\mu \colon W^{\mathrm st}(p) \otimes C \to C^{\otimes p}.
+%	\]
+%	
+%We can recover both notions of diagonals from the cofibre sequence \eqref{CofibreM} by setting $M=\Hom(C,C^{\otimes p})$, which gives
+%\[
+%W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} W^\vee(p)\otimes_R \Hom(C,C^{\otimes p})\to \widehat W(p)\otimes_R \Hom(C,C^{\otimes p}).
+%\]
+%Since $W$ consists of finitely generated projectives, we can express it in terms of homs
+%\[
+%\Hom_R(W^\vee(p), \Hom(C,C^{\otimes p})) \xra{\Nm} \Hom_R(W(p), \Hom(C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p), \Hom(C,C^{\otimes p})),
+%\]
+%and by hom-tensor adjunction
+%\[
+%\Hom_R(W^\vee(p)\otimes C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p)\otimes C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p)\otimes C,C^{\otimes p})).
+%\]
+%Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
+\subsection{The algebraic Tate diagonal} Let $M= C^{\otimes p}$. Then, a model for its tate construction is
 \[
-W^{\mathrm st}(p) \, := \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
+(C^{\otimes p})^{t C_p}\cong \widehat W(p)\otimes_R C^{\otimes p}.
 \]
-with $e_i$ in degree $i$. An \defn{stable $p$-cyclic diagonal} on  $C$, or simply a\defn{stable $p$-diagonal}, is a $\cyc_p$-equivariant chain map
-	\[
-	\mu \colon W^{\mathrm st}(p) \otimes C \to C^{\otimes p}.
-	\]
-	
-We can recover both notions of diagonals from the cofibre sequence \eqref{CofibreM} by setting $M=\Hom(C,C^{\otimes p})$, which gives
+The no-go theorem from Nikoulaus and Scholze \cite{??} states that there is no natural chain map 
 \[
-W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p), \Hom(C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p), \Hom(C,C^{\otimes p})),
+C\to (C^\otimes p)^{tC_p}
 \]
-and by hom-tensor adjunction
+that induces a non trivial map in homology. However, we can construct the map 
 \[
-\Hom_R(W^\vee(p)\otimes C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p)\otimes C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p)\otimes C,C^{\otimes p})).
+\Delta^t\colon H_*(C)\to H_*((C^\otimes p)^{tC_p})=H_*(\widehat W\otimes_R C^{\otimes p})
 \]
-Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
-
+that sends a homology class $[x]$ in degree $n$ to $[e_{n-pn}\otimes_R (x\otimes \overset{_{(p)}}{\cdots}\otimes x)]$. We call $\Delta^t$ the \defn{algebraic Tate diagonal}. \TBW
 ...
