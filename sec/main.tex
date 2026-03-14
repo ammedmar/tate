@@ -1,40 +1,98 @@
 % !TEX root = ../tate.tex
 
 \section{Preliminaries}
-Let $R$ be a commutative ring, and consider the category $R$-Mod of $R$-modules. It has a closed symmetric monoidal structre where the monoidal product is the $R$-tensor of modules 
-\[
-M\otimes_R N= (M\otimes N)/(r m \otimes n) \sim (m\otimes r n),
-\]
-for $M$ and $N$ $R$-modules. Note that $M\otimes_R N$ is again an $R$-module by setting $r(m\otimes n)=rm\otimes n=m\otimes rn$. The internal hom $\Hom_R(M,N)$ has also an $R$-module structure given by $(r f)(m) = f(r m) = r f(m)$.
 
-Furthermore, for $R$-modules $M$, $N$, and $P$, we have the hom-tensor adjunction
+In this section we explain the properties of the $R$-tensor $\otimes_R$ and the ring dual $\Hom_R(-,R)$ of  $R$-modules. Both constructions can be generalised to chain complexes of $R$-modules by applying them degreewise.
+
+\subsection{The $R$-tensor}
+Let $R$ be a ring, $M$ a right $R$-module and $N$ a left $R$-module. The $R$-tensor $\otimes_R$ is defined by 
+\[
+M\otimes_R N=(M\otimes N)/(mr\otimes n)\sim (m\otimes rn).
+\]
+Note that as it is, $M\otimes_R N$ is just an abelian group, with no module structure.
+
+We can think of  $\otimes_R$ as monoidal product in a category of bimodules, with objects triplets $(R, S, N)$ where $R$ and $S$ are rings and $N$ is an $(R,S)$-bimodule. Thus, for objects $(T, R, M)$ and $(R, S, N)$, their monoidal product is the object $(T,S,M\otimes_R N)$, so that $M\otimes_R N$ is a $(T, S)$-bimodule with left $T$-action given by $t(m\otimes n)=tm\otimes n$ and right $S$-action $(m\otimes n)s=m\otimes n s$.
+
+If instead of a right $R$-module, $M$ is a left $R$-module, there are conditions under wich we can make sense of $\otimes_R$. We consider two situations for this.
+
+\begin{example} %Note that we dont use this example at any point
+If $R$ is a commutative ring, any left $R$-module can be turned into a bimodule by setting the right $R$-action to be the same as the left $R$-action, so that $m\cdot r:=rm$. Therefore
+\[
+M\otimes_R N=(M\otimes N)/(rm\otimes n)\sim (m\otimes rn).
+\]
+This is the monoidal product of the closed symmetric monoidal category $R$-Mod, which can be seen as the restriction of the category of bimodules to the full subcategory whose objects are triplets $(R,R, M)$ in which the left and right $R$-actions on $M$ coincide. Thus, $M\otimes_R N$ is again an $R$-module with $R$-action $r(m\otimes n)=rm\otimes n$.
+
+The category $R$-Mod has an internal hom, $\Hom_R$, with $R$-module structure given by  $(r\cdot f)(m) = f(r m) = r f(m)$. Furthermore, for $R$-modules $M$, $N$, and $P$, we have the hom-tensor adjunction
 \[
 \Hom_R(M\otimes_R N, P)\cong \Hom_R(M,\Hom_R(N,P)).
 \]
-\subsection{The non-commutative case} There is a generalisation of $\otimes_R$ when $R$ is not commutative. This is of interest because in classical finite  group homology one works over the ring 
-$\Z [G]$, for $G$ a finite group, which is not commutative unless $G$ is abelian.
+\end{example}
+\begin{example} If $R=\k[G]$, for $\k$ a field and $G$ a group, we can turn a left $\k[G]$-module $M$ into a right $\k[G]$-module via the group anti-automorphism $g\mapsto g^{-1}$, by defining the right action to be (the $\k$-linear extension of) $m\cdot g:=g^{-1}\cdot m$. Note that this does not make $M$ into a bimodule unless $G$ is abelian because $(g\cdot m)\cdot h=g\cdot (m\cdot h)$ is only satisfied if $h^{-1}g m=g h^{-1} m$ for any $g,h\in G$.
 
- Let $M$ be a right $R$-module and $N$ a left $R$-module, then $\otimes_R$ is defined as
- \[
- M\otimes_R N= (M\otimes N)/(m r\otimes n)\sim(m\otimes rn).
- \]
-\begin{remark*} Observe that $M\otimes_R N$ is just an abelian group, with no module structure. We can think of  $\otimes_R$ as monoidal product in a category of bimodules, with objects triplets $(R, S, N)$ where $R$ and $S$ are rings and $N$ is a $(R,S)$-bimodule. Thus, for objects $(T, R, M)$ and $(R, S, N)$, their monoidal product is the object $(T,S,M\otimes_R N)$, so that $M\otimes_R N$ is a $(T, S)$-bimodule with left $T$-action given by $t(m\otimes n)=tm\otimes n$ and right $S$-action $(m\otimes n)s=m\otimes n s$.
-\end{remark*}
-
-If $M$ is a left $\Z[G]$-module, we can turn $M$ into a right $\Z[G]$-module by setting $m \cdot g=g^{-1}m$. Thus, for $M$ and $N$ left $\Z[G]$-modules, we define the abelian group
+We will denote the corresponding tensor by $\otimes_G$, to stress that we are using this specific right $\k[G]$-module structure on $M$, and is thus given by
 \[
-M\otimes_G N := M\otimes_{\Z[G]} N=(M\otimes N)/(g^{-1}m\otimes n)\sim (m\otimes g n).
+M\otimes_G N:=(M\otimes N)/(g^{-1}m\otimes n)\sim (m\otimes gn).
 \]
 Observe that replacing $m$ by $gm$ in the quotient relation gives $(m\otimes n) \sim (gm\otimes gn)$, which means that 
 \[
-M\otimes_G N = (M\otimes N)_G= \Z\otimes_{\Z[G]}(M\otimes N),
+M\otimes_G N = (M\otimes N)_G:= \k\otimes_{\k[G]}(M\otimes N),
 \]
 the coinvariants of $M\otimes N$ with respect to the diagonal left $G$-action $g\cdot (m\otimes n)= gm\otimes gn$. 
 
 There is also a diagonal action on $\Hom(M,N)$ given by $(g\cdot f)(m)=g f(g^{-1}m)$, which gives the equivalence between $G$-equivariant maps and invariants
 \[
-\Hom_G(M,N)(\Hom(M,N))^G.
+\Hom_G(M,N)=(\Hom(M,N))^G:=\Hom_{\k[G]}(\k,\Hom(M,N)).
 \]
+Note that $\Hom_G(M,N)=\Hom_{\k[G]}(M,N)$ by definition.
+%In particular, the linear dual $M^*:=\Hom_\k(M,\k)$ has a $\k[G]$-module structure given by $(g\cdot f)(m)=f(g^{-1}m)$.
+
+Let $A$ be a $\k$-module (or rather, a $\k$-vector space), which we can regard as a $\k[G]$-module with the trivial action. We have the following identities regarding the functors of coinvariants and invariants:
+\[
+\Hom (M_G,A)=\Hom_G(M,A)\quad\text{and}\quad \Hom_G(A,M)=\Hom(A,M^G).
+\]
+\end{example}
+\subsection{The ring dual}
+The ring dual $M^\vee$ of a left $R$-module $M$ is the right $R$-module
+\[
+M^\vee=\Hom_{R}(M,R)
+\]
+ with action $(f\cdot r)(m)=(f(m))r$.
+If $M$ is a finitely generated projective left $R$-module, then $M^\vee$ is a finitely generated projective right $R$-module, and for any left $R$-module $N$ we have 
+\[
+\varphi \colon M^\vee\otimes_{R}N\cong \Hom_{R}(M,N),
+\]
+given by $\varphi(f\otimes n)(m)=f(m)n$, since $f(m)\in R$.
+
+\begin{example}
+Let $R=\k[G]$ for $\k$ a field and $G$ a group, and consider the left $R$-module $W_0:=R\{e_0\}$ with the regular action $g\cdot e_0=ge_0$. We can also think of $W_0$ as $\k\{ge_0 \,|\, g\in G\}$, with action permuting the $\k$-basis. The dual $W_0^\vee$ is the right $R$-module
+\[
+W_0^\vee=\Hom_R(W_0,R)=\{e_0^\vee\}R=\k\{(ge_0)^\vee\, |\, g\in G\},
+\]
+where $(ge_0)^\vee\colon W_0\to R$ maps $R$-linearly $ge_0$ to $1_R$. The right action is
+\[
+e_0^\vee\cdot g=(g^{-1}e_0)^\vee,
+\]
+since $(e_0^\vee\cdot g)(he_0)=(e_0^\vee(he_0))g=hg=(g^{-1}e_0)^\vee(hgg^{-1}e_0)=(g^{-1}e_0)(he_0)$ for any $h\in G$.
+
+Recall that we can define a right $R$-module structure on $W_0$ by $e_0\cdot g=g^{-1}e_0$. If $G$ is abelian, then $W_0$ is a bimodule and we can also define the left $R$-action on $W_0^\vee$ 
+\[
+(g\cdot e_0^\vee) (he_0) := e_0^\vee(he_0\cdot g)= (ge_0)^\vee(he_0),
+\]
+where the second equality holds by abelianity of $G$ (or the bimodule structure of $W_0$), for 
+\[
+e_0^\vee(he_0\cdot g)=g^{-1}h=hg^{-1}=(ge_0)^\vee(hg^{-1}ge_0).
+\]
+Note that the bimodule structure is also needed to ensure that $g\cdot e_0^\vee\in \Hom_R(M,R)$,
+\[
+(g\cdot e_0^\vee)(he_0)=e_0^\vee(he_0\cdot g)=e_0^\vee(h(e_0\cdot g))=h(g\cdot e_0^\vee).
+\]
+Observe that we could have defined the right action on $W_0^\vee$  as the action given by acting on the left with the group inverse
+\[
+e_0^\vee\cdot g:=g^{-1}\cdot e_0^\vee=(g^{-1}e_0)^\vee,
+\]
+which means that it corresponds to the right action for the $G$-tensor $W_0^\vee\otimes_G -$.
+\end{example}
+
 \section{Main}
 
 \subsection{The Tate construction}
@@ -63,16 +121,16 @@ We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) 
 
 The functors
 \[
-(-)_G = \k \ \otimes_R \, -
+(-)_G = \k \ \otimes_G \, -
 \qquad \text{and} \qquad
-(-)^G = \Hom_R(\k, -)
+(-)^G = \Hom_G(\k, -)
 \]
 from \(\Ch(R)\) to \(\Ch(\k)\) induce the \defn{derived coinvariants} and \defn{derived invariants} functors from \(\sD(R)\) to \(\sD(\k)\).
 Explicitly, for \(M \in \sD(R)\) these are given by
 \[
-M_{hG} \coloneqq W \otimes_R M
+M_{hG} \coloneqq W \otimes_G M
 \qquad \text{and} \qquad
-M^{hG} \coloneqq \Hom_R(W, M),
+M^{hG} \coloneqq \Hom_G(W, M),
 \]
 where \(W \xrightarrow{\sim} \k\) is a cofibrant resolution.
 The homology groups of \(M_{hG}\) and \(M^{hG}\) recover group homology \(H_*(G; M)\) and group cohomology \(H^*(G; M)\), respectively.
@@ -108,7 +166,7 @@ W(p) = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{
 where each \(R\set{e_i}\) is a free \(R\)-module of rank one concentrated in homological degree \(i \geq 0\).
 Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual \(W^\vee(p) = \Hom_R(W, R)\) is the complex
 \[
-W^\vee(p) = \cdots \xla{T} R\set{e_2^\vee} \xla{N} R\set{e_1^\vee} \xla{T} R\set{e_0^\vee}.
+W^\vee(p) = \cdots \xla{T} \set{e_2^\vee}R \xla{N} \set{e_1^\vee}R \xla{T} \set{e_0^\vee}R.%The R's could go in the left if we are considering the bimodule structure of Example 3, although the natural action is the right R action.
 \]
 
 Let \(N_{W(p)} \colon W(p) \xrightarrow{\sim} W^\vee(p)\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N e_0^\vee\).
@@ -127,7 +185,7 @@ For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a co
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 \label{CofibreM}
 \end{equation}
-%
+
 %\subsection{Diagonals}
 %
 %Let $C$ be a chain complex. An \defn{unstable $p$-cyclic diagonal} on  $C$, or \defn{unstable $p$-diagonal} for short, is a $\cyc_p$-equivariant chain map
@@ -153,9 +211,9 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 %\[
 %\Hom_R(W^\vee(p), \Hom(C,C^{\otimes p})) \xra{\Nm} \Hom_R(W(p), \Hom(C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p), \Hom(C,C^{\otimes p})),
 %\]
-%and by hom-tensor adjunction
+%and by hom-tensor adjunction %%% This is not clear yet
 %\[
-%\Hom_R(W^\vee(p)\otimes C,C^{\otimes p}) \xra{\Nm} \Hom_R(W(p)\otimes C,C^{\otimes p}))\to \Hom_R(W^{\mathrm st}(p)\otimes C,C^{\otimes p})).
+%\Hom(W^\vee(p)\otimes_R C,C^{\otimes p}) \xra{\Nm} \Hom(W(p)\otimes_R C,C^{\otimes p}))\to \Hom(W^{\mathrm st}(p)\otimes_RC,C^{\otimes p})).
 %\]
 %Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
 \subsection{The algebraic Tate diagonal} Let $M= C^{\otimes p}$. Then, a model for its tate construction is
