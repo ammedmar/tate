@@ -2,11 +2,16 @@
 
 \section{Main}
 
-\subsection{The Tate construction}
+\subsection{Preliminaries}
 
 Let \(\k\) be a field, let \(G\) be a finite group, and set \(R = \k[G]\).
-We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
-This category is pointed, with zero object the complex~\(0\).
+We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, where weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
+
+We denote the homotopy category of \(\Ch(R)\) by \(\sD(R)\), its localization at quasi-isomorphisms.
+The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\sD(R)\).
+Moreover, homotopy pushouts and homotopy pullbacks coincide in \(\sD(R)\).
+
+The category \(\Ch(R)\) is pointed, with zero object the complex~\(0\).
 For a map \(f \colon X \to Y\) in \(\Ch(R)\), the \defn{cofibre} \(\cofib(f)\) and \defn{fibre} \(\fib(f)\) are defined by the pushout and pullback squares
 \[
 \begin{tikzcd}
@@ -20,15 +25,14 @@ For a map \(f \colon X \to Y\) in \(\Ch(R)\), the \defn{cofibre} \(\cofib(f)\) a
 \end{tikzcd}
 \]
 respectively.
-
-We denote the homotopy category of \(\Ch(R)\) by \(\sD(R)\), its localization at quasi-isomorphisms.
-The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\sD(R)\).
-Moreover, homotopy pushouts and homotopy pullbacks coincide in \(\sD(R)\), and in particular \(\hofib(f) \simeq \hocofib(f)[-1]\) for any map \(f\) in \(\sD(R)\).
+In particular, \(\hofib(f) \simeq \hocofib(f)[-1]\) for any map \(f\) in \(\sD(R)\).
 We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as \defn{cofibre sequences} and \defn{fibre sequences}, respectively; by the above, they carry equivalent information.
+
+\subsection{The Tate construction}
 
 The functors
 \[
-(-)_G = \k \ \otimes_R \, -
+(-)_G = \k \, \otimes_R \, -
 \qquad \text{and} \qquad
 (-)^G = \Hom_R(\k, -)
 \]
@@ -61,11 +65,12 @@ M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
 \]
 in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology \anibal{or homology?}.
 
-\subsection{Explicit models for \(\cyc_p\) over \(\Fp\)}
+\subsection{Explicit models for \(\Fp[\cyc_p]\)}
 
 Let \(p\) be a prime and \(\cyc_p = \angles{\rho \mid \rho^p}\) be the cyclic group of order \(p\).
-We work over the field \(\Fp\) with \(p\) elements and denote \(R = \Fp[\cyc_p]\).
-Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\), as introduceed before.
+We work over \(R = \Fp[\cyc_p]\) where \(\Fp\) is the field with \(p\) elements.
+Set \(T \defeq \rho - 1\) and \(N \defeq 1 + \rho + \cdots + \rho^{p-1}\) in \(R\).
+
 A cofibrant resolution \(W \xrightarrow{\sim} \Fp\) is given by the complex
 \[
 W = R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
@@ -92,6 +97,183 @@ For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a co
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 \]
 
-\subsection{Diagonals}
+\subsection{Tate diagonal}
 
-...
+Let \(p\) be a prime and \(R \defeq \Fp[\cyc_p]\).
+Let \(C\) be a chain complex over \(\Fp\).
+The cyclic group \(\cyc_p\) acts on \(C^{\otimes p}\) by cyclic permutation of factors.
+
+\medskip
+The \defn{Tate diagonal} is the homology map
+\[
+\begin{aligned}
+	\Delta^t \colon \rH C &\longrightarrow \rH (C^{\otimes p})^{t\cyc_p},\\
+	[c] &\longmapsto \bigl[e_{-(p-1)\bars{c}} \otimes_R (c^{\otimes p})\bigr].
+\end{aligned}
+\]
+
+\begin{lemma}
+	The Tate diagonal is well-defined.
+\end{lemma}
+
+%\begin{proof}
+%	For \(n \in \mathbb Z\) and \(c \in C_n\), set
+%	\[
+%	q_n(c) \defeq e_{-(p-1)n} \otimes_R c^{\otimes p}
+%	\in \bigl(\widehat W \otimes_R C^{\otimes p}\bigr)_n .
+%	\]
+%
+%	\medskip\noindent\textit{Step 1: cycles map to cycles.}
+%	Let \(c \in Z_n(C)\), and set \(k \defeq (p-1)n\).
+%	Then
+%	\[
+%	d\bigl(q_n(c)\bigr)
+%	=
+%	d(e_{-k}) \otimes_R c^{\otimes p}
+%	+
+%	(-1)^{-k} e_{-k} \otimes_R d(c^{\otimes p}).
+%	\]
+%	Since \(dc=0\), the second term vanishes.
+%	Moreover, \(k=(p-1)n\) is even, so
+%	\[
+%	d(e_{-k})=T e_{-k-1}.
+%	\]
+%	Hence
+%	\[
+%	d\bigl(q_n(c)\bigr)
+%	=
+%	T e_{-k-1} \otimes_R c^{\otimes p}
+%	=
+%	e_{-k-1} \otimes_R T(c^{\otimes p}).
+%	\]
+%	Now \(c^{\otimes p}\) is fixed by the cyclic permutation action:
+%	for \(p\) odd this is because the Koszul sign of a \(p\)-cycle on \(p\) copies of a homogeneous element is
+%	\[
+%	(-1)^{|c|^2(p-1)}=1,
+%	\]
+%	and for \(p=2\) this is automatic over \(\Fp\).
+%	Thus \(T(c^{\otimes p})=0\), and therefore
+%	\[
+%	d\bigl(q_n(c)\bigr)=0.
+%	\]
+%
+%	\medskip\noindent\textit{Step 2: additivity on cycles modulo boundaries.}
+%	Let \(c,c' \in Z_n(C)\), and again write \(k=(p-1)n\).
+%	Expanding \((c+c')^{\otimes p}\) gives
+%	\[
+%	(c+c')^{\otimes p} = c^{\otimes p} + (c')^{\otimes p} + M(c,c'),
+%	\]
+%	where \(M(c,c')\) is the sum of all mixed tensors.
+%	Since \(p\) is prime, every mixed tensor has orbit of size \(p\) under the cyclic action, so \(M(c,c')\) can be written as a sum of transfers:
+%	\[
+%	M(c,c') = \sum_{\ell} N(m_\ell),
+%	\]
+%	for suitable homogeneous tensors \(m_\ell \in C^{\otimes p}\).
+%	Thus
+%	\[
+%	q_n(c+c') - q_n(c) - q_n(c')
+%	=
+%	e_{-k} \otimes_R M(c,c')
+%	=
+%	\sum_\ell e_{-k} \otimes_R N(m_\ell).
+%	\]
+%	Since \(k\) is even, \(-k+1\) is odd, and therefore
+%	\[
+%	d(e_{-k+1}) = N e_{-k}.
+%	\]
+%	Hence
+%	\[
+%	q_n(c+c') - q_n(c) - q_n(c')
+%	=
+%	\sum_\ell d(e_{-k+1}) \otimes_R m_\ell.
+%	\]
+%	Each \(m_\ell\) is a tensor in the cycles \(c\) and \(c'\), so \(d(m_\ell)=0\).
+%	Therefore
+%	\[
+%	q_n(c+c') - q_n(c) - q_n(c')
+%	=
+%	d\Bigl(\sum_\ell e_{-k+1} \otimes_R m_\ell\Bigr).
+%	\]
+%	It follows that
+%	\[
+%	[q_n(c+c')] = [q_n(c)] + [q_n(c')]
+%	\]
+%	in homology.
+%
+%	\medskip\noindent\textit{Step 3: boundaries map to zero.}
+%	The assignment
+%	\[
+%	c \longmapsto [q_n(c)]
+%	\]
+%	is natural in \(C\).
+%	Let \(c=db \in B_n(C)\).
+%	Consider the disk complex \(D^{n+1}\), generated by an element \(x\) in degree \(n+1\) and an element \(y\) in degree \(n\), with differential \(dx=y\).
+%	There is a chain map
+%	\[
+%	f \colon D^{n+1} \longrightarrow C
+%	\]
+%	sending \(x\mapsto b\) and \(y\mapsto c\).
+%	By naturality,
+%	\[
+%	[q_n(c)] = \rH\bigl(\widehat W \otimes_R f^{\otimes p}\bigr)\bigl([q_n(y)]\bigr).
+%	\]
+%
+%	Now \(D^{n+1}\) is contractible, hence so is \((D^{n+1})^{\otimes p}\).
+%	Since \(\widehat W\) is degreewise free over \(R\), the complex
+%	\[
+%	\widehat W \otimes_R (D^{n+1})^{\otimes p}
+%	\]
+%	is acyclic.
+%	Therefore
+%	\[
+%	[q_n(y)] = 0,
+%	\]
+%	and consequently
+%	\[
+%	[q_n(c)] = 0. \qedhere
+%	\]
+%\end{proof}
+
+%\begin{proof}
+%	\textbf{Step 1: cycles map to cycles.}
+%	Let \(c \in Z_n(C)\). Then
+%	\[
+%	d(q_n(c)) = d(e_{-n}) \otimes (c \otimes c) + e_{-n} \otimes d(c \otimes c).
+%	\]
+%	Since \(dc = 0\), the second term vanishes. Using \(d(e_{-n}) = (1+t)e_{-n-1}\) we obtain
+%	\[
+%	d(q_n(c)) = (1+t)e_{-n-1} \otimes (c \otimes c) = e_{-n-1} \otimes (1+t)(c \otimes c).
+%	\]
+%	Because \(t\) acts by transposition and \(k = \mathbb F_2\),
+%	\[
+%	(1+t)(c \otimes c) = c \otimes c + c \otimes c = 0,
+%	\]
+%	so \(d(q_n(c)) = 0\).
+%
+%	\textbf{Step 2: additivity on cycles modulo boundaries.}
+%	Let \(c, c' \in Z_n(C)\). Expanding over \(\mathbb F_2\) gives
+%	\[
+%	q_n(c+c') + q_n(c) + q_n(c') = e_{-n} \otimes (c \otimes c' + c' \otimes c) = e_{-n} \otimes (1+t)(c \otimes c').
+%	\]
+%	Moving \((1+t)\) across the tensor product and using \(d(e_{-n+1}) = (1+t)e_{-n}\) we obtain
+%	\[
+%	q_n(c+c') + q_n(c) + q_n(c') = d(e_{-n+1}) \otimes (c \otimes c').
+%	\]
+%	Since \(d(c \otimes c') = 0\),
+%	\[
+%	q_n(c+c') + q_n(c) + q_n(c') = d\bigl(e_{-n+1} \otimes (c \otimes c')\bigr),
+%	\]
+%	so \(c \mapsto [q_n(c)]\) is additive on \(Z_n(C)\).
+%
+%	\textbf{Step 3: boundaries map to zero.}
+%	Let \(c = db\) with \(b \in C_{n+1}\). Using \(d(e_i) = (1+t)e_{i-1}\), \(d(b \otimes db) = db \otimes db\), and \(d(b \otimes b) = db \otimes b + b \otimes db\), a direct computation shows
+%	\[
+%	d\bigl(e_{-n} \otimes (b \otimes db) + e_{-n-1} \otimes (b \otimes b)\bigr) = e_{-n} \otimes (db \otimes db) = q_n(db).
+%	\]
+%	Thus \(q_n(db)\) is a boundary.
+%
+%	Steps 1–3 show that \(c \mapsto [q_n(c)]\) defines a linear map on \(Z_n(C)\) vanishing on \(B_n(C)\). Therefore it factors through homology, giving
+%	\[
+%	Q_n \colon H_n(C) \to H_n(\widehat W \otimes_R (C \otimes C)), \qquad [c] \mapsto [e_{-n} \otimes (c \otimes c)].
+%	\]
+%\end{proof}
