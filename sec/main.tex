@@ -218,7 +218,7 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 %Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
 \subsection{The algebraic Tate diagonal} Let $M= C^{\otimes p}$. Then, a model for its tate construction is
 \[
-(C^{\otimes p})^{t C_p}\cong \widehat W(p)\otimes_R C^{\otimes p}.
+(C^{\otimes p})^{t C_p}\cong \widehat W(p)\otimes_G C^{\otimes p}.
 \]
 The no-go theorem from Nikoulaus and Scholze \cite{??} states that there is no natural chain map 
 \[
@@ -226,7 +226,26 @@ C\to (C^\otimes p)^{tC_p}
 \]
 that induces a non trivial map in homology. However, we can construct the map 
 \[
-\Delta^t\colon H_*(C)\to H_*((C^\otimes p)^{tC_p})=H_*(\widehat W\otimes_R C^{\otimes p})
+\Delta^t(p)\colon H_*(C)\to H_*((C^\otimes p)^{tC_p})=H_*(\widehat W\otimes_G C^{\otimes p})
 \]
-that sends a homology class $[x]$ in degree $n$ to $[e_{n-pn}\otimes_R (x\otimes \overset{_{(p)}}{\cdots}\otimes x)]$. We call $\Delta^t$ the \defn{algebraic Tate diagonal}. \TBW
+that sends a homology class $[x]$ in degree $n$ to $[e_{n-pn}\otimes_G (x\otimes \overset{_{(p)}}{\cdots}\otimes x)]$. We call $\Delta^t(p)$ the \defn{algebraic Tate diagonal}.
+
+A hypothetic way of obtaining cohomology operations from the algebraic Tate diagonal is by following this diagram and passing to homology:
+
+\input{sec/diagram_tate_diag_operations}
+
+Another way is to notice that by postcomposing with the norm map, we can map 
+\[
+\Hom(C,(\widehat W\otimes C^{\otimes p})_G)\to \Hom(C,(\widehat W\otimes C^{\otimes p})^G)=\Hom_G(C,\widehat W\otimes C^{\otimes p}).
+\]
+Since $\widehat W$ is projective, we also have the isomorphism %i need to check this
+\[
+\Hom_G(C,\widehat W\otimes C^{\otimes p})\cong \Hom_G(C\otimes \widehat W^\vee, C^{\otimes p}).
+\]
+Thus, a tate-like diagonal map $C\to (C^\otimes p)^{tC_p}$ gives us a cup-$i$ construction 
+\[
+C\otimes \widehat W^\vee\to C^{\otimes p}.
+\]
+
+ \TBW
 ...
