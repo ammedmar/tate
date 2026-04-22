@@ -1,18 +1,18 @@
 \begin{center}
 \begin{tikzpicture}
-	\node (1) at (-3.5,4){$((\widehat W\otimes C^{\otimes p})^*)^G$};
-	\node (2) at (-3.5,2){$(\widehat W^*\otimes(C^*)^{\otimes p})^G$};
-	\node (3) at (-3.5,0){$(\widehat W^*)^G\otimes ((C^*)^{\otimes p})^G$};
-	\node (4) at (-3.5,-2){$(\widehat W^*)_G\otimes C^*$};
-	\node (11) at (3.5,4){$(\Hom((\widehat W\otimes C^{\otimes p}),\k))^G$};
-	\node (22) at (3.5,2){$\Hom_G((\widehat W\otimes C^{\otimes p}),\k)$};
-	\node (33) at (3.5,0){$\Hom((\widehat W\otimes C^{\otimes p})_G,\k)$};
+	\node (1) at (-3.5,4){$((\widehat W\otimes C^{\otimes p})^*)^{\cyc_p}$};
+	\node (2) at (-3.5,2){$(\widehat W^*\otimes(C^*)^{\otimes p})^{\cyc_p}$};
+	\node (3) at (-3.5,0){$(\widehat W^*)^{\cyc_p}\otimes ((C^*)^{\otimes p})^{\cyc_p}$};
+	\node (4) at (-3.5,-2){$(\widehat W^*)_{\cyc_p}\otimes C^*$};
+	\node (11) at (3.5,4){$(\Hom((\widehat W\otimes C^{\otimes p}),\Fp))^{\cyc_p}$};
+	\node (22) at (3.5,2){$\Hom_{\cyc_p}((\widehat W\otimes C^{\otimes p}),\Fp)$};
+	\node (33) at (3.5,0){$\Hom((\widehat W\otimes C^{\otimes p})_{\cyc_p},\Fp)$};
 	\node (44) at (3.5,-2){$C^*$};
 	%
 	\draw[double, double distance=2pt] (1)--(11);
 	\draw[double, double distance=2pt](11)--(22);
 	\draw[double, double distance=2pt](22)--(33);
-	\draw[->, dashed](33)--node[right]{$(\Delta^t(p))^*$}(44);
+	\draw[->, dashed](33)--node[right]{$\tilde\Delta^*$}(44);
 	\draw[->, dashed](4)--node[right]{$N\otimes\text{diag}$}(3);
 	\draw[right hook->](3)--(2);
 	\draw[->](2)--node[right]{$\cong$}(1);
