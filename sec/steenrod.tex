@@ -1,0 +1,36 @@
+% !TEX root = ../tate.tex
+
+\section{Steenrod operations on homology (Federico)}
+Let $C$ be a chain complex, over $R = \mathbb{F}_p$. Consider $C$ as a $R\cyc_p$-complex with trivial $\cyc_p$-action and $C^{\otimes p}$ with the permutation action. Let $H(C)^{(p)}$ be the `inflation'' of the graded module $H(C)$: 
+\[
+	H(C)^{(p)}_k = \begin{cases}
+		H(C)_j & \text{ if $k = pj$} \\
+		0 & \text{ otherwise.}
+	\end{cases}
+\]
+\begin{lemma}
+	There are isomorphisms
+	\begin{align*}
+		\hat{H}(C;\bF_p)&\cong H(C)\ot \hat{H}(B\cyc_p)
+		\\
+		\hat{H}(C^{\ot p};\bF_p) & \cong H(C)^{(p)}\ot \hat{H}(B\cyc_p)
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	The first isomorphism is standard, because $\cyc_p$ acts trivially on $C$. For the second, recall that the bicomplex $C\ot \hat{W}(p)$ gives rise to two spectral sequences. In one of them, the first page is obtained by taking homology only with respect to the differential of $C$, and it is isomorphic to $H(C)^{\ot p}\ot \hat{W}(p)$ by the Künneth isomorphism. 
+	
+	Now, if $M$ is a $R\cyc_p$-module, we have that $M = M'\oplus M''$, where $M'$ has a trivial action and $M''$ has a free action (it is an induced module) there is an isomorphism $H(M\ot \hat{W}(p))\cong H(M'\ot \hat{W})$. Now, the part with trivial action in $H(C)^{\ot p}$ is isomorphic to $H(C)^{(p)}$ (if we choose a basis of $H(C)$, then we can identify these two with the map $x\mapsto x^{\ot p}$). 
+\end{proof}
+	If $X$ is a simplicial set, a natural equivariant map
+	\[
+		\chains(X)\longrightarrow \chains(X)^{\ot p}\ot \hat{W}(p)
+	\]
+	induces, after taking Tate homology, a map
+	\[
+		H(X)\longrightarrow H(X)^{(p)}\ot \bF_p[\{e_i\}]
+	\]
+	Thus, decomposing the target into summands indexed by $i$:
+	\[
+		x\mapsto \sum_i f_i(x)\ot e_i
+	\]
+	defines operations $x\mapsto f_i(x)$. I think that $f_i$ is the $D_i$-operation (so $D_{k(p-1)}(x)$ computes $P^0(x)$).
