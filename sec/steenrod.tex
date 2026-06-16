@@ -1,5 +1,39 @@
 % !TEX root = ../tate.tex
 
+\section{No-go theorem}
+We were not able to follow the proof of Theorem III.1.10 in the paper \emph{On topological cyclic homology}, page 290.
+
+\begin{theorem*}
+	Every natural transformation $C\to (C\ot_{\bZ}\dots \ot_{\bZ} C)^{tC_p}$ of functors $\cD(\bZ)\to \cD(\bZ)$ induces the zero map in homology.
+\end{theorem*}
+\subsection*{Almost a counterexample} Observe first that if we replace $\bZ$ by $\bF_p$, we can construct a map
+\[
+	(C\ot_{\bF_p}\dots \ot_{\bF_p} C)^{tC_p}\simeq H((\bF_p)^{tC_p})\ot_{\bF_p} H(C)
+\]
+and that $H((\bF_p)^{tC_p}) \cong \bF_p(\{u_i\})$. Under this equivalence, we can write $f(x) = u_{n(p-1)}\ot x^{\ot p}$, where $n$ is the degree of $x$. \emph{This does not quite give a natural transformation, because the first homotopy equivalence is not canonical.}
+
+\subsection*{The proof of the theorem}
+
+I assume that the version of Proposition III.1.2 that is quoted in page 291, line 4 would read as:
+\begin{quote}
+	\noindent{\bf Theorem: }Consider the full subcategory 
+	\[\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))\subset \Fun(\cD(\bZ),\cD(\bZ))
+	\] 
+	of exact functors. Let $\id_{\cD(\bZ)}\in \Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))$ denote the identity functor.	
+	For any $F\in \Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))$, evaluation at the chain complex $\bZ$ concentrated in degree $0$ induces an equivalence
+	\[
+		\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)}, F)\longrightarrow 
+		\Hom_{\cD(\bZ)}(\bZ,F(\bZ))
+	\]
+\end{quote}
+And indeed, taking $F=T_p$, the right hand-side is isomorphic to $\bF_p$. In the following, the text between brackets are small clarifications added by us.
+
+The proof starts with the claim that every [$\bZ$-linear] natural transformation $\Delta_p^{\bZ}\colon C\to (C\ot_{\bZ}\dots \ot_{\bZ})^{tC_p}$ of chain complexes factors as $\mathrm{can}\circ a\Delta_p$. The proof of this claim finishes at the end of the first paragraph of page 291 with ``Thus, for a given [$\bZ$-linear natural transformation)] $\Delta_p^{\bZ}$, we can choose $a\in \bF_p$ so that the diagram (5) commutes (up to homotopy)''. But I think this does not complete the proof, because \emph{it remains to prove that the composition $\mathrm{can}\circ a\Delta_p$ is $\bZ$-linear}.
+
+And indeed, this composition is not linear, as it is proven in the last paragraph: The map $H(m_{\bZ}^{tC_p})$ in the bottom right of the big diagram is an isomorphism. Therefore, since that paragraph proves that $m_{H\bZ}^{tC_p}\circ a\Delta_p$ is non-linear, then we deduce that the same holds for the composition $\mathrm{can}\circ a\Delta_p$.
+
+ 
+
 \section{Steenrod operations on homology (Federico)}
 Let $C$ be a chain complex, over $R = \mathbb{F}_p$. Consider $C$ as a $R\cyc_p$-complex with trivial $\cyc_p$-action and $C^{\otimes p}$ with the permutation action. Let $H(C)^{(p)}$ be the `inflation'' of the graded module $H(C)$: 
 \[
