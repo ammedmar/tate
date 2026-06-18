@@ -1,0 +1,50 @@
+\section{Relation with spectra}
+
+\begin{remark}[Tate diagonal]\federico{Needs review}
+	Let $p$ be a prime number. The norm map $\nu \colon W(p) \xrightarrow{\sim} W^\dd(p)$ is the chain map that sends $e_0$ to $N \cdot e_0^\dd$ and is $0$ in both positive and negative degrees. Its mapping cone, which we denote by $\widehat W(p)$, is the \emph{Tate complex} of $\cyc_p$. If $M$ is a $R[\cyc_p]$-module, the \emph{Tate cohomology groups} of $\cyc_p$ with coefficients in $M$ are computed as
+	\[
+	\widehat H^*(\cyc_p;M)
+	\cong
+	H_*(\widehat W(r)\otimes_{R[\cyc(p)]}M).
+	\]
+	There is an isomorphism of chain complexes $(\Wst)^\dd(p)\cong \widehat W (p)$. Since $\Wst(p)$ is projective, any equivariant stable comultiplication $\Wst(p)\otimes \ucadenas\to\ucadenas^{\otimes p}$ gives rise to an equivariant chain map $\ucadenas\to \widehat W(p)\otimes \ucadenas^{\otimes p}$, and quotienting by the group action yields a map
+	\begin{equation}\label{eq:tate1}
+		C\longrightarrow \left(\widehat W(p)\otimes \ucadenas^{\otimes p}\right)_{h\cyc_p}.
+	\end{equation}
+	Now, if $X$ is a spectrum, the Tate construction $\left(X^{\wedge p}\right)^{t\cyc_p}$ on $X$ is defined as the cofiber of the norm map
+	\[
+	(X\wedge \overset{p}{\dots} \wedge X)_{h\cyc_p}\to (X\wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}.
+	\]
+	In \cite{Nikolaus-Scholze} it was proven that this construction is compatible with smash products and that there exist a unique natural transformation $\Delta_X\colon X\to \left(X^{\wedge p}\right)^{t\cyc_p}$ called the \emph{Tate diagonal}. We can view the chain complex $C$ of a spectrum as the $HR$-module $X\wedge HR$. Then the smash product of the Tate diagonals
+	\[
+	X\wedge HR
+	\longrightarrow
+	\left(X^{\wedge p}\right)^{t\cyc_p}
+	\wedge
+	\left(HR^{\wedge p}\right)^{t\cyc_p}
+	\simeq
+	\left(X^{\wedge p}
+	\wedge
+	HR^{\wedge p}\right)^{t\cyc_p}
+	\]
+	composed with the map that arranges the factors
+	\[
+	\left(X^{\wedge p}
+	\wedge
+	HR^{\wedge p}\right)^{t\cyc_p}
+	\longrightarrow
+	\left((X\wedge HR)^{\wedge p}\right)^{t\cyc_p}
+	\]
+	and with the canonical map
+	\[
+	\left((X\wedge HR)^{\wedge p}\right)^{t\cyc_p}
+	\longrightarrow
+	\left((X\wedge HR)^{\ot p}\right)^{t\cyc_p},
+	\]
+	(where $\ot$ denotes the tensor product of $HR$-modules) gives a map
+	\begin{equation}\label{eq:tate2}
+		X\wedge HR \longrightarrow \left(\left(X\wedge HR\right)^{\ot p}\right)^{t\cyc_p}.
+	\end{equation}
+	Viewing the chain complex $C$ as a model of $X\wedge HR$, the map
+	\eqref{eq:tate2} is an instance of a map of the form \eqref{eq:tate1} and therefore of a stable homotopy cyclic $p$-diagonal.
+\end{remark}
