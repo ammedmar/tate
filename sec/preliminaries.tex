@@ -131,7 +131,7 @@ which agrees with the right module structure used in the construction of the ten
 %In this section we explain the properties of the $R$-tensor $\otimes_R$ and the ring dual $\Hom_R(-,R)$ of  $R$-modules. Both constructions can be generalised to chain complexes of $R$-modules by applying them degreewise.
 %
 %\subsection{The $R$-tensor}
-%Let $R$ be a ring, $M$ a right $R$-module and $N$ a left $R$-module. The $R$-tensor $\otimes_R$ is defined by 
+%Let $R$ be a ring, $M$ a right $R$-module and $N$ a left $R$-module. The $R$-tensor $\otimes_R$ is defined by
 %\[
 %M\otimes_R N=(M\otimes N)/(mr\otimes n)\sim (m\otimes rn).
 %\]
@@ -159,11 +159,11 @@ which agrees with the right module structure used in the construction of the ten
 %\[
 %M\otimes_G N:=(M\otimes N)/(g^{-1}m\otimes n)\sim (m\otimes gn).
 %\]
-%Observe that replacing $m$ by $gm$ in the quotient relation gives $(m\otimes n) \sim (gm\otimes gn)$, which means that 
+%Observe that replacing $m$ by $gm$ in the quotient relation gives $(m\otimes n) \sim (gm\otimes gn)$, which means that
 %\[
 %M\otimes_G N = (M\otimes N)_G:= \k\otimes_{\k[G]}(M\otimes N),
 %\]
-%the coinvariants of $M\otimes N$ with respect to the diagonal left $G$-action $g\cdot (m\otimes n)= gm\otimes gn$. 
+%the coinvariants of $M\otimes N$ with respect to the diagonal left $G$-action $g\cdot (m\otimes n)= gm\otimes gn$.
 %
 %There is also a diagonal action on $\Hom(M,N)$ given by $(g\cdot f)(m)=g f(g^{-1}m)$, which gives the equivalence between $G$-equivariant maps and invariants
 %\[
@@ -183,7 +183,7 @@ which agrees with the right module structure used in the construction of the ten
 %M^\vee=\Hom_{R}(M,R)
 %\]
 % with action $(f\cdot r)(m)=(f(m))r$.
-%If $M$ is a finitely generated projective left $R$-module, then $M^\vee$ is a finitely generated projective right $R$-module, and for any left $R$-module $N$ we have 
+%If $M$ is a finitely generated projective left $R$-module, then $M^\vee$ is a finitely generated projective right $R$-module, and for any left $R$-module $N$ we have
 %\[
 %\varphi \colon M^\vee\otimes_{R}N\cong \Hom_{R}(M,N),
 %\]
@@ -200,11 +200,11 @@ which agrees with the right module structure used in the construction of the ten
 %\]
 %since $(e_0^\vee\cdot g)(he_0)=(e_0^\vee(he_0))g=hg=(g^{-1}e_0)^\vee(hgg^{-1}e_0)=(g^{-1}e_0)(he_0)$ for any $h\in G$.
 %
-%Recall that we can define a right $R$-module structure on $W_0$ by $e_0\cdot g=g^{-1}e_0$. If $G$ is abelian, then $W_0$ is a bimodule and we can also define the left $R$-action on $W_0^\vee$ 
+%Recall that we can define a right $R$-module structure on $W_0$ by $e_0\cdot g=g^{-1}e_0$. If $G$ is abelian, then $W_0$ is a bimodule and we can also define the left $R$-action on $W_0^\vee$
 %\[
 %(g\cdot e_0^\vee) (he_0) := e_0^\vee(he_0\cdot g)= (ge_0)^\vee(he_0),
 %\]
-%where the second equality holds by abelianity of $G$ (or the bimodule structure of $W_0$), for 
+%where the second equality holds by abelianity of $G$ (or the bimodule structure of $W_0$), for
 %\[
 %e_0^\vee(he_0\cdot g)=g^{-1}h=hg^{-1}=(ge_0)^\vee(hg^{-1}ge_0).
 %\]
@@ -219,7 +219,7 @@ which agrees with the right module structure used in the construction of the ten
 %which means that it corresponds to the right action for the $G$-tensor $W_0^\vee\otimes_G -$.
 %\end{example}
 
-\section{Main}
+\section{More background}
 
 \subsection{Preliminaries}
 
@@ -340,7 +340,7 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 %	\[
 %	\mu \colon W^{\mathrm st}(p) \otimes C \to C^{\otimes p}.
 %	\]
-%	
+%
 %We can recover both notions of diagonals from the cofibre sequence \eqref{CofibreM} by setting $M=\Hom(C,C^{\otimes p})$, which gives
 %\[
 %W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} W^\vee(p)\otimes_R \Hom(C,C^{\otimes p})\to \widehat W(p)\otimes_R \Hom(C,C^{\otimes p}).
@@ -439,21 +439,21 @@ The algebraic Tate diagonal defines a monoidal natural transformation
 
 
 
-\subsection{Cohomology operations} Consider a Tate-like diagonal map $\tilde\Delta\colon C\to (C^{\otimes p})^{t\cyc_p}$. Postcomposition with the norm map gives us a map 
+\subsection{Cohomology operations} Consider a Tate-like diagonal map $\tilde\Delta\colon C\to (C^{\otimes p})^{t\cyc_p}$. Postcomposition with the norm map gives us a map
 \[
 \Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})^{\cyc_p})=\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p}).
 \]
-Since $\widehat W$ is projective, we also have the isomorphism 
+Since $\widehat W$ is projective, we also have the isomorphism
 \[
 \Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\cong \Hom_{\cyc_p}(C\otimes \widehat W^\vee, C^{\otimes p}).
 \]
-Thus, a tate-like diagonal map $\tilde \Delta$  produces an equivariant stable diagonal 
+Thus, a tate-like diagonal map $\tilde \Delta$  produces an equivariant stable diagonal
 \[
 C\otimes \widehat W^\vee\to C^{\otimes p},
 \]
-from which we can obtain cohomology operations following May's procedure as in [Oddp]. 
+from which we can obtain cohomology operations following May's procedure as in [Oddp].
 
-Observe that this works in the opposite direction: an equivariant stable diagonal induces a tate-like diagonal, since quotienting by the $\cyc_p$-action gives a map 
+Observe that this works in the opposite direction: an equivariant stable diagonal induces a tate-like diagonal, since quotienting by the $\cyc_p$-action gives a map
 \[
 \Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p}).
 \]
@@ -461,15 +461,15 @@ Observe that this works in the opposite direction: an equivariant stable diagona
 \end{question}
 This should follow from additivity of $\Delta^t(p)$ with respect to the direct sum of graded  $\Fp$-vector spaces.
 
-\begin{question} 
-Does following this diagram and passing to homology give cohomology operations? 
+\begin{question}
+Does following this diagram and passing to homology give cohomology operations?
 
 \input{sec/diagram_tate_diag_operations}
 \end{question}
 
 \subsection{A multiplication on $\widehat W(p)$} Steenrod (or May?) defined a comultiplication on the complex $W(p)$ by
-\begin{align*} 
-\Delta(e_{2k})&= \sum_{i+j=k} e_{2i}\otimes e_{2j} + \sum_{k-1=i+j} \; \sum_{0\leq s<t<p} \rho^s e_{2i+1}\otimes \rho^t e_{2j+1}, \\ 
+\begin{align*}
+\Delta(e_{2k})&= \sum_{i+j=k} e_{2i}\otimes e_{2j} + \sum_{k-1=i+j} \; \sum_{0\leq s<t<p} \rho^s e_{2i+1}\otimes \rho^t e_{2j+1}, \\
 \Delta(e_{2k+1})&=  \sum_{k=i+j} \left (e_{2i}\otimes e_{2j+1} + e_{2i+1}\otimes \rho e_{2j}\right ),
 \end{align*}
 for $k$ a non-negative integer.
@@ -486,7 +486,7 @@ Its dual is the multiplication $m\colon W^\vee(p)\otimes W^\vee(p)\to W^\vee(p)$
 	0&\text{otherwise,}
 	\end{cases}
 \end{align*}
-for $i$ and $j$ non-positive integers. The set $U^p_{s,t}$ is defined for integers $s$ and $t$ as 
+for $i$ and $j$ non-positive integers. The set $U^p_{s,t}$ is defined for integers $s$ and $t$ as
 \[
 U^p_{s,t}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-u \mod p) < (t-u \mod p)\},
 \]
@@ -496,7 +496,7 @@ Let $W_{\text{st}}(p)$ be the unbounded chain complex
 \[
  \cdots \xla{N\cdot} R\set{e_{-2}} \xla{T\cdot} R\set{e_{-1}} \xla{N\cdot} R\set{e_0} \xla{T\cdot} R\set{e_1} \xla{N\cdot} R\set{e_2} \xla{T\cdot} \cdots,
 \]
-in which $e_i$ has degree $i$. The dual $W_{\text{st}}^\vee(p)$ is the chain complex 
+in which $e_i$ has degree $i$. The dual $W_{\text{st}}^\vee(p)$ is the chain complex
 \[
  \cdots \xla{(\rho^{-1}-1)\cdot} R\set{e_{2}^\vee} \xla{-N\cdot} R\set{e_{1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_0^\vee} \xla{-N\cdot} R\set{e_{-1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_{-2}^\vee} \xla{-N\cdot} \cdots,
 \]
@@ -514,19 +514,19 @@ There is an isomorphism $f\colon W^\vee_{\text{st}}\to \widehat W$ defined as $f
 \[
 \begin{tikzcd}%[row sep=2.5em, column sep=huge]
 %
-\cdots & 
-R\{e_{2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] & 
-R\{e_{1}^\vee\} \arrow[l, "-N" '] \arrow[d, "1"] & 
-R\{e_0^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] & 
-R\{e_{-1}^\vee\} \arrow[l, "-N" '] \arrow[d, "-\rho"] & 
+\cdots &
+R\{e_{2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
+R\{e_{1}^\vee\} \arrow[l, "-N" '] \arrow[d, "1"] &
+R\{e_0^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
+R\{e_{-1}^\vee\} \arrow[l, "-N" '] \arrow[d, "-\rho"] &
 R\{e_{-2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"]&
 \cdots \arrow[l, "-N" '] \\
-% 
-\cdots & 
-R\{e_{-2}\} \arrow[l, "(\rho^{-1}-1)" '] & 
-R\{e_{-1}\} \arrow[l, "-N" '] & 
-R\{e_0\} \arrow[l, "(\rho^{-1}-1)" '] & 
-R\{e_{1}\} \arrow[l, "N" '] & 
+%
+\cdots &
+R\{e_{-2}\} \arrow[l, "(\rho^{-1}-1)" '] &
+R\{e_{-1}\} \arrow[l, "-N" '] &
+R\{e_0\} \arrow[l, "(\rho^{-1}-1)" '] &
+R\{e_{1}\} \arrow[l, "N" '] &
 R\{e_{2}\} \arrow[l, "(\rho-1)" '] &
 \cdots \arrow[l, "N" ']
 \end{tikzcd}
@@ -549,7 +549,7 @@ Define
 \[
 \widehat U^p_{s,t,i,j}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-\nu_i-u \mod p) < (t-\nu_j-u \mod p)\}.
 \]
-An explicit formula for $\widehat m$ is 
+An explicit formula for $\widehat m$ is
 \begin{align*}
 	\widehat m(\rho^s  e_i\otimes \rho^t e_j)&= \begin{cases}
 	\rho^s  e_{i+j}& \text{if $i$ is even, $j$ is even and $s\equiv t \mod p$,}
@@ -569,10 +569,10 @@ In particular, we have an explicit formula for a multiplication on the positive 
 W_+(p) =\quad  \Fp\set{e_0} \xla{\varepsilon} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
 \]
 the augmentation of the positive part of $\widehat W(p)$. We define a multiplication $m_+$ on $W_+(p)$ by setting $e_0$ to be the unit of the multiplication %Find a better way to write this
-\begin{align*} 
-m_+(e_0\otimes e_0)&= e_0, \\ 
-m_+(\rho^s e_i\otimes e_0)&= \rho^s e_i, \\ 
-m_+(e_0\otimes \rho^s e_i)&= \rho^s e_i, \\ 
+\begin{align*}
+m_+(e_0\otimes e_0)&= e_0, \\
+m_+(\rho^s e_i\otimes e_0)&= \rho^s e_i, \\
+m_+(e_0\otimes \rho^s e_i)&= \rho^s e_i, \\
 m_+(\rho^s e_i\otimes \rho^t e_j)&= \widehat m(\rho^s e_i\otimes \rho^t e_j),
 \end{align*}
 for positive integers $i$ and $j$.

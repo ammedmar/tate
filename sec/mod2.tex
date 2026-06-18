@@ -1,416 +1,414 @@
 
-\subsection{Steenrod squares}
-
-We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
-For the structural identifications below, we assume that \(V\) is \defn{homologically finite}, that is, \(H(V)\) is finite-dimensional over \(\Ftwo\).
-Equivalently, \(V\) is a finite direct sum of shifts of \(\Ftwo\) in \(\cD(\Ftwo)\).
-More generally, the same statements hold under any hypotheses guaranteeing convergence of the relevant Tate spectral sequences and excluding completion issues.
-
-\subsubsection{Shifted Tate sequence}
-
-We use the symmetry of the tensor product to define the functors
-\[
-V \mapsto (V^{\ot 2})_{h\cyc_2}
-\qquad\text{and}\qquad
-V \mapsto (V^{\ot 2})^{h\cyc_2},
-\]
-where \((-)_{h\cyc_2}\) and \((-)^{h\cyc_2}\) are respectively the functors of homotopy orbits and homotopy fixed points.
-The homotopy fibre of the norm map defines another functor
-\[
-T_2 V \defeq \fib\Big((V^{\ot 2})_{h\cyc_2} \xrightarrow{\mathrm{Nm}} (V^{\ot 2})^{h\cyc_2}\Big),
-\]
-naturally equivalent to the shifted Tate construction \(T_2 V \simeq (V^{\ot 2})^{t\cyc_2}[-1]\), and which fits in the \textit{shifted Tate sequence}
-\begin{equation}\label{eq:tate_sequence}
-	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2 V \to (V^{\ot 2})_{h\cyc_2}.
-\end{equation}
-
-With this convention, for every \(j \in \Z\),
-\[
-H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
-\]
-so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\), where \(u\) acts by
-\[
-u \, \hat x_j = \hat x_{j + 1}.
-\]
-
-\subsubsection{Tate spectral sequence}
-
-Let \(M\) be a chain complex with an action of \(\cyc_2\), and set
-\[
-T(M) \defeq \fib\big(M_{h\cyc_2} \xrightarrow{\mathrm{Nm}} M^{h\cyc_2}\big).
-\]
-Thus \(T_2V=T(V^{\ot 2})\).
-The Tate spectral sequence for \(M\) is the homological spectral sequence
-\[
-E^2_{p,q}(M)\cong \widehat H_p(\cyc_2;H_q(M)) \Longrightarrow H_{p+q}(T(M)),
-\]
-where \(\widehat H_p\) denotes homological Tate group homology, normalized so that
-\[
-H_p(T(\Ftwo))\cong \widehat H_p(\cyc_2;\Ftwo).
-\]
-With this convention, over \(\Ftwo\),
-\[
-\widehat H_*(\cyc_2;\Ftwo)\cong \Ftwo[u,u^{-1}],
-\qquad |u|=1.
-\]
-We write
-\[
-\hat x_j \in \widehat H_j(\cyc_2;\Ftwo)
-\]
-for the generator satisfying
-\[
-u\,\hat x_j=\hat x_{j+1}.
-\]
-
-For \(M=V^{\ot 2}\), the Kunneth isomorphism gives
-\[
-H_q(V^{\ot 2})\cong \bigoplus_{a+b=q} H_a(V)\ot H_b(V),
-\]
-with \(\cyc_2\) acting by transposition.
-If \(e_\alpha,e_\beta\) are homogeneous classes in \(H(V)\), then the span
-\[
-\Ftwo\set{e_\alpha\ot e_\beta,e_\beta\ot e_\alpha}
-\]
-is induced from the trivial subgroup when \(\alpha\neq \beta\).
-Its Tate groups vanish.
-Thus only the diagonal classes
-\[
-e_\alpha\ot e_\alpha
-\]
-contribute to the \(E^2\)-page.
-
-We shall use the following convergence hypothesis.
-We say that \(V\) is \defn{Tate-admissible} if the Tate spectral sequence
-\[
-E^2_{p,q}(V^{\ot 2})\cong \widehat H_p(\cyc_2;H_q(V^{\ot 2})) \Longrightarrow H_{p+q}(T_2V)
-\]
-is strongly convergent, the diagonal classes
-\[
-\hat x_p\ot e_\alpha\ot e_\alpha
-\]
-survive to \(E^\infty\), and there are no hidden extensions among these classes as a graded \(\Ftwo[u,u^{-1}]\)-module.
-Equivalently, the associated graded description coming from the Tate spectral sequence lifts to an isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules
-\[
-\bigoplus_\alpha \Ftwo[u,u^{-1}]\set{\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha}
-\xra{\cong} H(T_2V),
-\]
-where \(d_\alpha=|e_\alpha|\).
-
-This hypothesis is automatic, for example, if \(H(V)\) is finite-dimensional over \(\Ftwo\).
-Indeed, in that case \(V\) is isomorphic in \(\cD(\Ftwo)\) to a finite direct sum of shifts of \(\Ftwo\), and \(V^{\ot 2}\) decomposes as a finite direct sum of diagonal trivial \(\cyc_2\)-modules and off-diagonal induced \(\Ftwo[\cyc_2]\)-modules.
-The induced summands have zero Tate homology, and the diagonal summands contribute shifted copies of \(H(T(\Ftwo))\).
-
-\subsubsection{Tate diagonal}
-
-The \defn{Tate diagonal} is the natural transformation
-\[
-\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
-\]
-which promotes the assignment \(v \mapsto v \ot v\) to a natural map in \(\cD(\Ftwo)\).
-On homology it is characterized by
-\[
-\begin{tikzcd}[row sep=0, column sep=small]
-	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
-\end{tikzcd}
-\]
-The map \(\Delta^t_*\) is linear because, for cycles \(v,w\), the cross term
-\[
-v\ot w+w\ot v
-\]
-is a norm class, hence maps to zero in Tate homology.
-
-\begin{lemma}\label{p:tate_iso}
-	Assume that \(V\) is Tate-admissible.
-	There is a natural isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules
-	\[
-	\Phi_V \colon \Ftwo[u,u^{-1}] \ot H(V) \xra{\cong\,} H(T_2V)
-	\]
-	given by
-	\[
-	\begin{tikzcd}[row sep=0, column sep=small]
-		\Ftwo[u,u^{-1}] \ot H(V) \arrow[r] & H(T_2V) \\
-		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
-	\end{tikzcd}
-	\]
-\end{lemma}
-
-\begin{proof}
-	Choose a homogeneous basis \(\set{e_\alpha}_{\alpha\in A}\) of \(H(V)\), and write
-	\[
-	d_\alpha=|e_\alpha|.
-	\]
-	By the Kunneth isomorphism,
-	\[
-	H(V^{\ot 2})\cong H(V)^{\ot 2}.
-	\]
-	As a \(\cyc_2\)-module, \(H(V)^{\ot 2}\) decomposes into the diagonal summands
-	\[
-	\Ftwo\set{e_\alpha\ot e_\alpha}
-	\]
-	and the off-diagonal summands
-	\[
-	\Ftwo\set{e_\alpha\ot e_\beta,e_\beta\ot e_\alpha},
-	\qquad \alpha<\beta.
-	\]
-	Each off-diagonal summand is isomorphic to the induced module
-	\[
-	\operatorname{Ind}_1^{\cyc_2}\Ftwo.
-	\]
-	Induced modules have trivial Tate groups, so the off-diagonal summands contribute nothing to the \(E^2\)-page of the Tate spectral sequence.
-
-	The diagonal summand
-	\[
-	\Ftwo\set{e_\alpha\ot e_\alpha}
-	\]
-	is a copy of the trivial \(\cyc_2\)-module, placed in homological degree \(2d_\alpha\).
-	Its contribution to the \(E^2\)-page is therefore
-	\[
-	\widehat H_p(\cyc_2;\Ftwo)\set{e_\alpha\ot e_\alpha}
-	\]
-	in bidegree \((p,2d_\alpha)\).
-	The corresponding class in total degree \(p+2d_\alpha\) is
-	\[
-	\hat x_p\ot e_\alpha\ot e_\alpha.
-	\]
-	In particular, the unique Tate translate of this diagonal class lying in total degree \(d_\alpha\) is
-	\[
-	\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
-	\]
-
-	By the defining property of the Tate diagonal,
-	\[
-	\Delta^t_*(e_\alpha)=\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
-	\]
-	Multiplication by \(u\) gives
-	\[
-	u^k\Delta^t_*(e_\alpha)=\hat x_{k-d_\alpha}\ot e_\alpha\ot e_\alpha.
-	\]
-	These are exactly the diagonal Tate classes contributed by the basis vector \(e_\alpha\).
-
-	Since \(V\) is Tate-admissible, the Tate spectral sequence converges strongly, all these diagonal classes survive, and there are no hidden extensions as a graded \(\Ftwo[u,u^{-1}]\)-module.
-	Therefore the classes
-	\[
-	u^k\Delta^t_*(e_\alpha),
-	\qquad k\in \Z,\ \alpha\in A,
-	\]
-	form a homogeneous \(\Ftwo\)-basis of \(H(T_2V)\), compatible with the \(\Ftwo[u,u^{-1}]\)-module structure.
-	It follows that
-	\[
-	\Phi_V \colon \Ftwo[u,u^{-1}]\ot H(V) \to H(T_2V)
-	\]
-	is an isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules.
-
-	It remains only to check that the displayed formula is independent of the chosen homogeneous basis.
-	If \(v,w\in H(V)\) are homogeneous of the same degree, then
-	\[
-	(v+w)\ot(v+w)=v\ot v+w\ot w+v\ot w+w\ot v.
-	\]
-	The cross term \(v\ot w+w\ot v\) is a norm class.
-	Hence it maps to zero in Tate homology.
-	Therefore
-	\[
-	\Delta^t_*(v+w)=\Delta^t_*(v)+\Delta^t_*(w).
-	\]
-	The same argument, applied degreewise, gives additivity for arbitrary homogeneous decompositions.
-	Thus the formula
-	\[
-	v\mapsto \hat x_{-|v|}\ot v\ot v
-	\]
-	defines the same map independently of the chosen homogeneous basis.
-\end{proof}
-
-\subsubsection{Tate multiplications and Steenrod squares}
-
-A \defn{Tate multiplication} on \(V\) is a map
-\[
-\widehat\mu \colon T_2 V \to V.
-\]
-Its \(k^\th\) \defn{Steenrod square} is defined by composing the universal class \(u^k\Delta^t_*\) with \(\widehat\mu_*\).
-Explicitly,
-\[
-\Sq_k^{\widehat\mu} \colon H(V) \xra{\Delta^t_*} H(T_2 V) \xra{u^k} H(T_2 V) \xra{\widehat\mu_*} H(V).
-\]
-We say that \(\widehat\mu\) has:
-\begin{enumerate}
-	\item The \textit{identity property} if \(\Sq_0^{\widehat\mu} = \id_{H(V)}\),
-	\item The \textit{instability property} if \(\Sq_k^{\widehat\mu}(v) = 0\) for all \(v \in H(V)\) and \(k < |v|\),
-	\item The \textit{connectivity property} if \(\Sq_k^{\widehat\mu} = 0\) for all \(k < 0\).
-\end{enumerate}
-
-\subsubsection{Identity and instability}
-
-Consider a Tate multiplication \(\widehat\mu\) on \(V\).
-
-\begin{lemma}\label{l:identity_property}
-	\(\widehat\mu\) has the identity property if and only if
-	\[
-	\widehat\mu \circ \Delta^t \sim \id_V.
-	\]
-\end{lemma}
-
-\begin{proof}
-	By definition,
-	\[
-	\Sq_0^{\widehat\mu}=\widehat\mu_* \circ \Delta^t_*=(\widehat\mu\circ\Delta^t)_*.
-	\]
-	Thus \(\widehat\mu\) has the identity property if and only if
-	\[
-	(\widehat\mu\circ\Delta^t)_*=(\id_V)_*.
-	\]
-	Over a field, the derived category of chain complexes is equivalent to the category of graded vector spaces via homology.
-	Consequently, a morphism in \(\cD(\Ftwo)\) is determined by its induced map on homology.
-	Therefore the last equality holds if and only if
-	\[
-	\widehat\mu\circ\Delta^t \sim \id_V.
-	\]
-\end{proof}
-
-\begin{lemma}\label{l:instability_factorization}
-	\(\widehat\mu\) has the instability property if and only if it factors through homotopy orbits:
-	\[
-	\begin{tikzcd}[column sep=24pt]
-		(V^{\ot 2})^{h\cyc_2}[-1] \rar & T_2(V) \arrow[r] \arrow[d, "\widehat\mu"'] &
-		(V^{\ot 2})_{h\cyc_2} \arrow[dl, dashed, "\mu"] \\
-		& V. &
-	\end{tikzcd}
-	\]
-\end{lemma}
-
-\begin{proof}
-	Applying \([-,V]_{\cD(\Ftwo)}\) to the distinguished triangle \cref{eq:tate_sequence} gives an exact sequence.
-	Hence \(\widehat\mu\) factors through the projection
-	\[
-	T_2V \to (V^{\ot 2})_{h\cyc_2}
-	\]
-	if and only if the composite
-	\[
-	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2V \xra{\widehat\mu} V
-	\]
-	is null.
-
-	Since morphisms in \(\cD(\Ftwo)\) are detected on homology, this composite is null if and only if \(\widehat\mu_*\) vanishes on the image of
-	\[
-	H\big((V^{\ot 2})^{h\cyc_2}[-1]\big) \to H(T_2V).
-	\]
-	Under the isomorphism of \cref{p:tate_iso}, this image is the subspace spanned by the classes
-	\[
-	u^k\Delta^t_*(v)=\hat x_{k-|v|}\ot v\ot v
-	\]
-	with
-	\[
-	k-|v|<0.
-	\]
-	Equivalently, it is spanned by the classes \(u^k\Delta^t_*(v)\) with \(k<|v|\).
-
-	Therefore the composite is null if and only if
-	\[
-	\widehat\mu_*\big(u^k\Delta^t_*(v)\big)=0
-	\]
-	for all homogeneous \(v\in H(V)\) and all \(k<|v|\).
-	By definition, this condition is precisely
-	\[
-	\Sq_k^{\widehat\mu}(v)=0
-	\]
-	for all \(v\) and all \(k<|v|\).
-\end{proof}
-
-\subsubsection{Coefficient sequence and connectivity}
-
-Consider the shifted Tate sequence for the coefficient module \(\Ftwo\), tensored with \(V\), where \(\Ftwo^{\ot 2}\cong \Ftwo\) carries the trivial \(\cyc_2\)-action:
-\[
-(\Ftwo^{\ot 2})^{h\cyc_2}[-1]\ot V \to T_2(\Ftwo)\ot V \to (\Ftwo^{\ot 2})_{h\cyc_2}\ot V.
-\]
-On homology this gives the coefficient sequence
-\[
-u^{-1}\Ftwo[u^{-1}]\ot H(V) \to \Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V).
-\]
-Here the first term is the negative Tate part, the middle term is the full Tate coefficient module, and the last term is the homotopy-orbit coefficient module.
-Equivalently, the map
-\[
-\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
-\]
-is the quotient by the submodule
-\[
-u^{-1}\Ftwo[u^{-1}]\ot H(V).
-\]
-
-The isomorphism of \cref{p:tate_iso} identifies
-\[
-H(T_2V)
-\]
-with the middle term
-\[
-\Ftwo[u,u^{-1}]\ot H(V).
-\]
-This is a homological identification.
-We do not assert a canonical equivalence of functors
-\[
-T_2(V) \simeq T_2(\Ftwo)\ot V,
-\]
-since \(T_2(-)\) is a quadratic functor whereas \(T_2(\Ftwo)\ot -\) is linear.
-
-\begin{lemma}\label{l:connectivity_factorization}
-	\(\widehat\mu\) has the connectivity property if and only if the homology map
-	\[
-	\widehat\mu_* \colon H(T_2V) \to H(V)
-	\]
-	factors through the coefficient quotient
-	\[
-	\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
-	\]
-	under the isomorphism of \cref{p:tate_iso}.
-	Equivalently, there exists a map
-	\[
-	\overline\mu_* \colon \Ftwo[u]\ot H(V) \to H(V)
-	\]
-	making the diagram
-	\[
-	\begin{tikzcd}[column sep=42pt]
-		\Ftwo[u,u^{-1}]\ot H(V) \arrow[r] \arrow[dr, "\widehat\mu_* \circ \Phi_V"'] &
-		\Ftwo[u]\ot H(V) \arrow[d, dashed, "\overline\mu_*"] \\
-		& H(V)
-	\end{tikzcd}
-	\]
-	commute.
-\end{lemma}
-
-\begin{proof}
-	The kernel of the quotient
-	\[
-	\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
-	\]
-	is
-	\[
-	u^{-1}\Ftwo[u^{-1}]\ot H(V).
-	\]
-	Under the isomorphism
-	\[
-	\Phi_V \colon \Ftwo[u,u^{-1}]\ot H(V) \xra{\cong} H(T_2V),
-	\]
-	this kernel corresponds to the subspace spanned by the classes
-	\[
-	u^k\Delta^t_*(v)
-	\]
-	with \(k<0\).
-
-	Therefore \(\widehat\mu_*\) factors through the quotient if and only if
-	\[
-	\widehat\mu_*\big(u^k\Delta^t_*(v)\big)=0
-	\]
-	for every homogeneous \(v\in H(V)\) and every \(k<0\).
-	By definition, this condition is exactly
-	\[
-	\Sq_k^{\widehat\mu}(v)=0
-	\]
-	for every \(v\in H(V)\) and every \(k<0\).
-	Thus the factorization condition is equivalent to the connectivity property.
-\end{proof}
-
-
-
-\newpage
-
+%\subsection{Steenrod squares}
+%
+%We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
+%For the structural identifications below, we assume that \(V\) is \defn{homologically finite}, that is, \(H(V)\) is finite-dimensional over \(\Ftwo\).
+%Equivalently, \(V\) is a finite direct sum of shifts of \(\Ftwo\) in \(\cD(\Ftwo)\).
+%More generally, the same statements hold under any hypotheses guaranteeing convergence of the relevant Tate spectral sequences and excluding completion issues.
+%
+%\subsubsection{Shifted Tate sequence}
+%
+%We use the symmetry of the tensor product to define the functors
+%\[
+%V \mapsto (V^{\ot 2})_{h\cyc_2}
+%\qquad\text{and}\qquad
+%V \mapsto (V^{\ot 2})^{h\cyc_2},
+%\]
+%where \((-)_{h\cyc_2}\) and \((-)^{h\cyc_2}\) are respectively the functors of homotopy orbits and homotopy fixed points.
+%The homotopy fibre of the norm map defines another functor
+%\[
+%T_2 V \defeq \fib\Big((V^{\ot 2})_{h\cyc_2} \xrightarrow{\mathrm{Nm}} (V^{\ot 2})^{h\cyc_2}\Big),
+%\]
+%naturally equivalent to the shifted Tate construction \(T_2 V \simeq (V^{\ot 2})^{t\cyc_2}[-1]\), and which fits in the \textit{shifted Tate sequence}
+%\begin{equation}\label{eq:tate_sequence}
+%	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2 V \to (V^{\ot 2})_{h\cyc_2}.
+%\end{equation}
+%
+%With this convention, for every \(j \in \Z\),
+%\[
+%H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
+%\]
+%so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\), where \(u\) acts by
+%\[
+%u \, \hat x_j = \hat x_{j + 1}.
+%\]
+%
+%\subsubsection{Tate spectral sequence}
+%
+%Let \(M\) be a chain complex with an action of \(\cyc_2\), and set
+%\[
+%T(M) \defeq \fib\big(M_{h\cyc_2} \xrightarrow{\mathrm{Nm}} M^{h\cyc_2}\big).
+%\]
+%Thus \(T_2V=T(V^{\ot 2})\).
+%The Tate spectral sequence for \(M\) is the homological spectral sequence
+%\[
+%E^2_{p,q}(M)\cong \widehat H_p(\cyc_2;H_q(M)) \Longrightarrow H_{p+q}(T(M)),
+%\]
+%where \(\widehat H_p\) denotes homological Tate group homology, normalized so that
+%\[
+%H_p(T(\Ftwo))\cong \widehat H_p(\cyc_2;\Ftwo).
+%\]
+%With this convention, over \(\Ftwo\),
+%\[
+%\widehat H_*(\cyc_2;\Ftwo)\cong \Ftwo[u,u^{-1}],
+%\qquad |u|=1.
+%\]
+%We write
+%\[
+%\hat x_j \in \widehat H_j(\cyc_2;\Ftwo)
+%\]
+%for the generator satisfying
+%\[
+%u\,\hat x_j=\hat x_{j+1}.
+%\]
+%
+%For \(M=V^{\ot 2}\), the Kunneth isomorphism gives
+%\[
+%H_q(V^{\ot 2})\cong \bigoplus_{a+b=q} H_a(V)\ot H_b(V),
+%\]
+%with \(\cyc_2\) acting by transposition.
+%If \(e_\alpha,e_\beta\) are homogeneous classes in \(H(V)\), then the span
+%\[
+%\Ftwo\set{e_\alpha\ot e_\beta,e_\beta\ot e_\alpha}
+%\]
+%is induced from the trivial subgroup when \(\alpha\neq \beta\).
+%Its Tate groups vanish.
+%Thus only the diagonal classes
+%\[
+%e_\alpha\ot e_\alpha
+%\]
+%contribute to the \(E^2\)-page.
+%
+%We shall use the following convergence hypothesis.
+%We say that \(V\) is \defn{Tate-admissible} if the Tate spectral sequence
+%\[
+%E^2_{p,q}(V^{\ot 2})\cong \widehat H_p(\cyc_2;H_q(V^{\ot 2})) \Longrightarrow H_{p+q}(T_2V)
+%\]
+%is strongly convergent, the diagonal classes
+%\[
+%\hat x_p\ot e_\alpha\ot e_\alpha
+%\]
+%survive to \(E^\infty\), and there are no hidden extensions among these classes as a graded \(\Ftwo[u,u^{-1}]\)-module.
+%Equivalently, the associated graded description coming from the Tate spectral sequence lifts to an isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules
+%\[
+%\bigoplus_\alpha \Ftwo[u,u^{-1}]\set{\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha}
+%\xra{\cong} H(T_2V),
+%\]
+%where \(d_\alpha=|e_\alpha|\).
+%
+%This hypothesis is automatic, for example, if \(H(V)\) is finite-dimensional over \(\Ftwo\).
+%Indeed, in that case \(V\) is isomorphic in \(\cD(\Ftwo)\) to a finite direct sum of shifts of \(\Ftwo\), and \(V^{\ot 2}\) decomposes as a finite direct sum of diagonal trivial \(\cyc_2\)-modules and off-diagonal induced \(\Ftwo[\cyc_2]\)-modules.
+%The induced summands have zero Tate homology, and the diagonal summands contribute shifted copies of \(H(T(\Ftwo))\).
+%
+%\subsubsection{Tate diagonal}
+%
+%The \defn{Tate diagonal} is the natural transformation
+%\[
+%\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
+%\]
+%which promotes the assignment \(v \mapsto v \ot v\) to a natural map in \(\cD(\Ftwo)\).
+%On homology it is characterized by
+%\[
+%\begin{tikzcd}[row sep=0, column sep=small]
+%	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
+%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+%\end{tikzcd}
+%\]
+%The map \(\Delta^t_*\) is linear because, for cycles \(v,w\), the cross term
+%\[
+%v\ot w+w\ot v
+%\]
+%is a norm class, hence maps to zero in Tate homology.
+%
+%\begin{lemma}\label{p:tate_iso}
+%	Assume that \(V\) is Tate-admissible.
+%	There is a natural isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules
+%	\[
+%	\Phi_V \colon \Ftwo[u,u^{-1}] \ot H(V) \xra{\cong\,} H(T_2V)
+%	\]
+%	given by
+%	\[
+%	\begin{tikzcd}[row sep=0, column sep=small]
+%		\Ftwo[u,u^{-1}] \ot H(V) \arrow[r] & H(T_2V) \\
+%		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
+%	\end{tikzcd}
+%	\]
+%\end{lemma}
+%
+%\begin{proof}
+%	Choose a homogeneous basis \(\set{e_\alpha}_{\alpha\in A}\) of \(H(V)\), and write
+%	\[
+%	d_\alpha=|e_\alpha|.
+%	\]
+%	By the Kunneth isomorphism,
+%	\[
+%	H(V^{\ot 2})\cong H(V)^{\ot 2}.
+%	\]
+%	As a \(\cyc_2\)-module, \(H(V)^{\ot 2}\) decomposes into the diagonal summands
+%	\[
+%	\Ftwo\set{e_\alpha\ot e_\alpha}
+%	\]
+%	and the off-diagonal summands
+%	\[
+%	\Ftwo\set{e_\alpha\ot e_\beta,e_\beta\ot e_\alpha},
+%	\qquad \alpha<\beta.
+%	\]
+%	Each off-diagonal summand is isomorphic to the induced module
+%	\[
+%	\operatorname{Ind}_1^{\cyc_2}\Ftwo.
+%	\]
+%	Induced modules have trivial Tate groups, so the off-diagonal summands contribute nothing to the \(E^2\)-page of the Tate spectral sequence.
+%
+%	The diagonal summand
+%	\[
+%	\Ftwo\set{e_\alpha\ot e_\alpha}
+%	\]
+%	is a copy of the trivial \(\cyc_2\)-module, placed in homological degree \(2d_\alpha\).
+%	Its contribution to the \(E^2\)-page is therefore
+%	\[
+%	\widehat H_p(\cyc_2;\Ftwo)\set{e_\alpha\ot e_\alpha}
+%	\]
+%	in bidegree \((p,2d_\alpha)\).
+%	The corresponding class in total degree \(p+2d_\alpha\) is
+%	\[
+%	\hat x_p\ot e_\alpha\ot e_\alpha.
+%	\]
+%	In particular, the unique Tate translate of this diagonal class lying in total degree \(d_\alpha\) is
+%	\[
+%	\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	\]
+%
+%	By the defining property of the Tate diagonal,
+%	\[
+%	\Delta^t_*(e_\alpha)=\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	\]
+%	Multiplication by \(u\) gives
+%	\[
+%	u^k\Delta^t_*(e_\alpha)=\hat x_{k-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	\]
+%	These are exactly the diagonal Tate classes contributed by the basis vector \(e_\alpha\).
+%
+%	Since \(V\) is Tate-admissible, the Tate spectral sequence converges strongly, all these diagonal classes survive, and there are no hidden extensions as a graded \(\Ftwo[u,u^{-1}]\)-module.
+%	Therefore the classes
+%	\[
+%	u^k\Delta^t_*(e_\alpha),
+%	\qquad k\in \Z,\ \alpha\in A,
+%	\]
+%	form a homogeneous \(\Ftwo\)-basis of \(H(T_2V)\), compatible with the \(\Ftwo[u,u^{-1}]\)-module structure.
+%	It follows that
+%	\[
+%	\Phi_V \colon \Ftwo[u,u^{-1}]\ot H(V) \to H(T_2V)
+%	\]
+%	is an isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules.
+%
+%	It remains only to check that the displayed formula is independent of the chosen homogeneous basis.
+%	If \(v,w\in H(V)\) are homogeneous of the same degree, then
+%	\[
+%	(v+w)\ot(v+w)=v\ot v+w\ot w+v\ot w+w\ot v.
+%	\]
+%	The cross term \(v\ot w+w\ot v\) is a norm class.
+%	Hence it maps to zero in Tate homology.
+%	Therefore
+%	\[
+%	\Delta^t_*(v+w)=\Delta^t_*(v)+\Delta^t_*(w).
+%	\]
+%	The same argument, applied degreewise, gives additivity for arbitrary homogeneous decompositions.
+%	Thus the formula
+%	\[
+%	v\mapsto \hat x_{-|v|}\ot v\ot v
+%	\]
+%	defines the same map independently of the chosen homogeneous basis.
+%\end{proof}
+%
+%\subsubsection{Tate multiplications and Steenrod squares}
+%
+%A \defn{Tate multiplication} on \(V\) is a map
+%\[
+%\widehat\mu \colon T_2 V \to V.
+%\]
+%Its \(k^\th\) \defn{Steenrod square} is defined by composing the universal class \(u^k\Delta^t_*\) with \(\widehat\mu_*\).
+%Explicitly,
+%\[
+%\Sq_k^{\widehat\mu} \colon H(V) \xra{\Delta^t_*} H(T_2 V) \xra{u^k} H(T_2 V) \xra{\widehat\mu_*} H(V).
+%\]
+%We say that \(\widehat\mu\) has:
+%\begin{enumerate}
+%	\item The \textit{identity property} if \(\Sq_0^{\widehat\mu} = \id_{H(V)}\),
+%	\item The \textit{instability property} if \(\Sq_k^{\widehat\mu}(v) = 0\) for all \(v \in H(V)\) and \(k < |v|\),
+%	\item The \textit{connectivity property} if \(\Sq_k^{\widehat\mu} = 0\) for all \(k < 0\).
+%\end{enumerate}
+%
+%\subsubsection{Identity and instability}
+%
+%Consider a Tate multiplication \(\widehat\mu\) on \(V\).
+%
+%\begin{lemma}\label{l:identity_property}
+%	\(\widehat\mu\) has the identity property if and only if
+%	\[
+%	\widehat\mu \circ \Delta^t \sim \id_V.
+%	\]
+%\end{lemma}
+%
+%\begin{proof}
+%	By definition,
+%	\[
+%	\Sq_0^{\widehat\mu}=\widehat\mu_* \circ \Delta^t_*=(\widehat\mu\circ\Delta^t)_*.
+%	\]
+%	Thus \(\widehat\mu\) has the identity property if and only if
+%	\[
+%	(\widehat\mu\circ\Delta^t)_*=(\id_V)_*.
+%	\]
+%	Over a field, the derived category of chain complexes is equivalent to the category of graded vector spaces via homology.
+%	Consequently, a morphism in \(\cD(\Ftwo)\) is determined by its induced map on homology.
+%	Therefore the last equality holds if and only if
+%	\[
+%	\widehat\mu\circ\Delta^t \sim \id_V.
+%	\]
+%\end{proof}
+%
+%\begin{lemma}\label{l:instability_factorization}
+%	\(\widehat\mu\) has the instability property if and only if it factors through homotopy orbits:
+%	\[
+%	\begin{tikzcd}[column sep=24pt]
+%		(V^{\ot 2})^{h\cyc_2}[-1] \rar & T_2(V) \arrow[r] \arrow[d, "\widehat\mu"'] &
+%		(V^{\ot 2})_{h\cyc_2} \arrow[dl, dashed, "\mu"] \\
+%		& V. &
+%	\end{tikzcd}
+%	\]
+%\end{lemma}
+%
+%\begin{proof}
+%	Applying \([-,V]_{\cD(\Ftwo)}\) to the distinguished triangle \cref{eq:tate_sequence} gives an exact sequence.
+%	Hence \(\widehat\mu\) factors through the projection
+%	\[
+%	T_2V \to (V^{\ot 2})_{h\cyc_2}
+%	\]
+%	if and only if the composite
+%	\[
+%	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2V \xra{\widehat\mu} V
+%	\]
+%	is null.
+%
+%	Since morphisms in \(\cD(\Ftwo)\) are detected on homology, this composite is null if and only if \(\widehat\mu_*\) vanishes on the image of
+%	\[
+%	H\big((V^{\ot 2})^{h\cyc_2}[-1]\big) \to H(T_2V).
+%	\]
+%	Under the isomorphism of \cref{p:tate_iso}, this image is the subspace spanned by the classes
+%	\[
+%	u^k\Delta^t_*(v)=\hat x_{k-|v|}\ot v\ot v
+%	\]
+%	with
+%	\[
+%	k-|v|<0.
+%	\]
+%	Equivalently, it is spanned by the classes \(u^k\Delta^t_*(v)\) with \(k<|v|\).
+%
+%	Therefore the composite is null if and only if
+%	\[
+%	\widehat\mu_*\big(u^k\Delta^t_*(v)\big)=0
+%	\]
+%	for all homogeneous \(v\in H(V)\) and all \(k<|v|\).
+%	By definition, this condition is precisely
+%	\[
+%	\Sq_k^{\widehat\mu}(v)=0
+%	\]
+%	for all \(v\) and all \(k<|v|\).
+%\end{proof}
+%
+%\subsubsection{Coefficient sequence and connectivity}
+%
+%Consider the shifted Tate sequence for the coefficient module \(\Ftwo\), tensored with \(V\), where \(\Ftwo^{\ot 2}\cong \Ftwo\) carries the trivial \(\cyc_2\)-action:
+%\[
+%(\Ftwo^{\ot 2})^{h\cyc_2}[-1]\ot V \to T_2(\Ftwo)\ot V \to (\Ftwo^{\ot 2})_{h\cyc_2}\ot V.
+%\]
+%On homology this gives the coefficient sequence
+%\[
+%u^{-1}\Ftwo[u^{-1}]\ot H(V) \to \Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V).
+%\]
+%Here the first term is the negative Tate part, the middle term is the full Tate coefficient module, and the last term is the homotopy-orbit coefficient module.
+%Equivalently, the map
+%\[
+%\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
+%\]
+%is the quotient by the submodule
+%\[
+%u^{-1}\Ftwo[u^{-1}]\ot H(V).
+%\]
+%
+%The isomorphism of \cref{p:tate_iso} identifies
+%\[
+%H(T_2V)
+%\]
+%with the middle term
+%\[
+%\Ftwo[u,u^{-1}]\ot H(V).
+%\]
+%This is a homological identification.
+%We do not assert a canonical equivalence of functors
+%\[
+%T_2(V) \simeq T_2(\Ftwo)\ot V,
+%\]
+%since \(T_2(-)\) is a quadratic functor whereas \(T_2(\Ftwo)\ot -\) is linear.
+%
+%\begin{lemma}\label{l:connectivity_factorization}
+%	\(\widehat\mu\) has the connectivity property if and only if the homology map
+%	\[
+%	\widehat\mu_* \colon H(T_2V) \to H(V)
+%	\]
+%	factors through the coefficient quotient
+%	\[
+%	\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
+%	\]
+%	under the isomorphism of \cref{p:tate_iso}.
+%	Equivalently, there exists a map
+%	\[
+%	\overline\mu_* \colon \Ftwo[u]\ot H(V) \to H(V)
+%	\]
+%	making the diagram
+%	\[
+%	\begin{tikzcd}[column sep=42pt]
+%		\Ftwo[u,u^{-1}]\ot H(V) \arrow[r] \arrow[dr, "\widehat\mu_* \circ \Phi_V"'] &
+%		\Ftwo[u]\ot H(V) \arrow[d, dashed, "\overline\mu_*"] \\
+%		& H(V)
+%	\end{tikzcd}
+%	\]
+%	commute.
+%\end{lemma}
+%
+%\begin{proof}
+%	The kernel of the quotient
+%	\[
+%	\Ftwo[u,u^{-1}]\ot H(V) \to \Ftwo[u]\ot H(V)
+%	\]
+%	is
+%	\[
+%	u^{-1}\Ftwo[u^{-1}]\ot H(V).
+%	\]
+%	Under the isomorphism
+%	\[
+%	\Phi_V \colon \Ftwo[u,u^{-1}]\ot H(V) \xra{\cong} H(T_2V),
+%	\]
+%	this kernel corresponds to the subspace spanned by the classes
+%	\[
+%	u^k\Delta^t_*(v)
+%	\]
+%	with \(k<0\).
+%
+%	Therefore \(\widehat\mu_*\) factors through the quotient if and only if
+%	\[
+%	\widehat\mu_*\big(u^k\Delta^t_*(v)\big)=0
+%	\]
+%	for every homogeneous \(v\in H(V)\) and every \(k<0\).
+%	By definition, this condition is exactly
+%	\[
+%	\Sq_k^{\widehat\mu}(v)=0
+%	\]
+%	for every \(v\in H(V)\) and every \(k<0\).
+%	Thus the factorization condition is equivalent to the connectivity property.
+%\end{proof}
+%
+%
+%\newpage
 
 
 \subsection{Steenrod squares}
@@ -477,13 +475,6 @@ In other words, we have the following.
 	\]
 \end{lemma}
 
-%\begin{proof}
-%	Both sides are free \(\Ftwo[u,u^{-1}]\)-modules and the map is \(\Ftwo[u,u^{-1}]\)-linear by construction.
-%	It therefore suffices to check that it carries a basis of the source to a basis of the target.
-%	By \cref{eq:tate_sequence} and the finite-type hypothesis, \(H(T_2 V)\) is a free \(\Ftwo[u,u^{-1}]\)-module on \(H(V)\), and the classes \(\Delta^t_*(v)\) for \(v\) ranging over a basis of \(H(V)\) form a generating set by the homology formula for \(\Delta^t_*\).
-%	A free module of the correct rank generated by these classes is exactly the image of the displayed map, which is consequently an isomorphism.
-%\end{proof}
-
 \subsubsection{Tate multiplications and Steenrod squares}
 
 A \defn{Tate multiplication} on \(V\) is a map
@@ -513,11 +504,6 @@ Consider a Tate multiplication \(\widehat\mu\) on \(V\).
 	\]
 \end{lemma}
 
-%\begin{proof}
-%	By definition \(\Sq_0^{\widehat\mu} = \widehat\mu_* \circ \Delta^t_* = (\widehat\mu \circ \Delta^t)_*\).
-%	Over a field a morphism of \(\cD(\Ftwo)\) is determined by its effect on homology, so \(\Sq_0^{\widehat\mu} = \id_{H(V)}\) holds if and only if \((\widehat\mu \circ \Delta^t)_* = (\id_V)_*\), that is, if and only if \(\widehat\mu \circ \Delta^t \sim \id_V\).
-%\end{proof}
-
 \begin{lemma}
 	\(\widehat\mu\) has the instability property if and only if it factors as follows:
 	\[
@@ -528,13 +514,6 @@ Consider a Tate multiplication \(\widehat\mu\) on \(V\).
 	\end{tikzcd}
 	\]
 \end{lemma}
-
-%\begin{proof}
-%	Applying \([-,V]\) to the distinguished triangle \cref{eq:tate_sequence} yields an exact sequence in which \(\widehat\mu\) factors through the projection \(T_2 V \to (V^{\ot 2})_{h\cyc_2}\) if and only if the composite \((V^{\ot 2})^{h\cyc_2}[-1] \to T_2 V \xra{\widehat\mu} V\) is null.
-%	Over a field this composite is null if and only if \(\widehat\mu_*\) vanishes on the image of \(H\big((V^{\ot 2})^{h\cyc_2}[-1]\big)\) in \(H(T_2 V)\).
-%	Under \cref{p:tate_iso} this image is spanned by the diagonal classes \(u^k \Delta^t_*(v) = \hat x_{k-|v|} \ot v \ot v\) with \(k - |v| < 0\), since the homotopy fixed point summand contributes exactly the negative powers of \(\hat x\).
-%	Thus \(\widehat\mu_*\) kills it precisely when \(\Sq_k^{\widehat\mu}(v) = \widehat\mu_*\big(u^k \Delta^t_*(v)\big) = 0\) for all \(k < |v|\), which is the instability property.
-%\end{proof}
 
 \subsubsection{Coefficients sequence and connectivity}
 
@@ -564,10 +543,3 @@ Recall from \cref{p:tate_iso} that the middle term is isomorphic to \(H(T_2 V)\)
 	\end{tikzcd}
 	\]
 \end{lemma}
-
-%\begin{proof}
-%	The equivalence \(T_2(V) \xra{\sim} T_2(\Ftwo) \ot V\) holds because both objects are formal of finite type with the homology computed in \cref{p:tate_iso}; we use it only to compare \(\widehat\mu\) against the linearized sequence, not as a claim that the quadratic functor \(T_2\) is linear.
-%	As in the previous lemma, \(\widehat\mu\) factors through \(T_2(\Ftwo) \ot V \to (\Ftwo^{\ot 2})_{h\cyc_2} \ot V\) if and only if the composite from \((\Ftwo^{\ot 2})^{h\cyc_2}[-1] \ot V\) into \(V\) is null.
-%	On homology the sub corresponds to the negative powers \(u^{-1}\Ftwo[u^{-1}] \ot H(V)\), that is, to the classes \(u^k \Delta^t_*(v)\) with \(k < 0\).
-%	Hence \(\widehat\mu_*\) kills it precisely when \(\Sq_k^{\widehat\mu}(v) = 0\) for all \(k < 0\), which is the connectivity property.
-%\end{proof}
