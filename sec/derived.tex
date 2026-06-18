@@ -1,0 +1,89 @@
+Let \(k\) be a field.
+Let \(\operatorname{Ch}(k)\) be the category of unbounded chain complexes of \(k\)-vector spaces.
+The derived category \(\mathcal D(k)\) is the localization of \(\operatorname{Ch}(k)\) at the class \(\mathcal W\) of quasi-isomorphisms:
+\[
+\mathcal D(k) = \operatorname{Ch}(k)[\mathcal W^{-1}].
+\]
+Here a quasi-isomorphism is a chain map inducing an isomorphism on homology.
+
+Let
+\[
+H \colon \mathcal D(k) \to \mathcal D(k)
+\]
+be the endofunctor sending a complex \(V\) to its homology \(H(V)\), regarded as a chain complex with zero differential.
+
+Since \(k\) is a field, every short exact sequence of \(k\)-vector spaces splits.
+It follows that every chain complex \(V\) is isomorphic in \(\mathcal D(k)\) to the complex \(H(V)\) with zero differential.
+Indeed, after choosing splittings, one can decompose \(V\) as the direct sum of \(H(V)\) and a contractible complex.
+The splitting is not canonical at the level of chain complexes.
+However, the induced isomorphism in \(\mathcal D(k)\) is canonical.
+
+More precisely, for any two complexes \(V\) and \(W\), homology induces a canonical bijection
+\[
+\operatorname{Hom}_{\mathcal D(k)}(V,W) \cong \prod_{n \in \mathbb Z} \operatorname{Hom}_k(H(V)_n,H(W)_n).
+\]
+Thus a morphism in \(\mathcal D(k)\) is completely determined by its induced map on homology.
+
+For each object \(V\), define
+\[
+\eta_V \colon V \to H(V)
+\]
+to be the unique morphism in \(\mathcal D(k)\) inducing the identity map
+\[
+\operatorname{id}_{H(V)} \colon H(V) \to H(V)
+\]
+on homology.
+Similarly, define
+\[
+\epsilon_V \colon H(V) \to V
+\]
+to be the unique morphism in \(\mathcal D(k)\) inducing the identity map
+\[
+\operatorname{id}_{H(V)} \colon H(V) \to H(V)
+\]
+on homology.
+
+The composites
+\[
+H(V) \xrightarrow{\epsilon_V} V \xrightarrow{\eta_V} H(V)
+\]
+and
+\[
+V \xrightarrow{\eta_V} H(V) \xrightarrow{\epsilon_V} V
+\]
+induce the identity maps on homology.
+Therefore both composites are identity morphisms in \(\mathcal D(k)\).
+Hence \(\eta_V\) and \(\epsilon_V\) are inverse isomorphisms.
+
+The morphisms \(\eta_V\) are natural in \(V\).
+Indeed, for any morphism \(f \colon V \to W\) in \(\mathcal D(k)\), the two composites
+\[
+V \xrightarrow{\eta_V} H(V) \xrightarrow{H(f)} H(W)
+\]
+and
+\[
+V \xrightarrow{f} W \xrightarrow{\eta_W} H(W)
+\]
+induce the same map
+\[
+H(f) \colon H(V) \to H(W)
+\]
+on homology.
+Since morphisms in \(\mathcal D(k)\) are detected by homology, the two composites are equal.
+Thus the maps \(\eta_V\) assemble into a natural isomorphism
+\[
+\eta \colon \operatorname{Id}_{\mathcal D(k)} \Rightarrow H.
+\]
+Similarly, the maps \(\epsilon_V\) assemble into a natural isomorphism
+\[
+\epsilon \colon H \Rightarrow \operatorname{Id}_{\mathcal D(k)}.
+\]
+Consequently,
+\[
+\operatorname{Id}_{\mathcal D(k)} \cong H
+\]
+as endofunctors of \(\mathcal D(k)\).
+
+This is a statement in the derived category.
+It does not assert the existence of canonical chain maps \(V \to H(V)\) or \(H(V) \to V\) in \(\operatorname{Ch}(k)\).
+Such chain-level maps require choices of cycles representing homology classes, or equivalently choices of splittings of cycles and boundaries.
