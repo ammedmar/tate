@@ -102,7 +102,7 @@ defined by
 \]
 
 \begin{example}\label{BimoduleW}
-Let $R = \k[G]$ for a field $\k$ and a group $G$, and consider the left $R$-module $W_0 \coloneqq R\{e_0\}$ with the regular action $g \cdot e_0 = ge_0$. Equivalently, we may identify $W_0$ with $\k\{ge_0 \mid g \in G\}$, with $G$ acting by permutation of the basis.
+Let $R = \k[G]$ for a field $\k$ and a group $G$, and consider the left $R$-module $W_0 \coloneqq R\{e_0\}$ with the regular action $g \cdot e_0 = ge_0$. Equivalently, we may identify $W_0$ with $\k\{ge_0 \mid g \in G\}$, where $G$ acts by permuting the basis.
 
 The dual module is
 \[
@@ -439,33 +439,35 @@ The algebraic Tate diagonal defines a monoidal natural transformation
 
 
 
-\subsection{Cohomology operations} Consider a Tate-like diagonal map $\tilde\Delta\colon C\to (C^{\otimes p})^{t\cyc_p}$. Postcomposition with the norm map gives us a map
-\[
-\Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})^{\cyc_p})=\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p}).
-\]
-Since $\widehat W$ is projective, we also have the isomorphism
-\[
-\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\cong \Hom_{\cyc_p}(C\otimes \widehat W^\vee, C^{\otimes p}).
-\]
-Thus, a tate-like diagonal map $\tilde \Delta$  produces an equivariant stable diagonal
-\[
-C\otimes \widehat W^\vee\to C^{\otimes p},
-\]
-from which we can obtain cohomology operations following May's procedure as in [Oddp].
-
-Observe that this works in the opposite direction: an equivariant stable diagonal induces a tate-like diagonal, since quotienting by the $\cyc_p$-action gives a map
-\[
-\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p}).
-\]
-\begin{question} Is it true that if $\tilde \Delta$ induces the algebraic Tate diagonal $\Delta^t(p)$ on homology,  the resulting cohomology operations are all trivial except the degree $0$ operation, which would be the identity?
-\end{question}
-This should follow from additivity of $\Delta^t(p)$ with respect to the direct sum of graded  $\Fp$-vector spaces.
-
-\begin{question}
-Does following this diagram and passing to homology give cohomology operations?
-
-\input{sec/diagram_tate_diag_operations}
-\end{question}
+%\subsection{Cohomology operations} Consider a Tate-like diagonal map $\tilde\Delta\colon C\to (C^{\otimes p})^{t\cyc_p}$. Postcomposition with the norm map gives us a map
+%\[
+%\Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})^{\cyc_p})=\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p}).
+%\]
+%Since $\widehat W$ is projective, we also have the isomorphism
+%\[
+%\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\cong \Hom_{\cyc_p}(C\otimes \widehat W^\vee, C^{\otimes p}).
+%\]
+%Thus, a tate-like diagonal map $\tilde \Delta$  produces an equivariant stable diagonal
+%\[
+%C\otimes \widehat W^\vee\to C^{\otimes p},
+%\]
+%from which we can obtain cohomology operations following May's procedure as in [Oddp].
+%
+%Observe that this works in the opposite direction: an equivariant stable diagonal induces a tate-like diagonal, since quotienting by the $\cyc_p$-action gives a map
+%\[
+%\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p}).
+%\]
+%\begin{question} Is it true that if $\tilde \Delta$ induces the algebraic Tate diagonal $\Delta^t(p)$ on homology,  the resulting cohomology operations are all trivial except the degree $0$ operation, which would be the identity?
+%\end{question}
+%This should follow from additivity of $\Delta^t(p)$ with respect to the direct sum of graded  $\Fp$-vector spaces.
+%
+%\begin{question}
+%Does following this diagram and passing to homology give non trivial cohomology operations?
+%
+%ANSWER: No, since the norm map gives elements that are zero on homology, so the resulting composition is trivial.
+%
+%\input{sec/diagram_tate_diag_operations}
+%\end{question}
 
 \subsection{A multiplication on $\widehat W(p)$} Steenrod (or May?) defined a comultiplication on the complex $W(p)$ by
 \begin{align*}
@@ -579,7 +581,6 @@ for positive integers $i$ and $j$.
 
 \begin{question}
 In [Oddp, 6] there is a construction of a map $\Phi \colon \Lambda_+(p)\to W_+(p)$, where $\Lambda_+(p)$ is the augmented periodic resolution of $\cyc_p$. [Oddp, 5] shows how to obtain weak codegeneracies from $p$-cyclic straightenings with duality. A weak codegeneracy can be extended to a multiplication in $\Lambda_+(p)$. Does $\Phi$ take this multiplications to $m_+$?
+
+ANSWER: Not at all, they are very different multiplications. For example, all squares vanish for the weak codegeneracy while squares of elements in even positive degrees do not in $m_+$.
 \end{question}
-%\vspace{1cm}
- \TBW
-...
