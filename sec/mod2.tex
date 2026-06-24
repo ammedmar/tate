@@ -456,7 +456,7 @@ whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an a
 	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
 \end{tikzcd}
 \]
-The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. %Not exactly, but almost. I think this is enough words for p=2, but for odd p a more explicit proof would be better.
+The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. \martin{This is true for $p=2$, but I think for odd $p$ one needs to take the cofibre, not the fibre, because the argument will use that $(1-p)|v|$ is even, and so $d \hat x_{(1-p)|v|+1}=N \hat x_{(1-p)|v|}$, which only happens for odd degrees (even degrees have $T$).}
 
 \medskip
 The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action

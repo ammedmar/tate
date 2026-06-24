@@ -8,18 +8,19 @@ H(C)^{(p)}_k = \begin{cases}
 \end{cases}
 \]
 \begin{lemma}
-	There are isomorphisms \martin{Be careful, Tate homology is for groups, not spaces or chain complexes.}
+	There are isomorphisms \martin{I rewrote the notation for the Lemma, since Tate homology is for groups, not spaces or chain complexes.}
 	\begin{align*}
-		\hat{H}(C;\bF_p)&\cong H(C)\ot \hat{H}(B\cyc_p)
+		\hat{H}(\cyc_p;C)&\cong H(C)\ot \hat{H}(\cyc_p;\bF_p)
 		\\
-		\hat{H}(C^{\ot p};\bF_p) & \cong H(C)^{(p)}\ot \hat{H}(B\cyc_p)
+		\hat{H}(\cyc_p;C^{\ot p}) & \cong H(C)^{(p)}\ot \hat{H}(\cyc_p;\bF_p) 
 	\end{align*}
 \end{lemma}
-
+\martin{For the second isomorphism the proof right now only gives a spectral sequence from the term on the right to the term on the left (see next comments).}
 \begin{proof}
-	The first isomorphism is standard, because $\cyc_p$ acts trivially on $C$. For the second, recall that the bicomplex $C\ot \hat{W}(p)$ gives rise to two spectral sequences. In one of them, the first page is obtained by taking homology only with respect to the differential of $C$, and it is isomorphic to $H(C)^{\ot p}\ot \hat{W}(p)$ by the Künneth isomorphism.
+	The first isomorphism is standard, because $\cyc_p$ acts trivially on $C$. For the second, recall that the bicomplex $C\ot_{\cyc_p} \hat{W}(p)$ gives rise to two spectral sequences. In one of them, the first page is obtained by taking homology only with respect to the differential of $C$, and it is isomorphic to $H(C)^{\ot p}\ot_{\cyc_p} \hat{W}(p)$ by the Künneth isomorphism.
 
-	Now, if $M$ is a $R\cyc_p$-module, we have that $M = M'\oplus M''$, where $M'$ has a trivial action and $M''$ has a free action (it is an induced module) there is an isomorphism $H(M\ot \hat{W}(p))\cong H(M'\ot \hat{W})$. Now, the part with trivial action in $H(C)^{\ot p}$ is isomorphic to $H(C)^{(p)}$ (if we choose a basis of $H(C)$, then we can identify these two with the map $x\mapsto x^{\ot p}$).
+	Now, if $M$ is a (graded) $R\cyc_p$-module, we can decompose it as $M = M'\oplus M''$, where $M'$ has a trivial action and $M''$ has a free action (it is an induced module), and there is an isomorphism $H(M\ot_{\cyc_p} \hat{W}(p);\bF_p)\cong M^\prime\ot\hat{H}(\cyc_p;\bF_p)$. \martin{Instead of using a spectral sequence we could just use an argument similar to this one from the beginning. Note that this is quite similar to Lemma 6.}
+Since the part with trivial action in $H(C)^{\ot p}$ is isomorphic to $H(C)^{(p)}$ (if we choose a basis of $H(C)$, then we can identify these two with the map $x\mapsto x^{\ot p}$), we conclude that the second page is isomorphic to $H(C)^{(p)}\ot \hat{H}(\cyc_p;\bF_p)$. \martin{It remains to show that the spectral sequence converges at the second page. I don't think that this is immediate, since the pages $pk+1$ may have non trivial differentials.}
 \end{proof}
 
 If $X$ is a simplicial set, a natural equivariant map
