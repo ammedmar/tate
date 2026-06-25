@@ -444,7 +444,7 @@ u \, \hat x_j = \hat x_{j + 1}.
 \]
 
 \subsubsection{Tate diagonal}
-
+\begin{definition}
 The \defn{Tate diagonal} is the natural transformation
 \[
 \Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
@@ -456,6 +456,7 @@ whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an a
 	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
 \end{tikzcd}
 \]
+\end{definition}
 The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. \martin{This is true for $p=2$, but I think for odd $p$ one needs to take the cofibre, not the fibre, because the argument will use that $(1-p)|v|$ is even, and so $d \hat x_{(1-p)|v|+1}=N \hat x_{(1-p)|v|}$, which only happens for odd degrees (even degrees have $T$).}
 
 \medskip
@@ -474,6 +475,22 @@ In other words, we have the following.
 	\end{tikzcd}
 	\]
 \end{lemma}
+
+\subsubsection{Tate spectral sequence}
+
+
+\begin{lemma} There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V);\bF_2)\Rightarrow H(T_2V;\bF_2)$.}
+\[
+\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
+\]
+\end{lemma}
+\begin{proof}
+Let $W^t:= \fib(N_{W} \colon W \xrightarrow{\sim} W^\vee)$, the fibre of the norm map. We have that 
+\[
+T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
+\]
+Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q}=H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
+\end{proof}
 
 \subsubsection{Tate multiplications and Steenrod squares}
 
