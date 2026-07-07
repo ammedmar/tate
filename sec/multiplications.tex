@@ -1,0 +1,116 @@
+\section{A multiplication on $\widehat W(p)$}\label{multiplications}
+ Steenrod (or May?) defined a comultiplication on the complex $W(p)$ by
+\begin{align*}
+\Delta(e_{2k})&= \sum_{i+j=k} e_{2i}\otimes e_{2j} + \sum_{k-1=i+j} \; \sum_{0\leq s<t<p} \rho^s e_{2i+1}\otimes \rho^t e_{2j+1}, \\
+\Delta(e_{2k+1})&=  \sum_{k=i+j} \left (e_{2i}\otimes e_{2j+1} + e_{2i+1}\otimes \rho e_{2j}\right ),
+\end{align*}
+for $k$ a non-negative integer.
+
+Its dual is the multiplication $m\colon W^\vee(p)\otimes W^\vee(p)\to W^\vee(p)$ given by
+\begin{align*}
+	m(\rho^s \cdot e^\vee_i\otimes \rho^t \cdot e^\vee_j)&= \begin{cases}
+	\rho^s \cdot e^\vee_{i+j}& \text{if $i$ is even and $s\equiv t \mod p$,}
+	\\
+	\rho^s \cdot e^\vee_{i+j}& \text{if $i$ is odd, $j$ is even and $s+1\equiv t \mod p$,}
+	\\
+	\sum_{u\in U^p_{s,t}}\rho^u\cdot e^\vee_{i+j} & \text{if $i$ is odd and $j$ is odd,}
+	\\
+	0&\text{otherwise,}
+	\end{cases}
+\end{align*}
+for $i$ and $j$ non-positive integers. The set $U^p_{s,t}$ is defined for integers $s$ and $t$ as
+\[
+U^p_{s,t}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-u \mod p) < (t-u \mod p)\},
+\]
+where $\mod p$ is seen as a function $\Z\to \{0,\cdots,p-1\}$.
+
+Let $W_{\text{st}}(p)$ be the unbounded chain complex
+\[
+ \cdots \xla{N\cdot} R\set{e_{-2}} \xla{T\cdot} R\set{e_{-1}} \xla{N\cdot} R\set{e_0} \xla{T\cdot} R\set{e_1} \xla{N\cdot} R\set{e_2} \xla{T\cdot} \cdots,
+\]
+in which $e_i$ has degree $i$. The dual $W_{\text{st}}^\vee(p)$ is the chain complex
+\[
+ \cdots \xla{(\rho^{-1}-1)\cdot} R\set{e_{2}^\vee} \xla{-N\cdot} R\set{e_{1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_0^\vee} \xla{-N\cdot} R\set{e_{-1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_{-2}^\vee} \xla{-N\cdot} \cdots,
+\]
+where $e_i^\vee$ has degree $-i$. Since the formula for $m$ only depends on the parity of $i$ and $j$, it extends to all integers $i$ and $j$, meaning that it defines a multiplication $m_{\text{st}}$ on $W^\vee_{\text{st}}(p)$.
+
+There is an isomorphism $f\colon W^\vee_{\text{st}}\to \widehat W$ defined as $f(e^\vee_i)=\eta_{-i}e_{-i}$, with
+\begin{align*}
+	\eta_i&= \begin{cases}
+	-\rho & \text{if $i>0$ and odd,}
+	\\
+	1 &\text{otherwise.}
+	\end{cases}
+\end{align*}
+
+\[
+\begin{tikzcd}%[row sep=2.5em, column sep=huge]
+%
+\cdots &
+R\{e_{2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
+R\{e_{1}^\vee\} \arrow[l, "-N" '] \arrow[d, "1"] &
+R\{e_0^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
+R\{e_{-1}^\vee\} \arrow[l, "-N" '] \arrow[d, "-\rho"] &
+R\{e_{-2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"]&
+\cdots \arrow[l, "-N" '] \\
+%
+\cdots &
+R\{e_{-2}\} \arrow[l, "(\rho^{-1}-1)" '] &
+R\{e_{-1}\} \arrow[l, "-N" '] &
+R\{e_0\} \arrow[l, "(\rho^{-1}-1)" '] &
+R\{e_{1}\} \arrow[l, "N" '] &
+R\{e_{2}\} \arrow[l, "(\rho-1)" '] &
+\cdots \arrow[l, "N" ']
+\end{tikzcd}
+\]
+Thus, a multiplication $\widehat m$ can be defined on $\widehat W(p)$ via $f$ by setting
+%\[
+%\widehat m(\rho^s e_i\otimes \rho^t e_j)= f (m_{\text{st}}(\rho^sf^{-1}(e_i)\otimes \rho^t f^{-1}(e_j))).
+%\]
+\[
+\widehat m:=f\circ m_{\text{st}}\circ (f^{-1}\otimes f^{-1}).
+\]
+Define
+\begin{align*}
+	\nu_i&= \begin{cases}
+	1 & \text{if $i>0$,}
+	\\
+	0 &\text{if $i\leq 0$,}
+	\end{cases}
+\end{align*}
+\[
+\widehat U^p_{s,t,i,j}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-\nu_i-u \mod p) < (t-\nu_j-u \mod p)\}.
+\]
+An explicit formula for $\widehat m$ is
+\begin{align*}
+	\widehat m(\rho^s  e_i\otimes \rho^t e_j)&= \begin{cases}
+	\rho^s  e_{i+j}& \text{if $i$ is even, $j$ is even and $s\equiv t \mod p$,}
+	\\
+	\rho^t e_{i+j}& \text{if $i$ is even, $j$ is odd and $s+\nu_j \equiv t \mod p$,}
+	\\
+	\rho^s e_{i+j}& \text{if $i$ is odd, $j$ is even and $s+1\equiv t+\nu_i \mod p$,}
+	\\
+	(-1)^{\nu_i\nu_j}\sum_{u\in \widehat U^p_{s,t,i,j}}\rho^u e_{i+j} & \text{if $i$ is odd and $j$ is odd,}
+	\\
+	0&\text{otherwise.}
+	\end{cases}
+\end{align*}
+
+In particular, we have an explicit formula for a multiplication on the positive part of $\widehat W(p)$, which is a reindexing of $\Sigma^1 W(p)$. Let us denote by $W_+(p)$ the complex
+\[
+W_+(p) =\quad  \Fp\set{e_0} \xla{\varepsilon} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
+\]
+the augmentation of the positive part of $\widehat W(p)$. We define a multiplication $m_+$ on $W_+(p)$ by setting $e_0$ to be the unit of the multiplication %Find a better way to write this
+\begin{align*}
+m_+(e_0\otimes e_0)&= e_0, \\
+m_+(\rho^s e_i\otimes e_0)&= \rho^s e_i, \\
+m_+(e_0\otimes \rho^s e_i)&= \rho^s e_i, \\
+m_+(\rho^s e_i\otimes \rho^t e_j)&= \widehat m(\rho^s e_i\otimes \rho^t e_j),
+\end{align*}
+for positive integers $i$ and $j$.
+
+%\begin{question}
+%In [Oddp, 6] there is a construction of a map $\Phi \colon \Lambda_+(p)\to W_+(p)$, where $\Lambda_+(p)$ is the augmented periodic resolution of $\cyc_p$. [Oddp, 5] shows how to obtain weak codegeneracies from $p$-cyclic straightenings with duality. A weak codegeneracy can be extended to a multiplication in $\Lambda_+(p)$. Does $\Phi$ take this multiplications to $m_+$?
+%
+%ANSWER: Not at all, they are very different multiplications. For example, all squares vanish for the weak codegeneracy while squares of elements in even positive degrees do not in $m_+$.
+%\end{question}

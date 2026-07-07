@@ -1,328 +1,237 @@
 % !TEX root = ../tate.tex
 
-\section{Preliminaries} %Edited Chatgpt version
+\section{Preliminaries} 
 
-In this section we recall basic properties of the $R$-tensor product $\otimes_R$ and the ring dual $\Hom_R(-,R)$ of $R$-modules. Both constructions extend to chain complexes of $R$-modules by applying them degreewise.
+Let $\k$ be a field and let $G$ be a finite abelian group.
 
-\subsection{The $R$-tensor}
+\subsection{$\k[G]$-modules}
+First, we give our conventions for defining the $G$-tensor and the linear dual of (left) $\k[G]$-modules. We refer to Appendix \ref{Groups} for a more detailed view on these algebraic notions.
 
-Let $R$ be a ring, let $M$ be a right $R$-module, and let $N$ be a left $R$-module. The \defn{$R$-tensor product} $M \otimes_R N$ is the quotient
+\begin{definition} Let $M$ and $N$ be two left $\k[G]$-modules. The \defn{$G$-tensor product} $M\otimes_G N$ is the quotient
 \[
-M \otimes_R N \coloneqq (M \otimes N) \big/ (mr \otimes n \sim m \otimes rn).
+M\otimes_G N\coloneqq (M\otimes N)/(g^{-1}m\otimes n\sim m\otimes g n).
 \]
-As defined, $M \otimes_R N$ is an abelian group, and does not carry a natural $R$-module structure in general.
+\end{definition}
+If $W$ and $V$ chain complexes of $\k[G]$-modules, then the $G$-tensor $W\otimes_G V$ is given by 
+\[
+(W\otimes_G V)_n\coloneqq \bigoplus_{i+j=n} W_i\otimes_G V_j.
+\] 
 
-It is often convenient to view $\otimes_R$ as a monoidal product in a category of bimodules whose bjects are triples $(R,S,N)$ where $R$ and $S$ are rings and $N$ is an $(R,S)$-bimodule. Given objects $(T,R,M)$ and $(R,S,N)$, their monoidal product is $(T,S,M \otimes_R N)$, where $M \otimes_R N$ is a $(T,S)$-bimodule with left $T$-action and right $S$-action given by
-\[
-t \cdot (m \otimes n) = tm \otimes n,
-\qquad
-(m \otimes n) \cdot s = m \otimes ns.
-\]
 
-If $M$ is instead a left $R$-module, additional structure is required in order to define $M \otimes_R N$. We record two important cases.
 
-\begin{example}
-Suppose $R$ is commutative. Any left $R$-module $M$ acquires a right $R$-module structure by setting $m \cdot r \coloneqq rm$. In this case, the tensor product is given by
-\[
-M \otimes_R N = (M \otimes N) \big/ (rm \otimes n \sim m \otimes rn).
-\]
-This defines the monoidal product on the category of $R$-modules, which is a symmetric monoidal category and can be seen as the restriction of the category of bimodules to the full subcategory whose objects are triplets $(R,R, M)$ in which the left and right $R$-actions on $M$ coincide. The tensor product $M \otimes_R N$ is again an $R$-module with action
-\[
-r \cdot (m \otimes n) = rm \otimes n.
-\]
+%Replacing $m$ by $gm$ in the defining relation shows that $(m \otimes n) \sim (gm \otimes gn)$, and hence
+%\[
+%M \otimes_G N \cong (M \otimes N)_G \coloneqq \k \otimes_{G} (M \otimes N),
+%\]
+%the \defn{coinvariants} of $M \otimes N$ with respect to the diagonal $G$-action
+%\[
+%g \cdot (m \otimes n) = gm \otimes gn.
+%\]
 
-The category of $R$-modules also admits an internal hom, given by $\Hom_R$, with $R$-module structure defined by
-\[
-(r \cdot f)(m) = f(rm) = r f(m).
-\]
-Moreover, for $R$-modules $M$, $N$, and $P$, there is a natural isomorphism
-\[
-\Hom_R(M \otimes_R N, P) \cong \Hom_R(M, \Hom_R(N,P)),
-\]
-known as the \defn{hom--tensor adjunction}.
-\end{example}
-
-\begin{example}
-Let $R = \k[G]$ for a field $\k$ and a group $G$. Any left $\k[G]$-module $M$ can be endowed with a right $\k[G]$-module structure via the group anti-automorphism $g \mapsto g^{-1}$, by defining
-\[
-m \cdot g \coloneqq g^{-1} \cdot m.
-\]
-This does not in general define a bimodule structure unless $G$ is abelian.
-
-We denote the resulting tensor product by $\otimes_G$, and define
-\[
-M \otimes_G N \coloneqq (M \otimes N) \big/ (g^{-1}m \otimes n \sim m \otimes gn).
-\]
-Replacing $m$ by $gm$ in the defining relation shows that $(m \otimes n) \sim (gm \otimes gn)$, and hence
-\[
-M \otimes_G N \cong (M \otimes N)_G \coloneqq \k \otimes_{\k[G]} (M \otimes N),
-\]
-the \defn{coinvariants} of $M \otimes N$ with respect to the diagonal $G$-action
-\[
-g \cdot (m \otimes n) = gm \otimes gn.
-\]
-
-There is also a diagonal $G$-action on $\Hom(M,N)$ given by
-\[
-(g \cdot f)(m) = g f(g^{-1} m),
-\]
-which identifies equivariant maps with \defn{invariants}:
-\[
-\Hom_G(M,N) = (\Hom(M,N))^G \coloneqq \Hom_{\k[G]}(\k, \Hom(M,N)).
-\]
-Note that, by definition, $\Hom_G(M,N) = \Hom_{\k[G]}(M,N)$.
-
-If $A$ is a $\k$-vector space with the trivial $G$-action, then there are natural identifications
-\[
-\Hom(M_G, A) \cong \Hom_G(M,A),
-\qquad
-\Hom_G(A,M) \cong \Hom(A, M^G),
-\]
-relating invariants and coinvariants.
-\end{example}
-
-\subsection{The ring dual}
-
-Let $R$ be a ring and let $M$ be a left $R$-module. The \defn{ring dual} of $M$ is the right $R$-module
-\[
-M^\vee \coloneqq \Hom_R(M,R),
-\]
-with right $R$-action given by
-\[
-(f \cdot r)(m) = f(m) r.
-\]
-
-If $M$ is finitely generated and projective as a left $R$-module, then $M^\vee$ is finitely generated and projective as a right $R$-module. Moreover, for any left $R$-module $N$, there is an isomorphism
-\[
-\varphi \colon M^\vee \otimes_R N \xrightarrow{\sim} \Hom_R(M,N),
-\]
-defined by
-\[
-\varphi(f \otimes n)(m) = f(m) n.
-\]
-
-\begin{example}\label{BimoduleW}
-Let $R = \k[G]$ for a field $\k$ and a group $G$, and consider the left $R$-module $W_0 \coloneqq R\{e_0\}$ with the regular action $g \cdot e_0 = ge_0$. Equivalently, we may identify $W_0$ with $\k\{ge_0 \mid g \in G\}$, where $G$ acts by permuting the basis.
-
-The dual module is
-\[
-W_0^\vee = \Hom_R(W_0,R) = \{e_0^\vee\}R = \k\{(ge_0)^\vee \mid g \in G\},
-\]
-where $(ge_0)^\vee$ denotes the $R$-linear map sending $ge_0$ to $1_R$. The right $R$-action is given by
-\[
-e_0^\vee \cdot g = (g^{-1} e_0)^\vee.
-\]
-
-Recall that $W_0$ admits a right $R$-module structure defined by $e_0 \cdot g = g^{-1} e_0$. If $G$ is abelian, then $W_0$ becomes a bimodule, and this induces a left $R$-action on $W_0^\vee$ given by
-\[
-(g \cdot e_0^\vee)(he_0) \coloneqq e_0^\vee(he_0 \cdot g)= (ge_0)^\vee(he_0).
-\]
-This is well-defined precisely because the bimodule condition holds.
-
-Finally, note that the right action on $W_0^\vee$ can equivalently be described as
-\[
-e_0^\vee \cdot g = g^{-1} \cdot e_0^\vee,
-\]
-which agrees with the right module structure used in the construction of the tensor product $W_0^\vee \otimes_G -$.
-\end{example}
-
-%\section{Preliminaries} %original version
+%There is also a diagonal $G$-action on $\Hom(M,N)$ given by
+%\[
+%(g \cdot f)(m) = g f(g^{-1} m),
+%\]
+%which identifies equivariant maps with \defn{invariants}:
+%\[
+%\Hom_G(M,N) = (\Hom(M,N))^G \coloneqq \Hom_{\k[G]}(\k, \Hom(M,N)).
+%\]
+%Note that, by definition, $\Hom_G(M,N) = \Hom_{\k[G]}(M,N)$.
 %
-%In this section we explain the properties of the $R$-tensor $\otimes_R$ and the ring dual $\Hom_R(-,R)$ of  $R$-modules. Both constructions can be generalised to chain complexes of $R$-modules by applying them degreewise.
-%
-%\subsection{The $R$-tensor}
-%Let $R$ be a ring, $M$ a right $R$-module and $N$ a left $R$-module. The $R$-tensor $\otimes_R$ is defined by
+%If $A$ is a $\k$-vector space with the trivial $G$-action, then there are natural identifications
 %\[
-%M\otimes_R N=(M\otimes N)/(mr\otimes n)\sim (m\otimes rn).
+%\Hom(M_G, A) \cong \Hom_G(M,A),
+%\qquad
+%\Hom_G(A,M) \cong \Hom(A, M^G),
 %\]
-%Note that as it is, $M\otimes_R N$ is just an abelian group, with no module structure.
-%
-%We can think of  $\otimes_R$ as monoidal product in a category of bimodules, with objects triplets $(R, S, N)$ where $R$ and $S$ are rings and $N$ is an $(R,S)$-bimodule. Thus, for objects $(T, R, M)$ and $(R, S, N)$, their monoidal product is the object $(T,S,M\otimes_R N)$, so that $M\otimes_R N$ is a $(T, S)$-bimodule with left $T$-action given by $t(m\otimes n)=tm\otimes n$ and right $S$-action $(m\otimes n)s=m\otimes n s$.
-%
-%If instead of a right $R$-module, $M$ is a left $R$-module, there are conditions under wich we can make sense of $\otimes_R$. We consider two situations for this.
-%
-%\begin{example} %Note that we dont use this example at any point
-%If $R$ is a commutative ring, any left $R$-module can be turned into a bimodule by setting the right $R$-action to be the same as the left $R$-action, so that $m\cdot r:=rm$. Therefore
-%\[
-%M\otimes_R N=(M\otimes N)/(rm\otimes n)\sim (m\otimes rn).
-%\]
-%This is the monoidal product of the closed symmetric monoidal category $R$-Mod, which can be seen as the restriction of the category of bimodules to the full subcategory whose objects are triplets $(R,R, M)$ in which the left and right $R$-actions on $M$ coincide. Thus, $M\otimes_R N$ is again an $R$-module with $R$-action $r(m\otimes n)=rm\otimes n$.
-%
-%The category $R$-Mod has an internal hom, $\Hom_R$, with $R$-module structure given by  $(r\cdot f)(m) = f(r m) = r f(m)$. Furthermore, for $R$-modules $M$, $N$, and $P$, we have the hom-tensor adjunction
-%\[
-%\Hom_R(M\otimes_R N, P)\cong \Hom_R(M,\Hom_R(N,P)).
-%\]
-%\end{example}
-%\begin{example} If $R=\k[G]$, for $\k$ a field and $G$ a group, we can turn a left $\k[G]$-module $M$ into a right $\k[G]$-module via the group anti-automorphism $g\mapsto g^{-1}$, by defining the right action to be (the $\k$-linear extension of) $m\cdot g:=g^{-1}\cdot m$. Note that this does not make $M$ into a bimodule unless $G$ is abelian because $(g\cdot m)\cdot h=g\cdot (m\cdot h)$ is only satisfied if $h^{-1}g m=g h^{-1} m$ for any $g,h\in G$.
-%
-%We will denote the corresponding tensor by $\otimes_G$, to stress that we are using this specific right $\k[G]$-module structure on $M$, and is thus given by
-%\[
-%M\otimes_G N:=(M\otimes N)/(g^{-1}m\otimes n)\sim (m\otimes gn).
-%\]
-%Observe that replacing $m$ by $gm$ in the quotient relation gives $(m\otimes n) \sim (gm\otimes gn)$, which means that
-%\[
-%M\otimes_G N = (M\otimes N)_G:= \k\otimes_{\k[G]}(M\otimes N),
-%\]
-%the coinvariants of $M\otimes N$ with respect to the diagonal left $G$-action $g\cdot (m\otimes n)= gm\otimes gn$.
-%
-%There is also a diagonal action on $\Hom(M,N)$ given by $(g\cdot f)(m)=g f(g^{-1}m)$, which gives the equivalence between $G$-equivariant maps and invariants
-%\[
-%\Hom_G(M,N)=(\Hom(M,N))^G:=\Hom_{\k[G]}(\k,\Hom(M,N)).
-%\]
-%Note that $\Hom_G(M,N)=\Hom_{\k[G]}(M,N)$ by definition.
-%%In particular, the linear dual $M^*:=\Hom_\k(M,\k)$ has a $\k[G]$-module structure given by $(g\cdot f)(m)=f(g^{-1}m)$.
-%
-%Let $A$ be a $\k$-module (or rather, a $\k$-vector space), which we can regard as a $\k[G]$-module with the trivial action. We have the following identities regarding the functors of coinvariants and invariants:
-%\[
-%\Hom (M_G,A)=\Hom_G(M,A)\quad\text{and}\quad \Hom_G(A,M)=\Hom(A,M^G).
-%\]
-%\end{example}
-%\subsection{The ring dual}
-%The ring dual $M^\vee$ of a left $R$-module $M$ is the right $R$-module
-%\[
-%M^\vee=\Hom_{R}(M,R)
-%\]
-% with action $(f\cdot r)(m)=(f(m))r$.
-%If $M$ is a finitely generated projective left $R$-module, then $M^\vee$ is a finitely generated projective right $R$-module, and for any left $R$-module $N$ we have
-%\[
-%\varphi \colon M^\vee\otimes_{R}N\cong \Hom_{R}(M,N),
-%\]
-%given by $\varphi(f\otimes n)(m)=f(m)n$, since $f(m)\in R$.
-%
-%\begin{example}
-%Let $R=\k[G]$ for $\k$ a field and $G$ a group, and consider the left $R$-module $W_0:=R\{e_0\}$ with the regular action $g\cdot e_0=ge_0$. We can also think of $W_0$ as $\k\{ge_0 \,|\, g\in G\}$, with action permuting the $\k$-basis. The dual $W_0^\vee$ is the right $R$-module
-%\[
-%W_0^\vee=\Hom_R(W_0,R)=\{e_0^\vee\}R=\k\{(ge_0)^\vee\, |\, g\in G\},
-%\]
-%where $(ge_0)^\vee\colon W_0\to R$ maps $R$-linearly $ge_0$ to $1_R$. The right action is
-%\[
-%e_0^\vee\cdot g=(g^{-1}e_0)^\vee,
-%\]
-%since $(e_0^\vee\cdot g)(he_0)=(e_0^\vee(he_0))g=hg=(g^{-1}e_0)^\vee(hgg^{-1}e_0)=(g^{-1}e_0)(he_0)$ for any $h\in G$.
-%
-%Recall that we can define a right $R$-module structure on $W_0$ by $e_0\cdot g=g^{-1}e_0$. If $G$ is abelian, then $W_0$ is a bimodule and we can also define the left $R$-action on $W_0^\vee$
-%\[
-%(g\cdot e_0^\vee) (he_0) := e_0^\vee(he_0\cdot g)= (ge_0)^\vee(he_0),
-%\]
-%where the second equality holds by abelianity of $G$ (or the bimodule structure of $W_0$), for
-%\[
-%e_0^\vee(he_0\cdot g)=g^{-1}h=hg^{-1}=(ge_0)^\vee(hg^{-1}ge_0).
-%\]
-%Note that the bimodule structure is also needed to ensure that $g\cdot e_0^\vee\in \Hom_R(M,R)$,
-%\[
-%(g\cdot e_0^\vee)(he_0)=e_0^\vee(he_0\cdot g)=e_0^\vee(h(e_0\cdot g))=h(g\cdot e_0^\vee).
-%\]
-%Observe that we could have defined the right action on $W_0^\vee$  as the action given by acting on the left with the group inverse
-%\[
-%e_0^\vee\cdot g:=g^{-1}\cdot e_0^\vee=(g^{-1}e_0)^\vee,
-%\]
-%which means that it corresponds to the right action for the $G$-tensor $W_0^\vee\otimes_G -$.
-%\end{example}
+%relating invariants and coinvariants.
 
-\section{More background}
 
-\subsection{Preliminaries}
-
-Let \(\k\) be a field, let \(G\) be a finite group, and set \(R = \k[G]\).
-We denote by \(\Ch(R)\) the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, where weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
-
-We denote the homotopy category of \(\Ch(R)\) by \(\sD(R)\), its localization at quasi-isomorphisms.
-The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\sD(R)\).
-Moreover, homotopy pushouts and homotopy pullbacks coincide in \(\sD(R)\).
-
-The category \(\Ch(R)\) is pointed, with zero object the complex~\(0\).
-For a map \(f \colon X \to Y\) in \(\Ch(R)\), the \defn{cofibre} \(\cofib(f)\) and \defn{fibre} \(\fib(f)\) are defined by the pushout and pullback squares
+\begin{definition}
+Let $W$ be a chain complex of left $\k[G]$-modules. The \defn{linear dual} 
 \[
-\begin{tikzcd}
-	X \ar[r, "f"] \ar[d] & Y \ar[d] \\
-	0 \ar[r] & \cofib(f)
-\end{tikzcd}
-\qquad \text{and} \qquad
-\begin{tikzcd}
-	\fib(f) \ar[r] \ar[d] & 0 \ar[d] \\
-	X \ar[r, "f"] & Y
-\end{tikzcd}
+W^\dd\coloneqq\hom_{\k[G]}(W, \k[G])
 \]
-respectively.
-In particular, \(\hofib(f) \simeq \hocofib(f)[-1]\) for any map \(f\) in \(\sD(R)\).
-We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as \defn{cofibre sequences} and \defn{fibre sequences}, respectively; by the above, they carry equivalent information.
+is again a chain complex of left $\k[G]$-modules, with left $G$-action given by $ (g\cdot f)(a)=f(a)g^{-1}$. 
+\end{definition}
+
+Thus, if $u^\dd$ is the dual of a basis element $u$ of $W$, we have that $g\cdot u^\dd=(g u)^\dd$.
+
+
+%Another option: defining the dual as a right-module and then showing how to construct a left action
+
+%\begin{definition}
+%Let $W$ be a chain complex of left $\k[G]$-modules. The \defn{linear dual} 
+%\[
+%W^\dd\coloneqq\hom_{\k[G]}(W, \k[G])
+%\]
+%is a chain complex of right $\k[G]$-modules with right $G$-action given by $ (f\cdot g)(a)=f(a)g$. 
+%\end{definition}
+%
+%Thus, if $u^\dd$ is the dual of a basis element of $W$, the cyclic group acts backwards, in the sense that $u^\vee\cdot g=(g^{-1}u)^\dd$.
+%
+%Via the group anti-automorphism $g\mapsto g^{-1}$, we can endow $W^\dd$ with a left $G$-action, defined as 
+%\[
+%g\cdot u^\dd\coloneqqu^\dd\cdot g^{-1}=(g u)^\dd.
+%\] Note that $(g\cdot f)(a)=f(a)g^{-1}$, not $g f(a)$. We will always consider these left actions for the dual chain complexes.
+
+
+\subsection{Derived categories}
+
+Let \(\Ch(\k)\) be the category of unbounded chain complexes of \(\k\)-vector spaces. Also, let \(\Ch(\k[G])\) be the category of unbounded chain complexes of left \(\k[G]\)-modules equipped with the projective model structure, where weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections. Finally, let $R$ denote either $\k$ or $\k[G]$.
+
+\begin{definition} The \defn{derived category} \(\mathcal D(R)\) is the localization of \(\Ch(R)\) at the class \(\mathcal W\) of quasi-isomorphisms:
+\[
+\mathcal D(R) = \Ch(R)[\mathcal W^{-1}].
+\]
+\end{definition}
+The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of $\mathcal D(R)$. Moreover, homotopy pushouts and homotopy pullbacks coincide in $\mathcal D(R)$. In particular, \(\hofib(f) \simeq \hocofib(f)[-1]\) for any map \(f\) in \(\mathcal D(R)\).
+
+\begin{definition}
+We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as \defn{cofibre sequences} and \defn{fibre sequences}, respectively.
+\end{definition}
+Note that, by the above, they carry equivalent information.
+
+Since $\k$ is a field, the derived category $\mathcal D(\k)$ has the property that any chain complex $V$ is canonically isomorphic to the complex $H_*(V)$ with zero differential. Furthermore, any morphism in $\mathcal D(\k)$ is completely determined by its induced map on homology (this is explained in detail in Appendix \ref{derived}).
+
+
+%The category $\Ch(K)$ is pointed, with zero object the complex~\(0\).
+%\begin{definition}
+%For a map \(f \colon X \to Y\) in \(\Ch(K)\), the \defn{cofibre} \(\cofib(f)\) and \defn{fibre} \(\fib(f)\) are defined by the pushout and pullback squares
+%\[
+%\begin{tikzcd}
+%	X \ar[r, "f"] \ar[d] & Y \ar[d] \\
+%	0 \ar[r] & \cofib(f)
+%\end{tikzcd}
+%\qquad \text{and} \qquad
+%\begin{tikzcd}
+%	\fib(f) \ar[r] \ar[d] & 0 \ar[d] \\
+%	X \ar[r, "f"] & Y
+%\end{tikzcd}
+%\]
+%respectively.
+%\end{definition}
+
 
 \subsection{The Tate construction}
-
+\begin{definition}
 The functors
 \[
 (-)_G = \k \ \otimes_G \, -
 \qquad \text{and} \qquad
 (-)^G = \Hom_G(\k, -)
 \]
-from \(\Ch(R)\) to \(\Ch(\k)\) induce the \defn{derived coinvariants} and \defn{derived invariants} functors from \(\sD(R)\) to \(\sD(\k)\).
-Explicitly, for \(M \in \sD(R)\) these are given by
+from \(\Ch(\k[G])\) to \(\Ch(\k)\) induce the \defn{derived coinvariants} and \defn{derived invariants} functors from \(\mathcal D(\k[G])\) to \(\mathcal D(\k)\).
+Explicitly, for \(M \in \mathcal D(\k[G])\) these are given by
 \[
 M_{hG} \coloneqq W \otimes_G M
 \qquad \text{and} \qquad
 M^{hG} \coloneqq \Hom_G(W, M),
 \]
 where \(W \xrightarrow{\sim} \k\) is a cofibrant resolution.
+\end{definition}
 The homology groups of \(M_{hG}\) and \(M^{hG}\) recover group homology \(H_*(G; M)\) and group cohomology \(H^*(G; M)\), respectively.
 
-There is a natural transformation
+\begin{definition}
+The \defn{norm map} is the natural transformation
 \[
 \Nm \colon (-)_{hG} \to (-)^{hG}
 \]
-called the \defn{norm map}, which derives the classical map \(M_G \to M^G\) given by the action of the norm element \(N = \sum_{g \in G} g \in R\).
-Concretely, since \(\Hom_R(\k, R) \cong \k\), the \(R\)-dual \(W^\vee = \Hom_R(W, R)\) is itself a cofibrant resolution of \(\k\); any chain homotopy equivalence \(W \xrightarrow{\sim} W^\vee\) then induces the norm map via
+that derives the classical map \(M_G \to M^G\) given by the action of the norm element \(N = \sum_{g \in G} g \in \k[G]\).
+\end{definition}
+Concretely, since \(\Hom_{\k[G]}(\k, \k[G]) \cong \k\), the linear dual \(W^\vee = \Hom_{\k[G]}(W, \k[G])\) is itself a cofibrant resolution of \(\k\). Thus, any chain homotopy equivalence \(W \xrightarrow{\sim} W^\vee\) induces the norm map via
 \[
-W \otimes_R M \longrightarrow W^\vee \otimes_R M \cong \Hom_R(W, M),
+W \otimes_G M \longrightarrow W^\vee \otimes_G M \cong \Hom_{G}(W, M),
 \]
 where the final isomorphism holds because \(W\) consists of finitely generated projectives.
 
-The \defn{Tate construction} is the functor \((-)^{tG} \defeq \hocofib(\Nm) \colon \sD(R) \to \sD(\k)\).
-The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat{H}^*(G; M)\) when \(M\) is concentrated in degree 0.
-The resulting cofibre sequence
+\begin{definition}
+The \defn{Tate construction} is the functor 
+\[
+(-)^{tG} \defeq \hocofib(\Nm) \colon \mathcal D(\k[G]) \to \mathcal D(\k).
+\]
+\end{definition}
+The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat{H}^*(G; M)\) when \(M\) is concentrated in degree 0. The resulting cofibre sequence
 \[
 M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
 \]
-in \(\sD(\k)\) relates group homology, group cohomology, and Tate cohomology. %It is cohomology indeed.
+in \(\mathcal D(\k)\) relates group homology, group cohomology, and Tate cohomology. We refer to it as the \defn{Tate cofibre sequence} for $M$.
+%There is also a fibre sequence 
+%\[
+% M^{tG}[-1]\longrightarrow M_{hG} \xrightarrow{\Nm} M^{hG}
+%\]
+%relating Tate homology, group homology and group cohomology.
+
 
 \subsection{Explicit models for \(\Fp[\cyc_p]\)}
 
 Let \(p\) be a prime and \(\cyc_p = \angles{\rho \mid \rho^p}\) be the cyclic group of order \(p\).
 We work over the field \(\Fp\) with \(p\) elements and denote \(R = \Fp[\cyc_p]\).
 Set \(T = \rho - 1\) and \(N = 1 + \rho + \cdots + \rho^{p-1}\) in \(R\), as introduceed before.
-A cofibrant resolution \(W(p) \xrightarrow{\sim} \Fp\) is given by the complex
+
+
+A cofibrant resolution \(W_p \xrightarrow{\sim} \Fp\) is given by the complex
 \[
-W(p) = \quad R\set{e_0} \xla{T\cdot} R\set{e_1} \xla{N\cdot} R\set{e_2} \xla{T\cdot} R\set{e_3} \xla{N\cdot} \cdots,
+W_p = \quad R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
 \]
 where each \(R\set{e_i}\) is a free \(R\)-module of rank one concentrated in homological degree \(i \geq 0\).
-Since each \(R\set{e_i} \cong R\) is finitely generated and free, the \(R\)-dual \(W^\vee(p) = \Hom_R(W, R)\) is the complex
+Since each \(R\set{e_i} \cong R\) is finitely generated and free, the linear dual is the complex
 \[
-W^\vee(p) = \cdots \xla{\cdot (- N)} \set{e_3^\vee}R\xla{\cdot T} \set{e_2^\vee}R \xla{\cdot (- N)} \set{e_1^\vee}R \xla{\cdot T} \set{e_0^\vee}R.
+W^\vee_p = \cdots \xla{- N} R\set{e_3^\vee}\xla{T^\vee} R\set{e_2^\vee} \xla{- N} R\set{e_1^\vee} \xla{T^\dd } R\set{e_0^\vee},
 \]
-Note that $T$ and $-N$ act on the right in $W^\vee(p)$. As in Example \ref{BimoduleW}, $W^\vee(p)$ has a bimodule structure given by $\rho\cdot e_i^\vee:=e_i^\vee\cdot \rho^{-1}=(\rho e_i)^\vee$, which allows us to describe it in terms of the left action
-\[
-W^\vee(p) = \cdots \xla{(- N)\cdot} R\set{e_3^\vee}\xla{(\rho^{-1}-1)\cdot} R\set{e_2^\vee} \xla{(- N)\cdot} R\set{e_1^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_0^\vee}.
-\]
+where $T^\dd= (\rho^{-1}-1)$, and $e_i^\dd$ has degree $-i$.
 
-
-Let \(N_{W(p)} \colon W(p) \xrightarrow{\sim} W^\vee(p)\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N \cdot e_0^\vee\).
+Let \(N_{W_p} \colon W_p \xrightarrow{\sim} W^\vee_p\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N \cdot e_0^\vee\).
 Its mapping cone is the complex
 \[
- \cdots \xla{(\rho^{-1}-1)\cdot} R\set{e_2^\vee} \xla{-N\cdot} R\set{e_{1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_0^\vee} \xla{N\cdot} R\set{e_0} \xla{T\cdot} R\set{e_1} \xla{N\cdot} \cdots
+ \cdots \xla{T^\dd} R\set{e_2^\vee} \xla{-N} R\set{e_{1}^\vee} \xla{T^\dd} R\set{e_0^\vee} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} \cdots
 \]
-with \(e_i^\vee\) in degree \(-i\), and $e_i$ in degree $i+1$. We denote by $\widehat W(p)$ the complex obtained by relabeling the generators to match their degree:
+with \(e_i^\vee\) in degree \(-i\), and $e_i$ in degree $i+1$. We denote by $\widehat W_p$ the complex obtained by relabeling the generators to match their degree:
 \[
- \cdots \xla{(\rho^{-1}-1)\cdot} R\set{e_{-2}} \xla{-N\cdot} R\set{e_{-1}} \xla{(\rho^{-1}-1)\cdot} R\set{e_0} \xla{N\cdot} R\set{e_1} \xla{T\cdot} R\set{e_2} \xla{N\cdot} \cdots
+ \cdots \xla{T^\dd} R\set{e_{-2}} \xla{-N} R\set{e_{-1}} \xla{T^\dd} R\set{e_0} \xla{N} R\set{e_1} \xla{T} R\set{e_2} \xla{N} \cdots
 \]
 
 Consider the cofibre sequence
 \[
-W(p) \to W^\vee(p) \to \widehat W(p).
+W_p \to W^\vee_p \to \widehat W_p.
 \]
-For any chain complex \(M\), applying the functor \(- \ot_R M\) to it gives a cofibre sequence representing
-\begin{equation}
+For any chain complex $M$ in $\mathcal D(R)$, applying the functor \(- \ot_{\cyc_p} M\) to it gives a cofibre sequence representing the Tate cofibre sequence
+\[
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
-\label{CofibreM}
-\end{equation}
+\]
+In particular, $\widehat W_p\otimes_{\cyc_p} M$ is a model for $M^{t\cyc_p}$. 
+\begin{remark}
+In Appedix \ref{multiplications} we give an explicit chain level formula for a multiplication on $\widehat W_p$, which therefore induces the cup product on Tate cohomology. %at least with $\Fp$ coefficients.
+\end{remark}
+\subsection{Tate spectral sequences}
+
+Using $\widehat W_p$ we can prove the following lemma:
+
+\begin{lemma}Let $M$ in $\mathcal D(R)$. There is a spectral sequence
+\[
+\hat H^*(\cyc_p; H_*(M))\Rightarrow\hat H^*(\cyc_p; M)=H_*(M^{t\cyc_p}).
+\]
+\end{lemma}
+\begin{proof} Since $H_*(M^{t\cyc_p})\cong H_*(\widehat W_p\otimes_{\cyc_p} M)$, there is a filtration that gives rise to a spectral sequence with first page $E^1=\widehat W_p \ot_{\cyc_p}H_*(M)$. The second page is then $E^2=H_*(\widehat W_p\ot_{\cyc_p}H_*(M))$, which is isomorphic to $\hat H_*(\cyc_p;H_*(M))$.\qedhere
+\end{proof}
+
+%Is the $\cyc_p$-action on $H_*(M)$ trivial? If so we can say a bit more.
+
+%write about the other filtration.
+
+%\begin{lemma} There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V);\bF_2)\Rightarrow H(T_2V;\bF_2)$.}
+%\[
+%\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
+%\]
+%\end{lemma}
+%\begin{proof}
+%Let $W^t\coloneqq \fib(N_{W} \colon W \xrightarrow{\sim} W^\vee)$, the fibre of the norm map. We have that 
+%\[
+%T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
+%\]
+%Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q}=H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
+%\end{proof}
+
 
 %\subsection{Diagonals}
 %
@@ -334,7 +243,7 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 %
 %The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat W(p)$, which we denote by
 %\[
-%W^{\mathrm st}(p) \, := \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
+%W^{\mathrm st}(p) \, \coloneqq \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
 %\]
 %with $e_i$ in degree $i$. An \defn{stable $p$-cyclic diagonal} on  $C$, or simply a\defn{stable $p$-diagonal}, is a $\cyc_p$-equivariant chain map
 %	\[
@@ -354,261 +263,5 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 %\Hom(W^\vee(p)\otimes_R C,C^{\otimes p}) \xra{\Nm} \Hom(W(p)\otimes_R C,C^{\otimes p}))\to \Hom(W^{\mathrm st}(p)\otimes_RC,C^{\otimes p})).
 %\]
 %Thus, unstable and stable $p$-cyclic diagonals  are, respectively,  $0$-cycles in the second and third chain complexes of the cofibre sequence.
-\subsection{The algebraic Tate diagonal}
-
-Let $C$ be a chain complex and set $M = C^{\otimes p}$. A model for its Tate construction is given by
-\[
-(C^{\otimes p})^{t\cyc_p} \cong \widehat W(p)\otimes_{\cyc_p} C^{\otimes p}.
-\]
-
-A result of Nikolaus and Scholze~\cite{??} shows that in $\sD(\Z)$ there is no natural chain map
-\[
-C \longrightarrow (C^{\otimes p})^{t\cyc_p}
-\]
-inducing a nontrivial map on homology.
-
-Nevertheless, one can define the map
-\[
-\Delta^t(p)\colon H_*(C)\longrightarrow H_*\big((C^{\otimes p})^{t\cyc_p}\big)
-= H_*\big(\widehat W(p)\otimes_{\cyc_p} C^{\otimes p}\big)
-\]
-by sending a class $[x]$ in degree $n$ to
-\[
-[x] \longmapsto [\,e_{(1-p)n}\otimes_{\cyc_p} (x\otimes \overset{_{(p)}}{\cdots} \otimes x)\,].
-\]
-We refer to $\Delta^t(p)$ as the \defn{algebraic Tate diagonal}.
-
-\begin{lemma}
-The algebraic Tate diagonal is $\bF_p$-linear.
-\end{lemma}
-\begin{proof}
-First we check scalar multiplicativity, let $a\in\bF_p$ and $[x]\in H_n(C)$.
-\[
-\Delta^t(p)(a[x])=[e_{(1-p)n}\ot_{C_p}(ax)^{\ot p}]=a^p[e_{(1-p)n}\ot_{C_p}x^{\ot p}]=a\Delta^t(p)([x]),
-\]
-where the last equality holds in $\bF_p$ due to Fermat's little theorem.
-
-Now, for aditivity, let $[x]$ and $[y]\in H_n(C)$. We have
-\[
-\Delta^t(p)([x]+[y])=[e_{(1-p)n}\ot_{\cyc_p}(x+y)^{\ot p}].
-\]
-The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the leters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those with $p$ elements. There are two orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
-\[
-[e_{(1-p)n}\ot_{\cyc_p}(x+y)^{\ot p}]=[e_{(1-p)n}\ot_{\cyc_p}x^{\ot p}]+[e_{(1-p)n}\ot_{\cyc_p}y^{\ot p}]+\sum_{i=1}^{(2^{p}-2)/p}[e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i],
-\]
-but 
-\[
-e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=Ne_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=de_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
-\]
-where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $de_j=Ne_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. This means that the term $\sum_{i=1}^{(2^{p}-2)/p}[e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i]$ vanishes, and so
-\[
-\Delta^t(p)([x]+[y])=\Delta^t(p)([x])+ \Delta^t(p)([y]).\qedhere
-\]
-\end{proof}
-
-\subsection{Monoidality}
-
-Let $H \colon \sD(\Fp)\to \text{GrVect}_\Fp$ denote the homology functor. It is a lax monoidal functor: for chain complexes $C$ and $D$, the Künneth map defines a morphism
-\[
-\kappa \colon H(C)\otimes H(D)\longrightarrow H(C\otimes D),
-\]
-which is natural in $C$ and $D$.
-
-Let $H^t(p)$ denote the composite
-\[
-\sD(\Fp) \xra{(-)^{\otimes p}} \sD(R) \xra{(-)^{t\cyc_p}} \sD(\Fp) \xra{H} \text{GrVect}_\Fp.
-\]
-This is again a lax monoidal functor. Indeed, there is a natural morphism
-\[
-\mu\circ \kappa\colon H\big(\widehat W\otimes_{\cyc_p} C^{\otimes p}\big)\otimes H\big(\widehat W\otimes_{\cyc_p} D^{\otimes p}\big)
-\longrightarrow H\big(\widehat W\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big),
-\]
-where
-\[
-\mu\colon H\big((\widehat W\otimes_{\cyc_p} C^{\otimes p})\otimes (\widehat W\otimes_{\cyc_p} D^{\otimes p})\big)
-\longrightarrow H\big(\widehat W\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big)
-\]
-is induced by the assignment
-\[
-[(\rho^a e_i\otimes_{\cyc_p} \mathbf{c})\otimes (\rho^b e_j\otimes_{\cyc_p} \mathbf{d})]
-\longmapsto
-[\,e_{i+j}\otimes_{\cyc_p} \mathrm{Sh}(\rho^{-a}\mathbf{c}, \rho^{-b}\mathbf{d})\,],
-\]
-for $\mathbf{c}=c_1\otimes\cdots\otimes c_p \in C^{\otimes p}$ and $\mathbf{d}=d_1\otimes\cdots\otimes d_p \in D^{\otimes p}$. Here $\mathrm{Sh}$ denotes the shuffle map $C^{\otimes p}\times D^{\otimes p}\to(C\otimes D)^{\otimes p}$ given by
-\[
-((c_1\otimes\cdots\otimes c_p), (d_1\otimes\cdots\otimes d_p))
-\longmapsto
-(c_1\otimes d_1)\otimes\cdots\otimes (c_p\otimes d_p).
-\]
-
-The following diagram commutes for all chain complexes $C$ and $D$:
-\begin{center}
-\begin{tikzpicture}
-\node (a) at (-3,2){$H(C)\otimes H(D)$};
-\node (b) at (4,2){$H(\widehat W\otimes_{C_p} C^{\otimes p})\otimes H(\widehat W\otimes_{C_p} D^{\otimes p})$};
-\node (c) at (-3,0){$H(C\otimes D)$};
-\node (d) at (4,0){$H(\widehat W\otimes_{C_p} (C\otimes D)^{\otimes p})$};
-%
-\draw[->](a) -- node[above]{$\Delta^t(p)\otimes \Delta^t(p)$}(b);
-\draw[->](a)--node[right]{$\kappa$}(c);
-\draw[->](b)--node[right]{$\mu\circ\kappa$}(d);
-\draw[->](c)--node[above]{$\Delta^t(p)\circ \otimes$}(d);
-
-\end{tikzpicture}
-\end{center}
 
 
-\begin{lemma}
-The algebraic Tate diagonal defines a monoidal natural transformation
-\[
-\Delta^t(p)\colon H \longrightarrow H^t(p).
-\]
-\end{lemma}
-
-
-
-%\subsection{Cohomology operations} Consider a Tate-like diagonal map $\tilde\Delta\colon C\to (C^{\otimes p})^{t\cyc_p}$. Postcomposition with the norm map gives us a map
-%\[
-%\Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})^{\cyc_p})=\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p}).
-%\]
-%Since $\widehat W$ is projective, we also have the isomorphism
-%\[
-%\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\cong \Hom_{\cyc_p}(C\otimes \widehat W^\vee, C^{\otimes p}).
-%\]
-%Thus, a tate-like diagonal map $\tilde \Delta$  produces an equivariant stable diagonal
-%\[
-%C\otimes \widehat W^\vee\to C^{\otimes p},
-%\]
-%from which we can obtain cohomology operations following May's procedure as in [Oddp].
-%
-%Observe that this works in the opposite direction: an equivariant stable diagonal induces a tate-like diagonal, since quotienting by the $\cyc_p$-action gives a map
-%\[
-%\Hom_{\cyc_p}(C,\widehat W\otimes C^{\otimes p})\to \Hom(C,(\widehat W\otimes C^{\otimes p})_{\cyc_p}).
-%\]
-%\begin{question} Is it true that if $\tilde \Delta$ induces the algebraic Tate diagonal $\Delta^t(p)$ on homology,  the resulting cohomology operations are all trivial except the degree $0$ operation, which would be the identity?
-%\end{question}
-%This should follow from additivity of $\Delta^t(p)$ with respect to the direct sum of graded  $\Fp$-vector spaces.
-%
-%\begin{question}
-%Does following this diagram and passing to homology give non trivial cohomology operations?
-%
-%ANSWER: No, since the norm map gives elements that are zero on homology, so the resulting composition is trivial.
-%
-%\input{sec/diagram_tate_diag_operations}
-%\end{question}
-
-\subsection{A multiplication on $\widehat W(p)$} Steenrod (or May?) defined a comultiplication on the complex $W(p)$ by
-\begin{align*}
-\Delta(e_{2k})&= \sum_{i+j=k} e_{2i}\otimes e_{2j} + \sum_{k-1=i+j} \; \sum_{0\leq s<t<p} \rho^s e_{2i+1}\otimes \rho^t e_{2j+1}, \\
-\Delta(e_{2k+1})&=  \sum_{k=i+j} \left (e_{2i}\otimes e_{2j+1} + e_{2i+1}\otimes \rho e_{2j}\right ),
-\end{align*}
-for $k$ a non-negative integer.
-
-Its dual is the multiplication $m\colon W^\vee(p)\otimes W^\vee(p)\to W^\vee(p)$ given by
-\begin{align*}
-	m(\rho^s \cdot e^\vee_i\otimes \rho^t \cdot e^\vee_j)&= \begin{cases}
-	\rho^s \cdot e^\vee_{i+j}& \text{if $i$ is even and $s\equiv t \mod p$,}
-	\\
-	\rho^s \cdot e^\vee_{i+j}& \text{if $i$ is odd, $j$ is even and $s+1\equiv t \mod p$,}
-	\\
-	\sum_{u\in U^p_{s,t}}\rho^u\cdot e^\vee_{i+j} & \text{if $i$ is odd and $j$ is odd,}
-	\\
-	0&\text{otherwise,}
-	\end{cases}
-\end{align*}
-for $i$ and $j$ non-positive integers. The set $U^p_{s,t}$ is defined for integers $s$ and $t$ as
-\[
-U^p_{s,t}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-u \mod p) < (t-u \mod p)\},
-\]
-where $\mod p$ is seen as a function $\Z\to \{0,\cdots,p-1\}$.
-
-Let $W_{\text{st}}(p)$ be the unbounded chain complex
-\[
- \cdots \xla{N\cdot} R\set{e_{-2}} \xla{T\cdot} R\set{e_{-1}} \xla{N\cdot} R\set{e_0} \xla{T\cdot} R\set{e_1} \xla{N\cdot} R\set{e_2} \xla{T\cdot} \cdots,
-\]
-in which $e_i$ has degree $i$. The dual $W_{\text{st}}^\vee(p)$ is the chain complex
-\[
- \cdots \xla{(\rho^{-1}-1)\cdot} R\set{e_{2}^\vee} \xla{-N\cdot} R\set{e_{1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_0^\vee} \xla{-N\cdot} R\set{e_{-1}^\vee} \xla{(\rho^{-1}-1)\cdot} R\set{e_{-2}^\vee} \xla{-N\cdot} \cdots,
-\]
-where $e_i^\vee$ has degree $-i$. Since the formula for $m$ only depends on the parity of $i$ and $j$, it extends to all integers $i$ and $j$, meaning that it defines a multiplication $m_{\text{st}}$ on $W^\vee_{\text{st}}(p)$.
-
-There is an isomorphism $f\colon W^\vee_{\text{st}}\to \widehat W$ defined as $f(e^\vee_i)=\eta_{-i}e_{-i}$, with
-\begin{align*}
-	\eta_i&= \begin{cases}
-	-\rho & \text{if $i>0$ and odd,}
-	\\
-	1 &\text{otherwise.}
-	\end{cases}
-\end{align*}
-
-\[
-\begin{tikzcd}%[row sep=2.5em, column sep=huge]
-%
-\cdots &
-R\{e_{2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
-R\{e_{1}^\vee\} \arrow[l, "-N" '] \arrow[d, "1"] &
-R\{e_0^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"] &
-R\{e_{-1}^\vee\} \arrow[l, "-N" '] \arrow[d, "-\rho"] &
-R\{e_{-2}^\vee\} \arrow[l, "(\rho^{-1}-1)" '] \arrow[d, "1"]&
-\cdots \arrow[l, "-N" '] \\
-%
-\cdots &
-R\{e_{-2}\} \arrow[l, "(\rho^{-1}-1)" '] &
-R\{e_{-1}\} \arrow[l, "-N" '] &
-R\{e_0\} \arrow[l, "(\rho^{-1}-1)" '] &
-R\{e_{1}\} \arrow[l, "N" '] &
-R\{e_{2}\} \arrow[l, "(\rho-1)" '] &
-\cdots \arrow[l, "N" ']
-\end{tikzcd}
-\]
-Thus, a multiplication $\widehat m$ can be defined on $\widehat W(p)$ via $f$ by setting
-%\[
-%\widehat m(\rho^s e_i\otimes \rho^t e_j)= f (m_{\text{st}}(\rho^sf^{-1}(e_i)\otimes \rho^t f^{-1}(e_j))).
-%\]
-\[
-\widehat m:=f\circ m_{\text{st}}\circ (f^{-1}\otimes f^{-1}).
-\]
-Define
-\begin{align*}
-	\nu_i&= \begin{cases}
-	1 & \text{if $i>0$,}
-	\\
-	0 &\text{if $i\leq 0$,}
-	\end{cases}
-\end{align*}
-\[
-\widehat U^p_{s,t,i,j}=\{u\in\{0,\cdots,p-1\}\, |\,  (s-\nu_i-u \mod p) < (t-\nu_j-u \mod p)\}.
-\]
-An explicit formula for $\widehat m$ is
-\begin{align*}
-	\widehat m(\rho^s  e_i\otimes \rho^t e_j)&= \begin{cases}
-	\rho^s  e_{i+j}& \text{if $i$ is even, $j$ is even and $s\equiv t \mod p$,}
-	\\
-	\rho^t e_{i+j}& \text{if $i$ is even, $j$ is odd and $s+\nu_j \equiv t \mod p$,}
-	\\
-	\rho^s e_{i+j}& \text{if $i$ is odd, $j$ is even and $s+1\equiv t+\nu_i \mod p$,}
-	\\
-	(-1)^{\nu_i\nu_j}\sum_{u\in \widehat U^p_{s,t,i,j}}\rho^u e_{i+j} & \text{if $i$ is odd and $j$ is odd,}
-	\\
-	0&\text{otherwise.}
-	\end{cases}
-\end{align*}
-
-In particular, we have an explicit formula for a multiplication on the positive part of $\widehat W(p)$, which is a reindexing of $\Sigma^1 W(p)$. Let us denote by $W_+(p)$ the complex
-\[
-W_+(p) =\quad  \Fp\set{e_0} \xla{\varepsilon} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} \xla{N} \cdots,
-\]
-the augmentation of the positive part of $\widehat W(p)$. We define a multiplication $m_+$ on $W_+(p)$ by setting $e_0$ to be the unit of the multiplication %Find a better way to write this
-\begin{align*}
-m_+(e_0\otimes e_0)&= e_0, \\
-m_+(\rho^s e_i\otimes e_0)&= \rho^s e_i, \\
-m_+(e_0\otimes \rho^s e_i)&= \rho^s e_i, \\
-m_+(\rho^s e_i\otimes \rho^t e_j)&= \widehat m(\rho^s e_i\otimes \rho^t e_j),
-\end{align*}
-for positive integers $i$ and $j$.
-
-\begin{question}
-In [Oddp, 6] there is a construction of a map $\Phi \colon \Lambda_+(p)\to W_+(p)$, where $\Lambda_+(p)$ is the augmented periodic resolution of $\cyc_p$. [Oddp, 5] shows how to obtain weak codegeneracies from $p$-cyclic straightenings with duality. A weak codegeneracy can be extended to a multiplication in $\Lambda_+(p)$. Does $\Phi$ take this multiplications to $m_+$?
-
-ANSWER: Not at all, they are very different multiplications. For example, all squares vanish for the weak codegeneracy while squares of elements in even positive degrees do not in $m_+$.
-\end{question}

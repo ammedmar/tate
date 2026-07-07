@@ -411,7 +411,7 @@
 %\newpage
 
 
-\subsection{Steenrod squares}
+\section{Steenrod squares}
 
 We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
 Throughout this subsection we might need to assume that \(V\) is of finite type, that is, degreewise finite-dimensional.\anibal{Check this for the first lemma.}
@@ -475,22 +475,6 @@ In other words, we have the following.
 	\end{tikzcd}
 	\]
 \end{lemma}
-
-\subsubsection{Tate spectral sequence}
-
-
-\begin{lemma} There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V);\bF_2)\Rightarrow H(T_2V;\bF_2)$.}
-\[
-\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
-\]
-\end{lemma}
-\begin{proof}
-Let $W^t:= \fib(N_{W} \colon W \xrightarrow{\sim} W^\vee)$, the fibre of the norm map. We have that 
-\[
-T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
-\]
-Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q}=H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
-\end{proof}
 
 \subsubsection{Tate multiplications and Steenrod squares}
 

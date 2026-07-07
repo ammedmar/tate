@@ -1,0 +1,124 @@
+\section{Group actions}\label{Groups}
+In this section we recall basic properties of the $R$-tensor product $\otimes_R$ and the ring dual $\Hom_R(-,R)$ of $R$-modules. Both constructions extend to chain complexes of $R$-modules by applying them degreewise.
+
+\subsection{The $R$-tensor}
+
+Let $R$ be a ring, let $M$ be a right $R$-module, and let $N$ be a left $R$-module. The \defn{$R$-tensor product} $M \otimes_R N$ is the quotient
+\[
+M \otimes_R N \coloneqq (M \otimes N) \big/ (mr \otimes n \sim m \otimes rn).
+\]
+As defined, $M \otimes_R N$ is an abelian group, and does not carry a natural $R$-module structure in general.
+
+It is often convenient to view $\otimes_R$ as a monoidal product in a category of bimodules whose bjects are triples $(R,S,N)$ where $R$ and $S$ are rings and $N$ is an $(R,S)$-bimodule. Given objects $(T,R,M)$ and $(R,S,N)$, their monoidal product is $(T,S,M \otimes_R N)$, where $M \otimes_R N$ is a $(T,S)$-bimodule with left $T$-action and right $S$-action given by
+\[
+t \cdot (m \otimes n) = tm \otimes n,
+\qquad
+(m \otimes n) \cdot s = m \otimes ns.
+\]
+
+If $M$ is instead a left $R$-module, additional structure is required in order to define $M \otimes_R N$. We record two important cases.
+
+\begin{example}
+Suppose $R$ is commutative. Any left $R$-module $M$ acquires a right $R$-module structure by setting $m \cdot r \coloneqq rm$. In this case, the tensor product is given by
+\[
+M \otimes_R N = (M \otimes N) \big/ (rm \otimes n \sim m \otimes rn).
+\]
+This defines the monoidal product on the category of $R$-modules, which is a symmetric monoidal category and can be seen as the restriction of the category of bimodules to the full subcategory whose objects are triplets $(R,R, M)$ in which the left and right $R$-actions on $M$ coincide. The tensor product $M \otimes_R N$ is again an $R$-module with action
+\[
+r \cdot (m \otimes n) = rm \otimes n.
+\]
+
+The category of $R$-modules also admits an internal hom, given by $\Hom_R$, with $R$-module structure defined by
+\[
+(r \cdot f)(m) = f(rm) = r f(m).
+\]
+Moreover, for $R$-modules $M$, $N$, and $P$, there is a natural isomorphism
+\[
+\Hom_R(M \otimes_R N, P) \cong \Hom_R(M, \Hom_R(N,P)),
+\]
+known as the \defn{hom--tensor adjunction}.
+\end{example}
+
+\begin{example}
+Let $R = \k[G]$ for a field $\k$ and a group $G$. Any left $\k[G]$-module $M$ can be endowed with a right $\k[G]$-module structure via the group anti-automorphism $g \mapsto g^{-1}$, by defining
+\[
+m \cdot g \coloneqq g^{-1} \cdot m.
+\]
+This does not in general define a bimodule structure unless $G$ is abelian.
+
+We denote the resulting tensor product by $\otimes_G$, and define
+\[
+M \otimes_G N \coloneqq (M \otimes N) \big/ (g^{-1}m \otimes n \sim m \otimes gn).
+\]
+Replacing $m$ by $gm$ in the defining relation shows that $(m \otimes n) \sim (gm \otimes gn)$, and hence
+\[
+M \otimes_G N \cong (M \otimes N)_G \coloneqq \k \otimes_{\k[G]} (M \otimes N),
+\]
+the \defn{coinvariants} of $M \otimes N$ with respect to the diagonal $G$-action
+\[
+g \cdot (m \otimes n) = gm \otimes gn.
+\]
+
+There is also a diagonal $G$-action on $\Hom(M,N)$ given by
+\[
+(g \cdot f)(m) = g f(g^{-1} m),
+\]
+which identifies equivariant maps with \defn{invariants}:
+\[
+\Hom_G(M,N) = (\Hom(M,N))^G \coloneqq \Hom_{\k[G]}(\k, \Hom(M,N)).
+\]
+Note that, by definition, $\Hom_G(M,N) = \Hom_{\k[G]}(M,N)$.
+
+If $A$ is a $\k$-vector space with the trivial $G$-action, then there are natural identifications
+\[
+\Hom(M_G, A) \cong \Hom_G(M,A),
+\qquad
+\Hom_G(A,M) \cong \Hom(A, M^G),
+\]
+relating invariants and coinvariants.
+\end{example}
+
+\subsection{The ring dual}
+
+Let $R$ be a ring and let $M$ be a left $R$-module. The \defn{ring dual} of $M$ is the right $R$-module
+\[
+M^\vee \coloneqq \Hom_R(M,R),
+\]
+with right $R$-action given by
+\[
+(f \cdot r)(m) = f(m) r.
+\]
+
+If $M$ is finitely generated and projective as a left $R$-module, then $M^\vee$ is finitely generated and projective as a right $R$-module. Moreover, for any left $R$-module $N$, there is an isomorphism
+\[
+\varphi \colon M^\vee \otimes_R N \xrightarrow{\sim} \Hom_R(M,N),
+\]
+defined by
+\[
+\varphi(f \otimes n)(m) = f(m) n.
+\]
+
+\begin{example}\label{BimoduleW}
+Let $R = \k[G]$ for a field $\k$ and a group $G$, and consider the left $R$-module $W_0 \coloneqq R\{e_0\}$ with the regular action $g \cdot e_0 = ge_0$. Equivalently, we may identify $W_0$ with $\k\{ge_0 \mid g \in G\}$, where $G$ acts by permuting the basis.
+
+The dual module is
+\[
+W_0^\vee = \Hom_R(W_0,R) = \{e_0^\vee\}R = \k\{(ge_0)^\vee \mid g \in G\},
+\]
+where $(ge_0)^\vee$ denotes the $R$-linear map sending $ge_0$ to $1_R$. The right $R$-action is given by
+\[
+e_0^\vee \cdot g = (g^{-1} e_0)^\vee.
+\]
+
+Recall that $W_0$ admits a right $R$-module structure defined by $e_0 \cdot g = g^{-1} e_0$. If $G$ is abelian, then $W_0$ becomes a bimodule, and this induces a left $R$-action on $W_0^\vee$ given by
+\[
+(g \cdot e_0^\vee)(he_0) \coloneqq e_0^\vee(he_0 \cdot g)= (ge_0)^\vee(he_0).
+\]
+This is well-defined precisely because the bimodule condition holds.
+
+Finally, note that the right action on $W_0^\vee$ can equivalently be described as
+\[
+e_0^\vee \cdot g = g^{-1} \cdot e_0^\vee,
+\]
+which agrees with the right module structure used in the construction of the tensor product $W_0^\vee \otimes_G -$.
+\end{example}
