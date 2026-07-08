@@ -1,51 +1,48 @@
 \section{The algebraic Tate diagonal}
 
-Let $p$ be a prime and $\cyc_p$ be the cyclic group of order $p$. 
-
 \begin{definition} We denote by $T_p$ the functor
 \[
 T_p\coloneqq (-\otimes \overset{p}{\cdots}\otimes -)^{t\cyc_p} \colon \mathcal D(\Fp)\to \mathcal D(\Fp).
 \]
-Explicitly, given $V$ in $\mathcal D(\Fp)$, $T_pV$ is the $\cyc_p$-Tate construction of the chain complex of $\Fp[\cyc_p]$-modules $V^{\otimes p}$, with $\cyc_p$-action given by permuting the factors.
+Explicitly, given $V$ in $\mathcal D(\Fp)$, $T_pV$ is the $\cyc_p$-Tate construction of the chain complex of $\Fp[\cyc_p]$-modules $V^{\otimes p}$, whose $\cyc_p$-action is given by permuting the factors.
 \end{definition}
 
 \begin{example}
-Taking $M=\k$, with the trivial G action...
+Taking $V=\Fp$, we have $T_p(\Fp)=(\Fp^{\otimes p})^{t\cyc_p}\cong \Fp^{t\cyc_p}$. Its homology is precisely the Tate cohomology of the cyclic group with trivial coefficients $\hat H^*(\cyc_p;\Fp)$, and is given by
+\[
+\hat H^i(\cyc_p;\Fp)\cong H_i(\widehat W_p\otimes_{\cyc_p}\Fp)=H_i((\widehat W_p)_{\cyc_p})\cong \Fp\{\hat e_i\}.
+\]
+Therefore, $H_*(T_p\Fp)$ is a free one-dimensional $\Fp[u,u^{-1}]$-module with action
+\[
+u\cdot \hat e_i\coloneqq \hat e_{i+1}.
+\]
 \end{example}
+\begin{lemma} $T_p$ is an exact functor.
+\end{lemma}%immediate from Nikolaus-Scholze?
 
-Let $C$ be a chain complex and set $M = C^{\otimes p}$. A model for its Tate construction is given by
+\begin{definition} The \defn{algebraic Tate diagonal} is the natural transformation 
 \[
-(C^{\otimes p})^{t\cyc_p} \cong \widehat W(p)\otimes_{\cyc_p} C^{\otimes p}.
+\Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
 \]
-
-A result of Nikolaus and Scholze~\cite{??} shows that in $\sD(\Z)$ there is no natural chain map
+which is characterised on homology by 
 \[
-C \longrightarrow (C^{\otimes p})^{t\cyc_p}
+\begin{tikzcd}[row sep=0, column sep=small]
+	(\Delta^t_p)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
+	& v \arrow[r, |->] & \hat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v).
+\end{tikzcd}
 \]
-inducing a nontrivial map on homology.
-
-Nevertheless, one can define the map
-\[
-\Delta^t(p)\colon H_*(C)\longrightarrow H_*\big((C^{\otimes p})^{t\cyc_p}\big)
-= H_*\big(\widehat W(p)\otimes_{\cyc_p} C^{\otimes p}\big)
-\]
-by sending a class $[x]$ in degree $n$ to
-\[
-[x] \longmapsto [\,e_{(1-p)n}\otimes_{\cyc_p} (x\otimes \overset{_{(p)}}{\cdots} \otimes x)\,].
-\]
-We refer to $\Delta^t(p)$ as the \defn{algebraic Tate diagonal}.
-
+\end{definition}
 \begin{lemma}
 The algebraic Tate diagonal is $\bF_p$-linear.
 \end{lemma}
 \begin{proof}
-First we check scalar multiplicativity, let $a\in\bF_p$ and $[x]\in H_n(C)$.
+First we check scalar multiplicativity, let $a\in\bF_p$ and $[x]\in H_n(V)$.
 \[
 \Delta^t(p)(a[x])=[e_{(1-p)n}\ot_{\cyc_p}(ax)^{\ot p}]=a^p[e_{(1-p)n}\ot_{\cyc_p}x^{\ot p}]=a\Delta^t(p)([x]),
 \]
 where the last equality holds in $\bF_p$ due to Fermat's little theorem.
 
-Now, for aditivity, let $[x]$ and $[y]\in H_n(C)$. We have
+Now, for aditivity, let $[x]$ and $[y]\in H_n(V)$. We have
 \[
 \Delta^t(p)([x]+[y])=[e_{(1-p)n}\ot_{\cyc_p}(x+y)^{\ot p}].
 \]
@@ -62,28 +59,109 @@ where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prim
 \Delta^t(p)([x]+[y])=\Delta^t(p)([x])+ \Delta^t(p)([y]).\qedhere
 \]
 \end{proof}
+\subsection{A characterisation of the algebraic Tate diagonal}
 
+Consider the full subcategory  $\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))\subset \Fun(\cD(\Fp),\cD(\Fp))$ of exact functors. The version on $\cD(\Fp)$ of Proposition III.1.2 from [Nikolaus-Scholze] is the following:
+\begin{proposition}
+For any $F\in \Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))$, evaluation at the chain complex $\Fp$ concentrated in degree $0$ induces an equivalence
+\[
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, F)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
+\]
+\end{proposition}
+
+Therefore, there is an equivalence 
+\[
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, T_p)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp))\cong\Fp\{\hat e_0\},
+\]
+and we can characterise the algebraic Tate diagonal in the following way:
+\begin{proposition}
+The algebraic Tate diagonal $\Delta^t_p$ is the natural transformation 
+\[
+\Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
+\]
+that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \hat e_0$. 
+\martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\hat e_0\}$.} 
+\end{proposition}
+\subsection{Relations with the spectral Tate diagonal}
+Let ${\mathsf {Sp}}$ denote the $\infty$-category of spectra. In [Nikolaus-Scholze], they define the following:
+\begin{definition}
+Let $X$ be a spectrum. 
+Let  $T^{\mathsf {Sp}}_p$ denote the functor $\mathsf{Sp}\to \mathsf{Sp}$ given by
+\[
+T^{\mathsf {Sp}}_p(X)\coloneqq (X^{\wedge p})^{t\cyc_p}=\cofib (Nm\colon (X\wedge \overset{p}{\dots} \wedge X)_{h\cyc_p}\to (X\wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}),
+\]
+the Tate construction of $X^{\wedge p}$, with $\cyc_p$-action given by permuting the factors.
+\end{definition}
+They prove that it is an exact functor and give
+\begin{proposition}
+For any $F\in \Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})$, evaluation at the sphere spectrum $\bS$ induces an equivalence
+\[
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}({{\mathsf{Sp}}},{{\mathsf{Sp}}})}(\id_{{{\mathsf{Sp}}}}, F)\longrightarrow \Hom_{\mathsf{Sp}}(\bS,F(\bS))=\Omega^\infty F(\bS).
+\]
+\end{proposition}
+Thus, the space of natural transformations $\id_{\mathsf{Sp}}\to T_p^{\mathsf{Sp}}$ is equivalent to $\Hom_{\mathsf{Sp}}(\bS,T_p^{\mathsf{Sp}}(\bS))=\Omega^\infty T^{\mathsf {Sp}}_p(\bS)$. This allows them to define
+\begin{definition}
+The \defn{Tate diagonal} is the natural transformation $\Delta_p\colon \id_{\mathsf{Sp}}\to T_p^{\mathsf{Sp}}$ that corresponds to the composition 
+\[
+\bS\to\bS^{h\cyc_p}\to \bS^{t\cyc_p}=T_p^{\mathsf{Sp}}(\bS).
+\]
+\end{definition}
+
+The derived category $\cD(\Fp)$ is equivalent to the subcategory $\sH\Fp\text{-}\mathrm{Mod}\subset \mathsf{Sp}$ of $\sH\Fp$-modules, or $\sH\Fp$-linear spectra, via the functor 
+\[
+\sH\colon \cD(\Fp) \longrightarrow\sH\Fp\text{-}\mathrm{Mod},
+\]
+that sends a chain complex $V$ in $\cD(\Fp)$ to the Eilemberg-MacLane spectrum $\sH V$. \martin{Or more precisely, a wedge of Eilemberg-Maclane spectra $\sH(H_i(V))$, is it better to state it this way?}
+ On the other direction, the functor 
+\[
+\pi_*\colon \sH\Fp\text{-}\mathrm{Mod}\longrightarrow \cD(\Fp)
+\]
+ takes a $\sH\Fp$-linear spectrum $X$ to the chain complex with $\pi_i(X)$ in degree $i$ and zero differential.
+ 
+ If $X$ is a $\sH\Fp$-linear spectrum, then $T_p^{\mathsf{Sp}}(X)$ is also a $\sH\Fp$-linear spectrum. Furthermore, if $V$ is a chain complex in $\cD(\Fp)$, 
+ \[
+ \pi_*(T_p^{\mathsf{Sp}}(\sH V))\cong  T_p(V). \martin{I think this is true, right?}
+ \]
+ \begin{proposition}
+ The algebraic Tate diagonal is a shadow of the Tate diagonal, in the sense that for any $V$ in $\cD(\Fp)$, 
+ \[
+\Delta^t_p(V)=\pi_*(\Delta_p(\sH V)) 
+ \]
+as maps $V\to T_p(V)$ in $\cD(\Fp)$.
+ \end{proposition}
+ \begin{proof}
+ It is enough to prove that $\pi_*(\Delta_p(\sH \Fp))$ is the inclusion map $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \hat e_0$. By naturality, for any $f\in \pi_0(\sH \Fp)$ we have a commuting square
+ \begin{center}
+ \begin{tikzpicture}
+ 	\node (S) at (0,0){$\bS$};
+	\node (TS) at (4,0){$T_p^{\mathsf{Sp}}(\bS)$};
+	\node (F) at (0,-2){$\sH\Fp$};
+	\node (TF) at (4,-2){$T_p^{\mathsf{Sp}}(\sH\Fp)$};
+	%
+	\draw[->](S)--node[right]{$f$}(F);
+	\draw[->](TS)--node[right]{$T_p^{\mathsf{Sp}}(f)$}(TF);
+	\draw[->](S)--node[above]{$\Delta_p(\bS)$}(TS);
+	\draw[->](F)--node[above]{$\Delta_p(\sH\Fp)$}(TF);
+ \end{tikzpicture}
+ \end{center}
+ Taking $f$ to be $1\in\pi_0(\sH \Fp)=\Fp$...\martin{I still have to figure out some details here}
+ \end{proof}
 \subsection{Monoidality}
 
-Let $H \colon \sD(\Fp)\to \text{GrVect}_\Fp$ denote the homology functor. It is a lax monoidal functor: for chain complexes $C$ and $D$, the Künneth map defines a morphism
+The identity functor $\id_{\cD (\Fp)}$ is a lax monoidal functor: for chain complexes $C$ and $D$, there is a natural morphism $\kappa$ in $\cD(\Fp)$ that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather $\kappa$ is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal.}
 \[
-\kappa \colon H(C)\otimes H(D)\longrightarrow H(C\otimes D),
+\kappa_* \colon H(C)\otimes H(D)\longrightarrow H(C\otimes D).
 \]
-which is natural in $C$ and $D$.
 
-Let $H^t(p)$ denote the composite
+The functor $T_p$ is also a lax monoidal functor. Indeed, there is a natural morphism characterised by
 \[
-\sD(\Fp) \xra{(-)^{\otimes p}} \sD(R) \xra{(-)^{t\cyc_p}} \sD(\Fp) \xra{H} \text{GrVect}_\Fp.
-\]
-This is again a lax monoidal functor. Indeed, there is a natural morphism
-\[
-\mu\circ \kappa\colon H\big(\widehat W\otimes_{\cyc_p} C^{\otimes p}\big)\otimes H\big(\widehat W\otimes_{\cyc_p} D^{\otimes p}\big)
-\longrightarrow H\big(\widehat W\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big),
+\mu_*\circ \kappa_*\colon H\big(\widehat W_p\otimes_{\cyc_p} C^{\otimes p}\big)\otimes H\big(\widehat W_p\otimes_{\cyc_p} D^{\otimes p}\big)
+\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big),
 \]
 where
 \[
-\mu\colon H\big((\widehat W\otimes_{\cyc_p} C^{\otimes p})\otimes (\widehat W\otimes_{\cyc_p} D^{\otimes p})\big)
-\longrightarrow H\big(\widehat W\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big)
+\mu_*\colon H\big((\widehat W_p\otimes_{\cyc_p} C^{\otimes p})\otimes (\widehat W_p\otimes_{\cyc_p} D^{\otimes p})\big)
+\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big)
 \]
 is induced by the assignment
 \[
@@ -102,14 +180,14 @@ The following diagram commutes for all chain complexes $C$ and $D$:
 \begin{center}
 \begin{tikzpicture}
 \node (a) at (-3,2){$H(C)\otimes H(D)$};
-\node (b) at (4,2){$H(\widehat W\otimes_{C_p} C^{\otimes p})\otimes H(\widehat W\otimes_{C_p} D^{\otimes p})$};
+\node (b) at (4,2){$H(\widehat W_p\otimes_{C_p} C^{\otimes p})\otimes H(\widehat W_p\otimes_{C_p} D^{\otimes p})$};
 \node (c) at (-3,0){$H(C\otimes D)$};
-\node (d) at (4,0){$H(\widehat W\otimes_{C_p} (C\otimes D)^{\otimes p})$};
+\node (d) at (4,0){$H(\widehat W_p\otimes_{C_p} (C\otimes D)^{\otimes p})$};
 %
-\draw[->](a) -- node[above]{$\Delta^t(p)\otimes \Delta^t(p)$}(b);
-\draw[->](a)--node[right]{$\kappa$}(c);
-\draw[->](b)--node[right]{$\mu\circ\kappa$}(d);
-\draw[->](c)--node[above]{$\Delta^t(p)\circ \otimes$}(d);
+\draw[->](a) -- node[above]{$(\Delta^t_p)_*\otimes (\Delta^t_p)_*$}(b);
+\draw[->](a)--node[right]{$\kappa_*$}(c);
+\draw[->](b)--node[right]{$\mu_*\circ\kappa_*$}(d);
+\draw[->](c)--node[above]{$(\Delta^t_p)_*\circ \otimes$}(d);
 
 \end{tikzpicture}
 \end{center}
@@ -118,6 +196,6 @@ The following diagram commutes for all chain complexes $C$ and $D$:
 \begin{lemma}
 The algebraic Tate diagonal defines a monoidal natural transformation
 \[
-\Delta^t(p)\colon H \longrightarrow H^t(p).
+\Delta^t_p\colon \id_{\cD (\Fp)} \longrightarrow T_p.
 \]
 \end{lemma}
