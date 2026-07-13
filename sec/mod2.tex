@@ -411,72 +411,102 @@
 %\newpage
 
 
-\section{Steenrod squares}
+\section{Steenrod operations}
+Let $V$ be a chain complex in $\cD(\Fp)$.
 
-We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
-Throughout this subsection we might need to assume that \(V\) is of finite type, that is, degreewise finite-dimensional.\anibal{Check this for the first lemma.}
+%Throughout this subsection we might need to assume that \(V\) is of finite type, that is, degreewise finite-dimensional.\anibal{Check this for the first lemma.}
 
-\subsubsection{Shifted Tate sequence}
+\subsubsection{Another model for $T_p V$}
 
-We use the symmetry of the tensor product to define the functors
+Let $\widetilde W_p\coloneqq \fib (W\overset{N}\longrightarrow W^\dd)$, the fibre of the norm map. Explicitly, $\widetilde W_p=\widehat W_p[-1]$ is the complex
 \[
-V \mapsto (V^{\ot 2})_{h\cyc_2}
-\qquad\text{and}\qquad
-V \mapsto (V^{\ot 2})^{h\cyc_2},
+ \cdots \xla{-N} R\set{\tilde e_{-2}} \xla{\overline  T} R\set{\tilde e_{-1}} \xla{N} R\set{\tilde e_0} \xla{T} R\set{\tilde e_1} \xla{N} R\set{\tilde e_2} \xla{T} \cdots,
 \]
-where \((-)_{h\cyc_2}\) and \((-)^{h\cyc_2}\) are respectively the functors of homotopy orbits and homotopy fixed points.
-The homotopy fibre of the norm map defines another functor
+with $\tilde e_i\coloneqq \hat e_{i+1}[-1]$ in degree $i$. Thus, $\widetilde W_p\otimes_{\cyc_p} M\simeq M^{t\cyc_p}[-1]$ for a $\Fp[\cyc_p]$-module $M$. However, if we take $M=\Fp$ with the trivial action, then 
 \[
-T_2 V \defeq \fib\Big((V^{\ot 2})_{h\cyc_2} \xrightarrow{\mathrm{Nm}} (V^{\ot 2})^{h\cyc_2}\Big),
+H(\widetilde W_p\otimes_{\cyc_p} \Fp)\cong \Fp\{\tilde e_i\}\cong \Fp[u,u^{-1}]\{\tilde e_0\},
 \]
-naturally equivalent to the shifted Tate construction \(T_2 V \simeq (V^{\ot 2})^{t\cyc_2}[-1]\), and which fits in the \textit{shifted Tate sequence}
-\begin{equation}\label{eq:tate_sequence}
-	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2 V \to (V^{\ot 2})_{h\cyc_2}.
-\end{equation}
-
-As is well-known, for every \(j \in \Z\),
-\[
-H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
-\]
-so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\) acting by
-\[
-u \, \hat x_j = \hat x_{j + 1}.
-\]
-
-\subsubsection{Tate diagonal}
-\begin{definition}
-The \defn{Tate diagonal} is the natural transformation
-\[
-\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
-\]
-whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
-\[
-\begin{tikzcd}[row sep=0, column sep=small]
-	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
-\end{tikzcd}
-\]
-\end{definition}
-The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. 
-
-\medskip
-The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action
-\[
-u \Delta^t_*(v) = u (\hat x_{-|v|} \ot v \ot v) = \hat x_{1-|v|} \ot v \ot v.
-\]
-In other words, we have the following.
-
-\begin{lemma}\label{p:tate_iso}
-	The following map is an isomorphism of free \(\Ftwo[u,u^{-1}]\)-modules:
+and we have an isomorphism 
 	\[
 	\begin{tikzcd}[row sep=0, column sep=small]
-		\Ftwo[u,u^{-1}] \ot H(V) \arrow[r] & H(T_2V) \\
-		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
+		H(\widetilde W_p\otimes_{\cyc_p} \Fp) \arrow[r] & H(\widehat W_p\otimes_{\cyc_p} \Fp) \\
+		\hspace*{13pt} \tilde e_i \arrow[r, |->] & \hat e_i.
 	\end{tikzcd}
 	\]
+This means that there are $\Fp[\cyc_p]$-modules for which both the fibre and the cofibre of the norm map give models for the tate construction. In virtue of Lemma \ref{pTate_iso},  this also happens for $V^{\ot p}$:
+\begin{lemma} There are isomorphisms
+\[
+H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_p V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p}).
+\]
+Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 \end{lemma}
+\begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
+\[
+\cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
+\]
+\end{corollary}
 
-\subsubsection{Tate multiplications and Steenrod squares}
+%\subsubsection{Shifted Tate sequence}
+%
+%We use the symmetry of the tensor product to define the functors
+%\[
+%V \mapsto (V^{\ot 2})_{h\cyc_2}
+%\qquad\text{and}\qquad
+%V \mapsto (V^{\ot 2})^{h\cyc_2},
+%\]
+%where \((-)_{h\cyc_2}\) and \((-)^{h\cyc_2}\) are respectively the functors of homotopy orbits and homotopy fixed points.
+%The homotopy fibre of the norm map defines another functor
+%\[
+%T_2 V \defeq \fib\Big((V^{\ot 2})_{h\cyc_2} \xrightarrow{\mathrm{Nm}} (V^{\ot 2})^{h\cyc_2}\Big),
+%\]
+%naturally equivalent to the shifted Tate construction \(T_2 V \simeq (V^{\ot 2})^{t\cyc_2}[-1]\), and which fits in the \textit{shifted Tate sequence}
+%\begin{equation}\label{eq:tate_sequence}
+%	(V^{\ot 2})^{h\cyc_2}[-1] \to T_2 V \to (V^{\ot 2})_{h\cyc_2}.
+%\end{equation}
+%
+%As is well-known, for every \(j \in \Z\),
+%\[
+%H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
+%\]
+%so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\) acting by
+%\[
+%u \, \hat x_j = \hat x_{j + 1}.
+%\]
+
+%\subsubsection{Tate diagonal}
+%\begin{definition}
+%The \defn{Tate diagonal} is the natural transformation
+%\[
+%\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
+%\]
+%whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
+%\[
+%\begin{tikzcd}[row sep=0, column sep=small]
+%	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
+%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+%\end{tikzcd}
+%\]
+%\end{definition}
+%The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. 
+%
+%\medskip
+%The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action
+%\[
+%u \Delta^t_*(v) = u (\hat x_{-|v|} \ot v \ot v) = \hat x_{1-|v|} \ot v \ot v.
+%\]
+%In other words, we have the following.
+%
+%\begin{lemma}\label{p:tate_iso}
+%	The following map is an isomorphism of free \(\Ftwo[u,u^{-1}]\)-modules:
+%	\[
+%	\begin{tikzcd}[row sep=0, column sep=small]
+%		\Ftwo[u,u^{-1}] \ot H(V) \arrow[r] & H(T_2V) \\
+%		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
+%	\end{tikzcd}
+%	\]
+%\end{lemma}
+%
+\subsubsection{Tate multiplications and Steenrod operations}
 
 A \defn{Tate multiplication} on \(V\) is a map
 \[
