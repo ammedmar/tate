@@ -32,31 +32,63 @@ which is characterised on homology by
 \end{tikzcd}
 \]
 \end{definition}
+The image of $(\Delta^t_p)_*$ generates $H(T_pV)$ as a $\Fp[u,u^{-1}]$-module with action 
+\[
+u \Delta^t_*(v) = u (\hat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \hat e_{(1-p)|v|+1} \ot v^{\ot p}.
+\]
+In other words, we have the following:
+
+\begin{lemma}\label{p:tate_iso}
+	There is an isomorphism of free \(\Fp[u,u^{-1}]\)-modules:
+	\[
+	\begin{tikzcd}[row sep=0, column sep=small]
+		\Fp[u,u^{-1}] \ot H(V) \arrow[r] & H(T_pV) \\
+		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
+	\end{tikzcd}
+	\]
+\end{lemma}
+\begin{proof}
+First, we have that 
+\[
+H(T_pV)\cong h(\widehat W_p\otimes_{\cyc_p} V^{\otimes p})\cong H(\widehat W_p\otimes_{\cyc_p}H(V)^{\otimes p}).
+\]
+Now, $H(V)$ is a graded $\Fp$-vector space, so we can consider a basis $\{v_\alpha\}_{\alpha\in A}$ for $H(V)$. Since $H(V)^{\ot p}$ is a permutation module, we can decompose it into orbits. There are two types of orbits, the trivial orbits with a single element and the free orbits with $p$ elements, that is,
+\[
+H(V)^{\ot p}\cong \left (\,\bigoplus_{\alpha\in A} \Fp\{v_\alpha^{\ot p}\}\right ) \oplus \left (\,\bigoplus_{\text{free orbits}} \Fp[\cyc_p]\right ).
+\]
+Tensoring over $\cyc_p$ with $\widehat W_p$ gives 
+\[
+\widehat W_p\ot_{\cyc_p} H(V)^{\ot p}\cong \left (\,\bigoplus_{\alpha\in A}\widehat W_p\ot_{\cyc_p} \Fp\{v_\alpha^{\ot p}\}\right )\oplus \left (\,\bigoplus_{\text {free orbits}} \widehat W_p\right ),
+\]
+but $\widehat W_p$ is acyclic, and $H(\widehat W_p\ot_{\cyc_p} \Fp)\cong H(T_p\Fp)\cong \Fp[u,u^{-1}]$. It is thus clear that the given map is an isomorphism.
+\end{proof}
+
 \begin{lemma}
 The algebraic Tate diagonal is $\bF_p$-linear.
 \end{lemma}
 \begin{proof}
-First we check scalar multiplicativity, let $a\in\bF_p$ and $[x]\in H_n(V)$.
+First we check scalar multiplicativity, let $a\in\bF_p$ and $x\in H_n(V)$.
 \[
-\Delta^t(p)(a[x])=[e_{(1-p)n}\ot_{\cyc_p}(ax)^{\ot p}]=a^p[e_{(1-p)n}\ot_{\cyc_p}x^{\ot p}]=a\Delta^t(p)([x]),
+\Delta^t_p(ax)=\hat e_{(1-p)n}\ot(ax)^{\ot p}=a^p(\hat e_{(1-p)n}\ot x^{\ot p})=a\Delta^t_p(x),
 \]
 where the last equality holds in $\bF_p$ due to Fermat's little theorem.
 
-Now, for aditivity, let $[x]$ and $[y]\in H_n(V)$. We have
+Now, for additivity, let $x$ and $y\in H_n(V)$. We have
 \[
-\Delta^t(p)([x]+[y])=[e_{(1-p)n}\ot_{\cyc_p}(x+y)^{\ot p}].
+\Delta^t_p(x+y)=\hat e_{(1-p)n}\ot(x+y)^{\ot p}.
 \]
-The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the leters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those with $p$ elements. There are two orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
+The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the letters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those free with $p$ elements. There are two trivial orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
 \[
-[e_{(1-p)n}\ot_{\cyc_p}(x+y)^{\ot p}]=[e_{(1-p)n}\ot_{\cyc_p}x^{\ot p}]+[e_{(1-p)n}\ot_{\cyc_p}y^{\ot p}]+\sum_{i=1}^{(2^{p}-2)/p}[e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i],
+\hat e_{(1-p)n}\ot(x+y)^{\ot p}=\hat e_{(1-p)n}\ot x^{\ot p}+\hat e_{(1-p)n}\ot y^{\ot p}+\sum_{i=1}^{(2^{p}-2)/p}\hat e_{(1-p)n}\ot N{\bf w}_i,
 \]
-but 
+%but 
+%\[
+%\hat e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=N\hat e_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=d\hat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(\hat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
+%\]
+%where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $d\hat e_j=N\hat e_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. 
+but the elements $\hat e_{(1-p)n}\ot N{\bf w}_i$ lie on the subcomplex of $\widehat W_p\ot  H(V)^{\ot p}$ of free orbits, which is acyclic, meaning that the term $\sum_{i=1}^{(2^{p}-2)/p}\hat e_{(1-p)n}\ot N{\bf w}_i$ vanishes, and so
 \[
-e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=Ne_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=de_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
-\]
-where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $de_j=Ne_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. This means that the term $\sum_{i=1}^{(2^{p}-2)/p}[e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i]$ vanishes, and so
-\[
-\Delta^t(p)([x]+[y])=\Delta^t(p)([x])+ \Delta^t(p)([y]).\qedhere
+\Delta^t_p(x+y)=\Delta^t_p(x)+ \Delta^t_p(y).\qedhere
 \]
 \end{proof}
 \subsection{A characterisation of the algebraic Tate diagonal}
