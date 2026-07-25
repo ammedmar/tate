@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 %\subsection{Steenrod squares}
 %
@@ -446,6 +447,77 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 \]
 \end{corollary}
 
+\subsubsection{Tate diagonal}
+
+\begin{definition}
+	The \defn{Tate diagonal} is the natural transformation
+	\[
+	\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
+	\]
+	whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
+	\[
+	\begin{tikzcd}[row sep=0, column sep=small]
+		\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
+		& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+	\end{tikzcd}
+	\]
+</definition>
+
+The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. \martin{This is true for $p=2$, but I think for odd $p$ one needs to take the cofibre, not the fibre, because the argument will use that $(1-p)|v|$ is even, and so $d \hat x_{(1-p)|v|+1}=N \hat x_{(1-p)|v|}$, which only happens for odd degrees (even degrees have $T$).}
+
+%\subsubsection{Tate diagonal}
+%\begin{definition}
+%The \defn{Tate diagonal} is the natural transformation
+%\[
+%\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
+%\]
+%whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
+%\[
+%\begin{tikzcd}[row sep=0, column sep=small]
+%	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
+%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+%\end{tikzcd}
+%\]
+%\end{definition}
+%The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. 
+%
+%\medskip
+%The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action
+%\[
+%u \Delta^t_*(v) = u (\hat x_{-|v|} \ot v \ot v) = \hat x_{1-|v|} \ot v \ot v.
+%\]
+%In other words, we have the following.
+%
+%\begin{lemma}\label{p:tate_iso}
+%	The following map is an isomorphism of free \(\Ftwo[u,u^{-1}]\)-modules:
+%	\[
+%	\begin{tikzcd}[row sep=0, column sep=small]
+%		\Ftwo[u,u^{-1}] \ot H(V) \arrow[r] & H(T_2V) \\
+%		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
+%	\end{tikzcd}
+%	\]
+%\end{lemma}
+%
+\subsubsection{Tate multiplications and Steenrod operations}
+
+	\[
+	\begin{tikzcd}[row sep=0, column sep=small]
+		H(\widetilde W_p\otimes_{\cyc_p} \Fp) \arrow[r] & H(\widehat W_p\otimes_{\cyc_p} \Fp) \\
+		\hspace*{13pt} \tilde e_i \arrow[r, |->] & \hat e_i.
+	\end{tikzcd}
+	\]
+This means that there are $\Fp[\cyc_p]$-modules for which both the fibre and the cofibre of the norm map give models for the tate construction. In virtue of Lemma \ref{pTate_iso},  this also happens for $V^{\ot p}$:
+\begin{lemma} There are isomorphisms
+\[
+H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_p V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p}).
+\]
+Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
+</lemma>
+\begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
+\[
+\cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
+\]
+</corollary>
 %\subsubsection{Shifted Tate sequence}
 %
 %We use the symmetry of the tensor product to define the functors
@@ -486,7 +558,7 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 %	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
 %\end{tikzcd}
 %\]
-%\end{definition}
+%\end{definition>
 %The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. 
 %
 %\medskip
@@ -504,10 +576,25 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 %		\hspace*{13pt} u^k \ot v \arrow[r, |->] & u^k \Delta^t_*(v).
 %	\end{tikzcd}
 %	\]
-%\end{lemma}
+%\end{lemma>
 %
-\subsubsection{Tate multiplications and Steenrod operations}
+%\subsubsection{Tate spectral sequence}
+%
+%\begin{lemma> There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V); \bF_2) \Rightarrow H(T_2V; \bF_2)$.}
+%\[
+%\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
+%\]
+%\end{lemma>
+%
+%\begin{proof}
+%	Let $W^t \coloneqq \fib(N_{W} \colon W \xrightarrow{\sim} W^\vee)$, the fibre of the norm map. We have that
+%	\[
+%	T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
+%	\]
+%	Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q} = H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
+%\end{proof}
 
+\subsubsection{Tate multiplications and Steenrod operations}
 A \defn{Tate multiplication} on \(V\) is a map
 \[
 \widehat\mu \colon T_2 V \to V.
@@ -523,7 +610,9 @@ We say that \(\widehat\mu\) has:
 	\item The \textit{instability property} if \(\Sq_k^{\widehat\mu}(v) = 0\) for all \(v \in H(V)\) and \(k < |v|\),
 	\item The \textit{connectivity property} if \(\Sq_k^{\widehat\mu} = 0\) for all \(k < 0\).
 \end{enumerate}
-Observe that the instability property implies the connectivity one, since any $k<0$ will satisfy $k<|v|$ for any $v\in H(V)$.
+
+%Observe that the instability property implies the connectivity one, since any $k<0$ will satisfy $k<|v|$ for any $v\in H(V)$.
+
 \subsubsection{Identity and instability}
 
 Consider a Tate multiplication \(\widehat\mu\) on \(V\).
