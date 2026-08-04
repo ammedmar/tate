@@ -412,7 +412,7 @@
 %\newpage
 
 
-\section{Steenrod operations}
+\section{Steenrod operations}\label{Steenrod}
 Let $V$ be a chain complex in $\cD(\Fp)$.
 
 %Throughout this subsection we might need to assume that \(V\) is of finite type, that is, degreewise finite-dimensional.\anibal{Check this for the first lemma.}
@@ -461,7 +461,7 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 		& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
 	\end{tikzcd}
 	\]
-</definition>
+\end{definition}
 
 The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. \martin{This is true for $p=2$, but I think for odd $p$ one needs to take the cofibre, not the fibre, because the argument will use that $(1-p)|v|$ is even, and so $d \hat x_{(1-p)|v|+1}=N \hat x_{(1-p)|v|}$, which only happens for odd degrees (even degrees have $T$).}
 
@@ -512,12 +512,13 @@ This means that there are $\Fp[\cyc_p]$-modules for which both the fibre and the
 H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_p V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p}).
 \]
 Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
-</lemma>
+\end{lemma}
 \begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
 \[
 \cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
 \]
-</corollary>
+\end{corollary}
+
 %\subsubsection{Shifted Tate sequence}
 %
 %We use the symmetry of the tensor product to define the functors
