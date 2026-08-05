@@ -1,21 +1,14 @@
 \section{The algebraic Tate diagonal}\label{Tatediag}
-
+Let $V$ be a chain complex in $\cD(\Fp)$.
 \begin{definition} We denote by $T_p$ the functor
 \[
 T_p\coloneqq (-\otimes \overset{p}{\cdots}\otimes -)^{t\cyc_p} \colon \mathcal D(\Fp)\to \mathcal D(\Fp).
 \]
-Explicitly, given $V$ in $\mathcal D(\Fp)$, $T_pV$ is the $\cyc_p$-Tate construction of the chain complex of $\Fp[\cyc_p]$-modules $V^{\otimes p}$, whose $\cyc_p$-action is given by permuting the factors.
+Explicitly, $T_pV$ is the $\cyc_p$-Tate construction of the chain complex of $\Fp[\cyc_p]$-modules $V^{\otimes p}$, whose $\cyc_p$-action is given by permuting the factors.
 \end{definition}
 
 \begin{example}
-Taking $V=\Fp$, we have $T_p(\Fp)=(\Fp^{\otimes p})^{t\cyc_p}\cong \Fp^{t\cyc_p}$. Its homology is precisely the Tate cohomology of the cyclic group with trivial coefficients $\hat H^*(\cyc_p;\Fp)$, and is given by
-\[
-\hat H^i(\cyc_p;\Fp)\cong H_i(\widehat W_p\otimes_{\cyc_p}\Fp)=H_i((\widehat W_p)_{\cyc_p})\cong \Fp\{\hat e_i\}.
-\]
-Therefore, $H_*(T_p\Fp)$ is a free one-dimensional $\Fp[u,u^{-1}]$-module with action
-\[
-u\cdot \hat e_i\coloneqq \hat e_{i+1}.
-\]
+Taking $V=\Fp$, we have $T_p(\Fp)=(\Fp^{\otimes p})^{t\cyc_p}\cong \Fp^{t\cyc_p}$. 
 \end{example}
 \begin{lemma} $T_p$ is an exact functor.
 \end{lemma}%immediate from Nikolaus-Scholze?
@@ -28,13 +21,13 @@ which is characterised on homology by
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
 	(\Delta^t_p)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
-	& v \arrow[r, |->] & \hat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v).
+	& v \arrow[r, |->] & \widehat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v).
 \end{tikzcd}
 \]
 \end{definition}
 The image of $(\Delta^t_p)_*$ generates $H(T_pV)$ as a $\Fp[u,u^{-1}]$-module with action 
 \[
-u \Delta^t_*(v) = u (\hat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \hat e_{(1-p)|v|+1} \ot v^{\ot p}.
+u \Delta^t_*(v) = u (\widehat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \widehat e_{(1-p)|v|+1} \ot v^{\ot p}.
 \]
 In other words, we have the following:
 
@@ -50,7 +43,7 @@ In other words, we have the following:
 \begin{proof}
 First, we have that 
 \[
-H(T_pV)\cong H(\widehat W_p\otimes_{\cyc_p} V^{\otimes p})\cong H(\widehat W_p\otimes_{\cyc_p}H(V)^{\otimes p}).
+H(T_pV)\cong H(\widehat W_p\otimes_{\cyc_p} V^{\otimes p})\cong H(\widehat W_p\otimes_{\cyc_p}H(V)^{\otimes p}). \martin{This first step is delicate, I am not fully sure that it is true without any extra assumptions. In particular, this implies that the spectral sequence in Lemma \ref{spectral_seq} converges at the second page for the case $M=V^{\ot p}$, which should be true.}
 \]
 Now, $H(V)$ is a graded $\Fp$-vector space, so we can consider a basis $\{v_\alpha\}_{\alpha\in A}$ for $H(V)$. Since $H(V)^{\ot p}$ is a permutation module, we can decompose it into orbits. There are two types of orbits, the trivial orbits with a single element and the free orbits with $p$ elements, that is,
 \[
@@ -63,30 +56,46 @@ Tensoring over $\cyc_p$ with $\widehat W_p$ gives
 but $\widehat W_p$ is acyclic, and $H(\widehat W_p\ot_{\cyc_p} \Fp)\cong H(T_p\Fp)\cong \Fp[u,u^{-1}]$. It is thus clear that the given map is an isomorphism.
 \end{proof}
 
+\begin{lemma}\label{fibre_cofibre}
+There is an equivalence $T_pV[-1] \simeq T_p V$ in $\cD(\Fp)$.
+\end{lemma}
+\begin{proof}
+The proof of Lemma \ref{pTate_iso} works analogously for $H(T_pV[-1])$, which means that there are isomorphisms
+\[
+H(T_pV[-1])\cong H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong \Fp[u,u^{-1}]\ot H(V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_pV).
+\]
+\end{proof}
+
+\begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
+\[
+\cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
+\]
+\end{corollary}
+
 \begin{lemma}
 The algebraic Tate diagonal is $\bF_p$-linear.
 \end{lemma}
 \begin{proof}
 First we check scalar multiplicativity, let $a\in\bF_p$ and $x\in H_n(V)$.
 \[
-\Delta^t_p(ax)=\hat e_{(1-p)n}\ot(ax)^{\ot p}=a^p(\hat e_{(1-p)n}\ot x^{\ot p})=a\Delta^t_p(x),
+\Delta^t_p(ax)=\widehat e_{(1-p)n}\ot(ax)^{\ot p}=a^p(\widehat e_{(1-p)n}\ot x^{\ot p})=a\Delta^t_p(x),
 \]
 where the last equality holds in $\bF_p$ due to Fermat's little theorem.
 
 Now, for additivity, let $x$ and $y\in H_n(V)$. We have
 \[
-\Delta^t_p(x+y)=\hat e_{(1-p)n}\ot(x+y)^{\ot p}.
+\Delta^t_p(x+y)=\widehat e_{(1-p)n}\ot(x+y)^{\ot p}.
 \]
 The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the letters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those free with $p$ elements. There are two trivial orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
 \[
-\hat e_{(1-p)n}\ot(x+y)^{\ot p}=\hat e_{(1-p)n}\ot x^{\ot p}+\hat e_{(1-p)n}\ot y^{\ot p}+\sum_{i=1}^{(2^{p}-2)/p}\hat e_{(1-p)n}\ot N{\bf w}_i,
+\widehat e_{(1-p)n}\ot(x+y)^{\ot p}=\widehat e_{(1-p)n}\ot x^{\ot p}+\widehat e_{(1-p)n}\ot y^{\ot p}+\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i,
 \]
 %but 
 %\[
-%\hat e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=N\hat e_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=d\hat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(\hat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
+%\widehat e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=N\widehat e_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=d\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
 %\]
-%where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $d\hat e_j=N\hat e_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. 
-but the elements $\hat e_{(1-p)n}\ot N{\bf w}_i$ lie on the subcomplex of $\widehat W_p\ot  H(V)^{\ot p}$ of free orbits, which is acyclic, meaning that the term $\sum_{i=1}^{(2^{p}-2)/p}\hat e_{(1-p)n}\ot N{\bf w}_i$ vanishes, and so
+%where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $d\widehat e_j=N\widehat e_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. 
+but the elements $\widehat e_{(1-p)n}\ot N{\bf w}_i$ lie on the subcomplex of $\widehat W_p\ot  H(V)^{\ot p}$ of free orbits, which is acyclic, meaning that the term $\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i$ vanishes, and so
 \[
 \Delta^t_p(x+y)=\Delta^t_p(x)+ \Delta^t_p(y).\qedhere
 \]
@@ -103,7 +112,7 @@ For any $F\in \Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))$, evaluation at the chain co
 
 Therefore, there is an equivalence 
 \[
-\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, T_p)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp))\cong\Fp\{\hat e_0\},
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, T_p)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp))\cong\Fp\{\widehat e_0\},
 \]
 and we can characterise the algebraic Tate diagonal in the following way:
 \begin{proposition}
@@ -111,8 +120,8 @@ The algebraic Tate diagonal $\Delta^t_p$ is the natural transformation
 \[
 \Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
 \]
-that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \hat e_0$. 
-\martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\hat e_0\}$.} 
+that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. 
+\martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\widehat e_0\}$.} 
 \end{proposition}
 \subsection{Relations with the spectral Tate diagonal}
 Let ${\mathsf {Sp}}$ denote the $\infty$-category of spectra. In [Nikolaus-Scholze], they define the following:
@@ -152,17 +161,18 @@ that sends a chain complex $V$ in $\cD(\Fp)$ to the Eilemberg-MacLane spectrum $
  
  If $X$ is a $\sH\Fp$-linear spectrum, then $T_p^{\mathsf{Sp}}(X)$ is also a $\sH\Fp$-linear spectrum. Furthermore, if $V$ is a chain complex in $\cD(\Fp)$, 
  \[
- \pi_*(T_p^{\mathsf{Sp}}(\sH V))\cong  T_p(V). \martin{I think this is true, right?}
+ \pi_*(T_p^{\mathsf{Sp}}(\sH V))\cong  T_p(V). \martin{Replace this with the can map}
  \]
+ We have that the algebraic Tate diagonal is a shadow of the Tate diagonal, in the following sense:
  \begin{proposition}
- The algebraic Tate diagonal is a shadow of the Tate diagonal, in the sense that for any $V$ in $\cD(\Fp)$, 
+ For any $V$ in $\cD(\Fp)$, 
  \[
 \Delta^t_p(V)=\pi_*(\Delta_p(\sH V)) 
  \]
 as maps $V\to T_p(V)$ in $\cD(\Fp)$.
  \end{proposition}
  \begin{proof}
- It is enough to prove that $\pi_*(\Delta_p(\sH \Fp))$ is the inclusion map $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \hat e_0$. By naturality, for any $f\in \pi_0(\sH \Fp)$ we have a commuting square
+ It is enough to prove that $\pi_*(\Delta_p(\sH \Fp))$ is the inclusion map $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. By naturality, for any $f\in \pi_0(\sH \Fp)$ we have a commuting square
  \begin{center}
  \begin{tikzpicture}
  	\node (S) at (0,0){$\bS$};

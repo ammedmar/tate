@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-
 %\subsection{Steenrod squares}
 %
 %We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
@@ -27,11 +25,11 @@
 %
 %With this convention, for every \(j \in \Z\),
 %\[
-%H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
+%H_j(T_2 \Ftwo) \cong \Ftwo\set{\widehat x_j},
 %\]
 %so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\), where \(u\) acts by
 %\[
-%u \, \hat x_j = \hat x_{j + 1}.
+%u \, \widehat x_j = \widehat x_{j + 1}.
 %\]
 %
 %\subsubsection{Tate spectral sequence}
@@ -56,11 +54,11 @@
 %\]
 %We write
 %\[
-%\hat x_j \in \widehat H_j(\cyc_2;\Ftwo)
+%\widehat x_j \in \widehat H_j(\cyc_2;\Ftwo)
 %\]
 %for the generator satisfying
 %\[
-%u\,\hat x_j=\hat x_{j+1}.
+%u\,\widehat x_j=\widehat x_{j+1}.
 %\]
 %
 %For \(M=V^{\ot 2}\), the Kunneth isomorphism gives
@@ -87,12 +85,12 @@
 %\]
 %is strongly convergent, the diagonal classes
 %\[
-%\hat x_p\ot e_\alpha\ot e_\alpha
+%\widehat x_p\ot e_\alpha\ot e_\alpha
 %\]
 %survive to \(E^\infty\), and there are no hidden extensions among these classes as a graded \(\Ftwo[u,u^{-1}]\)-module.
 %Equivalently, the associated graded description coming from the Tate spectral sequence lifts to an isomorphism of graded \(\Ftwo[u,u^{-1}]\)-modules
 %\[
-%\bigoplus_\alpha \Ftwo[u,u^{-1}]\set{\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha}
+%\bigoplus_\alpha \Ftwo[u,u^{-1}]\set{\widehat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha}
 %\xra{\cong} H(T_2V),
 %\]
 %where \(d_\alpha=|e_\alpha|\).
@@ -112,7 +110,7 @@
 %\[
 %\begin{tikzcd}[row sep=0, column sep=small]
 %	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+%	& v \arrow[r, |->] & \widehat{x}_{-|v|} \ot v \ot v.
 %\end{tikzcd}
 %\]
 %The map \(\Delta^t_*\) is linear because, for cycles \(v,w\), the cross term
@@ -172,20 +170,20 @@
 %	in bidegree \((p,2d_\alpha)\).
 %	The corresponding class in total degree \(p+2d_\alpha\) is
 %	\[
-%	\hat x_p\ot e_\alpha\ot e_\alpha.
+%	\widehat x_p\ot e_\alpha\ot e_\alpha.
 %	\]
 %	In particular, the unique Tate translate of this diagonal class lying in total degree \(d_\alpha\) is
 %	\[
-%	\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	\widehat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
 %	\]
 %
 %	By the defining property of the Tate diagonal,
 %	\[
-%	\Delta^t_*(e_\alpha)=\hat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	\Delta^t_*(e_\alpha)=\widehat x_{-d_\alpha}\ot e_\alpha\ot e_\alpha.
 %	\]
 %	Multiplication by \(u\) gives
 %	\[
-%	u^k\Delta^t_*(e_\alpha)=\hat x_{k-d_\alpha}\ot e_\alpha\ot e_\alpha.
+%	u^k\Delta^t_*(e_\alpha)=\widehat x_{k-d_\alpha}\ot e_\alpha\ot e_\alpha.
 %	\]
 %	These are exactly the diagonal Tate classes contributed by the basis vector \(e_\alpha\).
 %
@@ -216,7 +214,7 @@
 %	The same argument, applied degreewise, gives additivity for arbitrary homogeneous decompositions.
 %	Thus the formula
 %	\[
-%	v\mapsto \hat x_{-|v|}\ot v\ot v
+%	v\mapsto \widehat x_{-|v|}\ot v\ot v
 %	\]
 %	defines the same map independently of the chosen homogeneous basis.
 %\end{proof}
@@ -296,7 +294,7 @@
 %	\]
 %	Under the isomorphism of \cref{p:tate_iso}, this image is the subspace spanned by the classes
 %	\[
-%	u^k\Delta^t_*(v)=\hat x_{k-|v|}\ot v\ot v
+%	u^k\Delta^t_*(v)=\widehat x_{k-|v|}\ot v\ot v
 %	\]
 %	with
 %	\[
@@ -412,58 +410,11 @@
 %\newpage
 
 
-\section{Steenrod operations}\label{Steenrod}
-Let $V$ be a chain complex in $\cD(\Fp)$.
+\section{Steenrod squares}\label{Steenrod} \martin{Rewrite this section to arbitrary p or write another section just for odd primes?}
+Let $V$ be a chain complex in $\cD(\Ftwo)$.
 
 %Throughout this subsection we might need to assume that \(V\) is of finite type, that is, degreewise finite-dimensional.\anibal{Check this for the first lemma.}
 
-\subsubsection{Another model for $T_p V$}
-
-Let $\widetilde W_p\coloneqq \fib (W\overset{N}\longrightarrow W^\dd)$, the fibre of the norm map. Explicitly, $\widetilde W_p=\widehat W_p[-1]$ is the complex
-\[
- \cdots \xla{-N} R\set{\tilde e_{-2}} \xla{\overline  T} R\set{\tilde e_{-1}} \xla{N} R\set{\tilde e_0} \xla{T} R\set{\tilde e_1} \xla{N} R\set{\tilde e_2} \xla{T} \cdots,
-\]
-with $\tilde e_i\coloneqq \hat e_{i+1}[-1]$ in degree $i$. Thus, $\widetilde W_p\otimes_{\cyc_p} M\simeq M^{t\cyc_p}[-1]$ for a $\Fp[\cyc_p]$-module $M$. However, if we take $M=\Fp$ with the trivial action, then 
-\[
-H(\widetilde W_p\otimes_{\cyc_p} \Fp)\cong \Fp\{\tilde e_i\}\cong \Fp[u,u^{-1}]\{\tilde e_0\},
-\]
-and we have an isomorphism 
-	\[
-	\begin{tikzcd}[row sep=0, column sep=small]
-		H(\widetilde W_p\otimes_{\cyc_p} \Fp) \arrow[r] & H(\widehat W_p\otimes_{\cyc_p} \Fp) \\
-		\hspace*{13pt} \tilde e_i \arrow[r, |->] & \hat e_i.
-	\end{tikzcd}
-	\]
-This means that there are $\Fp[\cyc_p]$-modules for which both the fibre and the cofibre of the norm map give models for the tate construction. In virtue of Lemma \ref{pTate_iso},  this also happens for $V^{\ot p}$:
-\begin{lemma} There are isomorphisms
-\[
-H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_p V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p}).
-\]
-Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
-\end{lemma}
-\begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
-\[
-\cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
-\]
-\end{corollary}
-
-\subsubsection{Tate diagonal}
-
-\begin{definition}
-	The \defn{Tate diagonal} is the natural transformation
-	\[
-	\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
-	\]
-	whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
-	\[
-	\begin{tikzcd}[row sep=0, column sep=small]
-		\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-		& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
-	\end{tikzcd}
-	\]
-\end{definition}
-
-The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. \martin{This is true for $p=2$, but I think for odd $p$ one needs to take the cofibre, not the fibre, because the argument will use that $(1-p)|v|$ is even, and so $d \hat x_{(1-p)|v|+1}=N \hat x_{(1-p)|v|}$, which only happens for odd degrees (even degrees have $T$).}
 
 %\subsubsection{Tate diagonal}
 %\begin{definition}
@@ -475,7 +426,7 @@ The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vani
 %\[
 %\begin{tikzcd}[row sep=0, column sep=small]
 %	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
+%	& v \arrow[r, |->] & \widehat{x}_{-|v|} \ot v \ot v.
 %\end{tikzcd}
 %\]
 %\end{definition}
@@ -484,7 +435,7 @@ The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vani
 %\medskip
 %The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action
 %\[
-%u \Delta^t_*(v) = u (\hat x_{-|v|} \ot v \ot v) = \hat x_{1-|v|} \ot v \ot v.
+%u \Delta^t_*(v) = u (\widehat x_{-|v|} \ot v \ot v) = \widehat x_{1-|v|} \ot v \ot v.
 %\]
 %In other words, we have the following.
 %
@@ -498,27 +449,6 @@ The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vani
 %	\]
 %\end{lemma}
 %
-\subsubsection{Tate multiplications and Steenrod operations}
-
-	\[
-	\begin{tikzcd}[row sep=0, column sep=small]
-		H(\widetilde W_p\otimes_{\cyc_p} \Fp) \arrow[r] & H(\widehat W_p\otimes_{\cyc_p} \Fp) \\
-		\hspace*{13pt} \tilde e_i \arrow[r, |->] & \hat e_i.
-	\end{tikzcd}
-	\]
-This means that there are $\Fp[\cyc_p]$-modules for which both the fibre and the cofibre of the norm map give models for the tate construction. In virtue of Lemma \ref{pTate_iso},  this also happens for $V^{\ot p}$:
-\begin{lemma} There are isomorphisms
-\[
-H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong H(T_p V)\cong  H(\widehat W_p\otimes_{\cyc_p} V^{\ot p}).
-\]
-Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
-\end{lemma}
-\begin{corollary} $T_pV$ fits in a long fibre-cofibre sequence %whats the appropiate name for this?
-\[
-\cdots\to (V^{\ot p})^{h\cyc_p}[-1] \to T_p V \to (V^{\ot p})_{h\cyc_p}\overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p}\to T_pV\to\cdots.
-\]
-\end{corollary}
-
 %\subsubsection{Shifted Tate sequence}
 %
 %We use the symmetry of the tensor product to define the functors
@@ -539,33 +469,33 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 %
 %As is well-known, for every \(j \in \Z\),
 %\[
-%H_j(T_2 \Ftwo) \cong \Ftwo\set{\hat x_j},
+%H_j(T_2 \Ftwo) \cong \Ftwo\set{\widehat x_j},
 %\]
 %so \(H(T_2 \Ftwo)\) is a free one-dimensional module over the ring \(\Ftwo[u,u^{-1}]\) acting by
 %\[
-%u \, \hat x_j = \hat x_{j + 1}.
+%u \, \widehat x_j = \widehat x_{j + 1}.
 %\]
 
-%\subsubsection{Tate diagonal}
-%\begin{definition}
-%The \defn{Tate diagonal} is the natural transformation
-%\[
-%\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
-%\]
-%whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
-%\[
-%\begin{tikzcd}[row sep=0, column sep=small]
-%	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
-%	& v \arrow[r, |->] & \hat{x}_{-|v|} \ot v \ot v.
-%\end{tikzcd}
-%\]
-%\end{definition>
+\subsubsection{Tate diagonal}
+\begin{definition}
+The \defn{algebraic Tate diagonal} is the natural transformation
+\[
+\Delta^t \colon \id_{\cD(\Ftwo)} \to T_2(-)
+\]
+whose existence promotes the non-linear assignment \(v \mapsto v \ot v\) to an actual map in \(\cD(\Ftwo)\), and which is characterized on homology by
+\[
+\begin{tikzcd}[row sep=0, column sep=small]
+	\Delta^t_* &[-20pt] \colon H(V) \arrow[r] & H(T_2V) \\
+	& v \arrow[r, |->] & \widehat{x}_{-|v|} \ot v \ot v.
+\end{tikzcd}
+\]
+\end{definition}
 %The map \(\Delta^t_*\) is linear since the cross term \(v \ot w + w \ot v\) vanishes as it is a norm class. 
 %
 %\medskip
 %The image of \(\Delta^t_*\) generates \(H(T_2 V)\) as a free \(\Ftwo[u,u^{-1}]\)-module with action
 %\[
-%u \Delta^t_*(v) = u (\hat x_{-|v|} \ot v \ot v) = \hat x_{1-|v|} \ot v \ot v.
+%u \Delta^t_*(v) = u (\widehat x_{-|v|} \ot v \ot v) = \widehat x_{1-|v|} \ot v \ot v.
 %\]
 %In other words, we have the following.
 %
@@ -583,7 +513,7 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 %
 %\begin{lemma> There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V); \bF_2) \Rightarrow H(T_2V; \bF_2)$.}
 %\[
-%\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
+%\widehat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \widehat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
 %\]
 %\end{lemma>
 %
@@ -592,7 +522,7 @@ Consequently, $T_pV \simeq T_p V[-1]$ in $\cD(\Fp)$.
 %	\[
 %	T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
 %	\]
-%	Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q} = H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
+%	Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q} = H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\widehat H_p(\cyc_2;H_q(V^{\ot 2}))$.
 %\end{proof}
 
 \subsubsection{Tate multiplications and Steenrod operations}

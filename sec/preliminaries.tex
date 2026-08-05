@@ -152,16 +152,15 @@ The \defn{Tate construction} is the functor
 \]
 \end{definition}
 
-The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat{H}^*(G; M)\) when \(M\) is concentrated in degree 0. The resulting cofibre sequence
+The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat {H}^*(G; M)\) when \(M\) is concentrated in degree 0. The resulting cofibre sequence
 \[
 M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
 \]
-in \(\mathcal D(\k)\) relates group homology, group cohomology, and Tate cohomology. We refer to it as the \defn{Tate cofibre sequence} for $M$.
-%There is also a fibre sequence 
-%\[
-% M^{tG}[-1]\longrightarrow M_{hG} \xrightarrow{\Nm} M^{hG}
-%\]
-%relating Tate homology, group homology and group cohomology.
+in \(\mathcal D(\k)\) relates group homology, group cohomology, and Tate cohomology. We refer to it as the \defn{Tate cofibre sequence} for $M$. Analogously, there is a \defn{Tate fibre sequence}
+\[
+M^{tG}[-1]\longrightarrow M_{hG} \xrightarrow{\Nm} M^{hG}
+\]
+relating Tate homology, group homology and group cohomology.
 
 \subsection{Explicit models for \(\Fp[\cyc_p]\)}
 
@@ -186,33 +185,61 @@ Its mapping cone is the complex
 \[
  \cdots \xla{\overline  T} R\set{e_2^\vee} \xla{-N} R\set{e_{1}^\vee} \xla{\overline  T} R\set{e_0^\vee} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} \cdots
 \]
-with \(e_i^\vee\) in degree \(-i\), and $e_i$ in degree $i+1$. We denote by $\widehat W_p$ the complex obtained by relabeling the generators to match their degree:
+with \(e_i^\vee\) in degree \(-i\), and $e_i$ in degree $i+1$. We denote by $\widehat  W_p$ the complex obtained by relabeling the generators to match their degree:
 \[
- \cdots \xla{\overline  T} R\set{\hat e_{-2}} \xla{-N} R\set{\hat e_{-1}} \xla{\overline  T} R\set{\hat e_0} \xla{N} R\set{\hat e_1} \xla{T} R\set{\hat e_2} \xla{N} \cdots
+ \cdots \xla{\overline  T} R\set{\widehat  e_{-2}} \xla{-N} R\set{\widehat  e_{-1}} \xla{\overline  T} R\set{\widehat  e_0} \xla{N} R\set{\widehat  e_1} \xla{T} R\set{\widehat  e_2} \xla{N} \cdots
 \]
 
 Consider the cofibre sequence
 \[
-W_p \to W^\vee_p \to \widehat W_p.
+W_p \xra{N} W^\vee_p \to \widehat  W_p.
 \]
 For any chain complex $M$ in $\mathcal D(R)$, applying the functor \(- \ot_{\cyc_p} M\) to it gives a cofibre sequence representing the Tate cofibre sequence
 \[
 M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 \]
-In particular, $\widehat W_p\otimes_{\cyc_p} M$ is a model for $M^{t\cyc_p}$. 
+In particular, $\widehat  W_p\otimes_{\cyc_p} M$ is a model for $M^{t\cyc_p}$. 
+
 \begin{remark}
-In Appedix \ref{multiplications} we give an explicit chain level formula for a multiplication on $\widehat W_p$, which therefore induces the cup product on Tate cohomology. %at least with $\Fp$ coefficients.
+In Appedix \ref{multiplications} we give an explicit chain level formula for a multiplication on $\widehat  W_p$, which therefore induces the cup product on Tate cohomology. %at least with $\Fp$ coefficients.
 \end{remark}
+
+Let $\widetilde W_p$ be the mapping cocone of the norm map. Explicitly, $\widetilde W_p=\widehat W_p[-1]$ is the complex
+\[
+ \cdots \xla{-N} R\set{\widetilde e_{-2}} \xla{\overline  T} R\set{\widetilde e_{-1}} \xla{N} R\set{\widetilde e_0} \xla{T} R\set{\widetilde e_1} \xla{N} R\set{\widetilde e_2} \xla{T} \cdots,
+\]
+with $\widetilde e_i\coloneqq \widehat e_{i+1}[-1]$ in degree $i$. Since it fits in the fibre sequence 
+\[
+\widetilde W_p\to W_p \xra{N} W^\vee_p,
+\]
+we have that $\widetilde W_p\otimes_{\cyc_p} M\simeq M^{t\cyc_p}[-1]$ for any $\Fp[\cyc_p]$-module $M$.
+
+\begin{remark}
+There are some cases for which $M^{t\cyc_p}[-1]\simeq M^{t\cyc_p}$. Let $M=\Fp$, then $H(\Fp^{t\cyc_p})$ is precisely the Tate cohomology of the cyclic group with trivial coefficients $\widehat H^*(\cyc_p;\Fp)$, and is given by
+\[
+\widehat H^i(\cyc_p;\Fp)\cong H_i(\widehat W_p\otimes_{\cyc_p}\Fp)=H_i((\widehat W_p)_{\cyc_p})\cong \Fp\{\widehat e_i\}.
+\]
+Similarly, we have that $H_i(\Fp^{t\cyc_p}[-1])=H_i(\widetilde W_p\otimes_{\cyc_p}\Fp)\cong \Fp\{\widetilde e_i\}$, which means that the isomorphism $\widetilde e_i\mapsto \widehat e_i$ induces an equivalence $\Fp^{t\cyc_p}[-1]\simeq\Fp^{t\cyc_p}$ in $\cD(\Fp)$.
+
+Lemma \ref{fibre_cofibre} will sow that this is also the case for $M=V^{\ot p}$ for $V$ in $\cD(\Fp)$.
+\end{remark}
+\begin{remark} We can also regard $H(\Fp^{t\cyc_p})$ as a free one-dimensional $\Fp[u,u^{-1}]$-module with action
+\[
+u\cdot \widehat e_i\coloneqq \widehat e_{i+1}.
+\]
+\end{remark}
+
 \subsection{Tate spectral sequences}
 
-Using $\widehat W_p$ we can prove the following lemma:
+Using $\widehat  W_p$ we can prove the following lemma:
 
-\begin{lemma}Let $M$ in $\mathcal D(R)$. There is a spectral sequence
+\begin{lemma}\label{spectral_seq}
+Let $M$ in $\mathcal D(\Fp[\cyc_p])$. There is a spectral sequence
 \[
-\hat H^*(\cyc_p; H_*(M))\Rightarrow\hat H^*(\cyc_p; M)=H_*(M^{t\cyc_p}).
+\widehat  H^*(\cyc_p; H_*(M))\Rightarrow\widehat  H^*(\cyc_p; M)=H_*(M^{t\cyc_p}).
 \]
 \end{lemma}
-\begin{proof} Since $H_*(M^{t\cyc_p})\cong H_*(\widehat W_p\otimes_{\cyc_p} M)$, there is a filtration that gives rise to a spectral sequence with first page $E^1=\widehat W_p \ot_{\cyc_p}H_*(M)$. The second page is then $E^2=H_*(\widehat W_p\ot_{\cyc_p}H_*(M))$, which is isomorphic to $\hat H_*(\cyc_p;H_*(M))$.\qedhere
+\begin{proof} Since $H_*(M^{t\cyc_p})\cong H_*(\widehat  W_p\otimes_{\cyc_p} M)$, there is a filtration that gives rise to a spectral sequence with first page $E^1=\widehat  W_p \ot_{\cyc_p}H_*(M)$. The second page is then $E^2=H_*(\widehat  W_p\ot_{\cyc_p}H_*(M))$, which is isomorphic to $\widehat  H_*(\cyc_p;H_*(M))$.\qedhere
 \end{proof}
 
 %Is the $\cyc_p$-action on $H_*(M)$ trivial? If so we can say a bit more.
@@ -221,7 +248,7 @@ Using $\widehat W_p$ we can prove the following lemma:
 
 %\begin{lemma} There is a spectral sequence \martin{Maybe it is better to write it without degrees and as $H(T_2H(V);\bF_2)\Rightarrow H(T_2V;\bF_2)$.}
 %\[
-%\hat H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \hat H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
+%\widehat  H_p(\cyc_2;H_q(V^{\ot 2}))\Rightarrow \widehat  H_{p+q}(\cyc_2;V^{\ot2})=H_{p+q}(T_2V;\bF_2).
 %\]
 %\end{lemma}
 %\begin{proof}
@@ -229,7 +256,7 @@ Using $\widehat W_p$ we can prove the following lemma:
 %\[
 %T_2V_n\simeq \bigoplus_{p+q=n}W^t_p\ot_{\cyc_2} (V^{\ot 2})_q.
 %\]
-%Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q}=H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\hat H_p(\cyc_2;H_q(V^{\ot 2}))$.
+%Thus, there is a filtration that gives rise to a spectral sequence with first page $E^1_{p,q}=W^t_p\ot_{\cyc_2}H_q(V^{\ot 2})$. The second page is then $E^2_{p,q}=H_p(W^t\ot_{\cyc_2}H_q(V^{\ot 2}))$, which is isomorphic to $\widehat  H_p(\cyc_2;H_q(V^{\ot 2}))$.
 %\end{proof}
 
 
@@ -241,9 +268,9 @@ Using $\widehat W_p$ we can prove the following lemma:
 %	\]
 %where the $\cyc_p$-action on the domain is given by multiplication on the first factor and on the codomain consists of cyclically permuting the factors.
 %
-%The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat W(p)$, which we denote by
+%The fibre of $N_{W(p)}$ is isomorphic to the desuspension of $\widehat  W(p)$, which we denote by
 %\[
-%W^{\mathrm st}(p) \, \coloneqq \, \widehat{W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
+%W^{\mathrm st}(p) \, \coloneqq \, \widehat {W}(p)[-1] = \cdots \xla{T} R\set{e_{-1}} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} \cdots
 %\]
 %with $e_i$ in degree $i$. An \defn{stable $p$-cyclic diagonal} on  $C$, or simply a\defn{stable $p$-diagonal}, is a $\cyc_p$-equivariant chain map
 %	\[
@@ -252,7 +279,7 @@ Using $\widehat W_p$ we can prove the following lemma:
 %
 %We can recover both notions of diagonals from the cofibre sequence \eqref{CofibreM} by setting $M=\Hom(C,C^{\otimes p})$, which gives
 %\[
-%W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} W^\vee(p)\otimes_R \Hom(C,C^{\otimes p})\to \widehat W(p)\otimes_R \Hom(C,C^{\otimes p}).
+%W(p)\otimes_R \Hom(C,C^{\otimes p}) \xra{\Nm} W^\vee(p)\otimes_R \Hom(C,C^{\otimes p})\to \widehat  W(p)\otimes_R \Hom(C,C^{\otimes p}).
 %\]
 %Since $W$ consists of finitely generated projectives, we can express it in terms of homs
 %\[
