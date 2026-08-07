@@ -72,7 +72,7 @@ H(T_pV[-1])\cong H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong \Fp[u,u^{-1}]\
 \]
 \end{corollary}
 
-\begin{lemma}
+\begin{lemma}\label{linearity}
 The algebraic Tate diagonal is $\bF_p$-linear.
 \end{lemma}
 \begin{proof}
@@ -124,7 +124,7 @@ that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to th
 \martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\widehat e_0\}$.} 
 \end{proposition}
 \subsection{Relations with the spectral Tate diagonal}
-Let ${\mathsf {Sp}}$ denote the $\infty$-category of spectra. In [Nikolaus-Scholze], they define the following:
+Let ${\mathsf {Sp}}$ denote the stable $\infty$-category of spectra, and $\wedge= \wedge_{\bS}$ its symmetric monoidal product. In [Nikolaus-Scholze], they define the following:
 \begin{definition}
 Let $X$ be a spectrum. 
 Let  $T^{\mathsf {Sp}}_p$ denote the functor $\mathsf{Sp}\to \mathsf{Sp}$ given by
@@ -142,52 +142,85 @@ For any $F\in \Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})$, evaluation at the sp
 \end{proposition}
 Thus, the space of natural transformations $\id_{\mathsf{Sp}}\to T_p^{\mathsf{Sp}}$ is equivalent to $\Hom_{\mathsf{Sp}}(\bS,T_p^{\mathsf{Sp}}(\bS))=\Omega^\infty T^{\mathsf {Sp}}_p(\bS)$. This allows them to define
 \begin{definition}
-The \defn{Tate diagonal} is the natural transformation $\Delta_p\colon \id_{\mathsf{Sp}}\to T_p^{\mathsf{Sp}}$ that corresponds to the composition 
+The \defn{spectral Tate diagonal} is the natural transformation $\Delta_p^{t, \mathsf{Sp}}\colon \id_{\mathsf{Sp}}\to T_p^{\mathsf{Sp}}$ that corresponds to the composition 
 \[
 \bS\to\bS^{h\cyc_p}\to \bS^{t\cyc_p}=T_p^{\mathsf{Sp}}(\bS).
 \]
 \end{definition}
 
-The derived category $\cD(\Fp)$ is equivalent to the subcategory $\sH\Fp\text{-}\mathrm{Mod}\subset \mathsf{Sp}$ of $\sH\Fp$-modules, or $\sH\Fp$-linear spectra, via the functor 
+The derived category $\cD(\Fp)$ is equivalent to the subcategory $\sH\Fp\text{-}\mathrm{Mod}\subset \mathsf{Sp}$ of $\sH\Fp$-modules, or $\sH\Fp$-linear spectra, via the Eilemberg-MacLane functor 
 \[
 \sH\colon \cD(\Fp) \longrightarrow\sH\Fp\text{-}\mathrm{Mod},
 \]
-that sends a chain complex $V$ in $\cD(\Fp)$ to the Eilemberg-MacLane spectrum $\sH V$. \martin{Or more precisely, a wedge of Eilemberg-Maclane spectra $\sH(H_i(V))$, is it better to state it this way?}
- On the other direction, the functor 
+that sends a chain complex $V$ in $\cD(\Fp)$ to the spectrum $\sH V=\bigvee_i X_i$, where each $X_i$ is the Eilemberg-MacLane spectra with $\pi_i X_i=H_i(V)$ and $\pi_jX_i=0$ if $i\neq j$.\martin{Or is it better to say $\sH V= \bigvee_i \Sigma^i\sH(H_i(V))$? The thing is that $\sH$ is used to define $\sH$.}
+On the other direction, the functor 
 \[
 \pi_*\colon \sH\Fp\text{-}\mathrm{Mod}\longrightarrow \cD(\Fp)
 \]
- takes a $\sH\Fp$-linear spectrum $X$ to the chain complex with $\pi_i(X)$ in degree $i$ and zero differential.
- 
- If $X$ is a $\sH\Fp$-linear spectrum, then $T_p^{\mathsf{Sp}}(X)$ is also a $\sH\Fp$-linear spectrum. Furthermore, if $V$ is a chain complex in $\cD(\Fp)$, 
- \[
- \pi_*(T_p^{\mathsf{Sp}}(\sH V))\cong  T_p(V). \martin{Replace this with the can map}
- \]
- We have that the algebraic Tate diagonal is a shadow of the Tate diagonal, in the following sense:
- \begin{proposition}
- For any $V$ in $\cD(\Fp)$, 
- \[
-\Delta^t_p(V)=\pi_*(\Delta_p(\sH V)) 
- \]
-as maps $V\to T_p(V)$ in $\cD(\Fp)$.
- \end{proposition}
- \begin{proof}
- It is enough to prove that $\pi_*(\Delta_p(\sH \Fp))$ is the inclusion map $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. By naturality, for any $f\in \pi_0(\sH \Fp)$ we have a commuting square
- \begin{center}
- \begin{tikzpicture}
- 	\node (S) at (0,0){$\bS$};
-	\node (TS) at (4,0){$T_p^{\mathsf{Sp}}(\bS)$};
-	\node (F) at (0,-2){$\sH\Fp$};
-	\node (TF) at (4,-2){$T_p^{\mathsf{Sp}}(\sH\Fp)$};
-	%
-	\draw[->](S)--node[right]{$f$}(F);
-	\draw[->](TS)--node[right]{$T_p^{\mathsf{Sp}}(f)$}(TF);
-	\draw[->](S)--node[above]{$\Delta_p(\bS)$}(TS);
-	\draw[->](F)--node[above]{$\Delta_p(\sH\Fp)$}(TF);
- \end{tikzpicture}
- \end{center}
- Taking $f$ to be $1\in\pi_0(\sH \Fp)=\Fp$...\martin{I still have to figure out some details here}
- \end{proof}
+takes a $\sH\Fp$-module $X$ to the chain complex with $\pi_i(X)$ in degree $i$ and zero differential.
+
+$\sH$ is a strong symmetric monoidal functor with respect to the tensor products $\ot_\Fp$ of $\cD(\Fp)$ and $\ot_{\sH \Fp}$ of $\sH\Fp\text{-}\mathrm{Mod}$, that is, there is an isomorphism
+\[
+\sH V \ot_{\sH \Fp} \sH V  \xra{\cong} \sH(V\ot_{\Fp} V).
+\]
+Also, the forgetful functor $\sH\Fp\text{-}\mathrm{Mod}\to \mathsf{Sp}$ has a lax symmetric monoidal structure given by the canonical projection
+\[
+\sH V \wedge_{\bS} \sH V \to \sH V \ot_{\sH \Fp} \sH V.
+\]
+%If $X$ is a $\sH\Fp$-module, then $T_p^{\mathsf{Sp}}(X)$ is also a $\sH\Fp$-module.
+Their composition induces a (natural) map that Nikoulaus and Scholze denote by $\can$
+\[
+\can\colon T_p^{\mathsf{Sp}}(\sH V)=(\sH V\wedge_{\bS} \overset{p}{\cdots}\wedge_{\bS} \sH V)^{t\cyc_p}\longrightarrow \left ( \sH(V\ot_\Fp\overset{p}{\cdots}\ot_\Fp V)\right )^{t\cyc_p}. 
+\]
+Furthermore, both $\sH$ and the forgetful functor preserve all limits and colimits, so the Tate construction in spectra is compatible to the algebraic version:
+\[
+\left ( \sH(V\ot_\Fp\overset{p}{\cdots}\ot_\Fp V)\right )^{t\cyc_p}\cong \sH\left ((V\ot_\Fp\overset{p}{\cdots}\ot_\Fp V)^{t\cyc_p}\right )=\sH(T_pV),
+\]
+thus, we will instead write $\can\colon T_p^{\mathsf{Sp}}(\sH V)\to \sH(T_p V)$.
+
+It is then natural to ask whether the composition of the spectral Tate diagonal with $\can$ induces the algebraic Tate diagonal. 
+
+\begin{proposition}
+Let $a\in \Fp$.
+\[
+\can\circ \,a\Delta_p^{t,\mathsf{Sp}}\neq \sH (\Delta_p^t)
+\]
+as maps $\sH V\to \sH(T_p V)$.
+\end{proposition}
+\begin{proof}
+We argue by contradiction. If they were the same map, then the left square in the following diagram would commute:
+\begin{center}
+\includegraphics[width=0.5\textwidth]{sec/no_go_diagram}
+\end{center}
+
+Since the right square commutes, this implies that the upper row and the bottom row coincide. However, it is shown in [Nikolaus-Scholze] that the upper row is not $\sH \Fp$-linear unless $a=0$, but $\Delta_p^t$ is not trivial, and we proved in Lemma \ref{linearity} that the bottom row is indeed linear, which means that both rows are not the same.
+\end{proof}
+
+% We have that the algebraic Tate diagonal is a shadow of the Tate diagonal, in the following sense:
+% \begin{proposition}
+% For any $V$ in $\cD(\Fp)$, 
+% \[
+%\Delta^t_p(V)=\pi_*(\Delta_p(\sH V)) 
+% \]
+%as maps $V\to T_p(V)$ in $\cD(\Fp)$.
+% \end{proposition}
+% \begin{proof}
+% It is enough to prove that $\pi_*(\Delta_p(\sH \Fp))$ is the inclusion map $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. By naturality, for any $f\in \pi_0(\sH \Fp)$ we have a commuting square
+% \begin{center}
+% \begin{tikzpicture}
+% 	\node (S) at (0,0){$\bS$};
+%	\node (TS) at (4,0){$T_p^{\mathsf{Sp}}(\bS)$};
+%	\node (F) at (0,-2){$\sH\Fp$};
+%	\node (TF) at (4,-2){$T_p^{\mathsf{Sp}}(\sH\Fp)$};
+%	%
+%	\draw[->](S)--node[right]{$f$}(F);
+%	\draw[->](TS)--node[right]{$T_p^{\mathsf{Sp}}(f)$}(TF);
+%	\draw[->](S)--node[above]{$\Delta_p(\bS)$}(TS);
+%	\draw[->](F)--node[above]{$\Delta_p(\sH\Fp)$}(TF);
+% \end{tikzpicture}
+% \end{center}
+% Taking $f$ to be $1\in\pi_0(\sH \Fp)=\Fp$...\martin{I still have to figure out some details here}
+% \end{proof}
 \subsection{Monoidality}
 
 The identity functor $\id_{\cD (\Fp)}$ is a lax monoidal functor: for chain complexes $C$ and $D$, there is a natural morphism $\kappa$ in $\cD(\Fp)$ that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather $\kappa$ is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal.}
