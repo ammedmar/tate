@@ -1,5 +1,8 @@
 \section{The algebraic Tate diagonal}\label{Tatediag}
 Let $V$ be a chain complex in $\cD(\Fp)$.
+
+\subsection{The algebraic Tate diagonal}
+
 \begin{definition} We denote by $T_p$ the functor
 \[
 T_p\coloneqq (-\otimes \overset{p}{\cdots}\otimes -)^{t\cyc_p} \colon \mathcal D(\Fp)\to \mathcal D(\Fp).
@@ -12,19 +15,100 @@ Taking $V=\Fp$, we have $T_p(\Fp)=(\Fp^{\otimes p})^{t\cyc_p}\cong \Fp^{t\cyc_p}
 \end{example}
 \begin{lemma} $T_p$ is an exact functor.
 \end{lemma}%immediate from Nikolaus-Scholze?
+\begin{definition}
 
-\begin{definition} The \defn{algebraic Tate diagonal} is the natural transformation 
+An \defn{algebraic Tate diagonal} is a nontrivial ($\Fp$-linear) natural transformation $\id_{\cD(\Fp)}\to T_p$.
+\end{definition}
+
+We will show that, up to scalar multiplication, there is only one algebraic Tate diagonal.
+To do so we will first state the version on $\cD(\Fp)$ of Proposition III.1.2 from [Nikolaus-Scholze].
+Consider the full subcategory  $\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))\subset \Fun(\cD(\Fp),\cD(\Fp))$ of exact functors.
+
+\begin{proposition}
+For any $F\in \Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))$, evaluation at the chain complex $\Fp$ concentrated in degree $0$ induces an equivalence
+\[
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, F)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
+\]
+\end{proposition}
+
+\begin{corollary}
+There is an equivalence 
+\[
+\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, T_p)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp))\cong\Fp.
+\]
+Thus, the set of algebraic tate diagonals together with the trivial natural transformation is a one dimensional $\Fp$-vector space.
+\end{corollary}
+
+%and we can characterise the algebraic Tate diagonal in the following way:
+%\begin{proposition}
+%The algebraic Tate diagonal $\Delta^t_p$ is the natural transformation 
+%\[
+%\Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
+%\]
+%that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. 
+%\martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\widehat e_0\}$.} 
+%\end{proposition}
+
+We now describe a generator of such $\Fp$-vector space. Let us fix an isomorphism $\varphi\colon H(\widehat W_p\ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)$.
+
+\begin{definition} Let $\Delta^t_p$ be the natural transformation
 \[
 \Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
 \]
 which is characterised on homology by 
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
-	(\Delta^t_p)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
-	& v \arrow[r, |->] & \widehat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v).
+	(\Delta^t_pV)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
+	& v \arrow[r, |->] & \varphi\left (\widehat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v)\right ).
 \end{tikzcd}
 \]
 \end{definition}
+
+We will often ommit the isomorphism $\varphi$ for clarity of notation, and denote the components simply by $\Delta^t_p$ instead of $\Delta^t_pV$.
+
+Observe that $\Delta^t_p$ is nontrivial. In fact, evaluated at $\Fp$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$.
+To conclude that $\Delta^t_p$ is indeed an algebraic Tate diagonal, it remains to prove its linearity.
+
+\begin{lemma}\label{linearity}
+$\Delta^t_p$ is $\bF_p$-linear.
+\end{lemma}
+\begin{proof}
+First we check scalar multiplicativity, let $a\in\bF_p$ and $x\in H_n(V)$.
+\[
+\Delta^t_p(ax)=\widehat e_{(1-p)n}\ot(ax)^{\ot p}=a^p(\widehat e_{(1-p)n}\ot x^{\ot p})=a\Delta^t_p(x),
+\]
+where the last equality holds in $\bF_p$ due to Fermat's little theorem.
+
+Now, for additivity, let $x$ and $y\in H_n(V)$. We have
+\[
+\Delta^t_p(x+y)=\widehat e_{(1-p)n}\ot(x+y)^{\ot p}.
+\]
+The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the letters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those free with $p$ elements. There are two trivial orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
+\[
+\widehat e_{(1-p)n}\ot(x+y)^{\ot p}=\widehat e_{(1-p)n}\ot x^{\ot p}+\widehat e_{(1-p)n}\ot y^{\ot p}+\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i,
+\]
+%but 
+%\[
+%\widehat e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=N\widehat e_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=d\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
+%\]
+%where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $d\widehat e_j=N\widehat e_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. 
+but the elements $\widehat e_{(1-p)n}\ot N{\bf w}_i$ lie on the subcomplex of $\widehat W_p\ot  H(V)^{\ot p}$ of free orbits, which is acyclic, meaning that the term $\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i$ vanishes, and so
+\[
+\Delta^t_p(x+y)=\Delta^t_p(x)+ \Delta^t_p(y).\qedhere
+\]
+\end{proof}
+
+\begin{corollary}
+Every algebraic Tate diagonals is of the form $a\Delta^t_p$, for $a\in \Fp^\times$.
+This means that, up to non-zero scalar multiplication, $\Delta^t_p$ is the only algebraic Tate diagonal, thus, we refer to it as \defn{the algebraic Tate diagonal}.
+\end{corollary}
+
+\begin{remark}
+Note that $\Delta^t_p$ is not canonical, since it depends on the choice of the isomorphism $\varphi$.
+\end{remark}
+
+\subsection{Properties of $T_pV$}
+
 The image of $(\Delta^t_p)_*$ generates $H(T_pV)$ as a $\Fp[u,u^{-1}]$-module with action 
 \[
 u \Delta^t_*(v) = u (\widehat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \widehat e_{(1-p)|v|+1} \ot v^{\ot p}.
@@ -72,58 +156,61 @@ H(T_pV[-1])\cong H(\widetilde W_p\otimes_{\cyc_p} V^{\ot p})\cong \Fp[u,u^{-1}]\
 \]
 \end{corollary}
 
-\begin{lemma}\label{linearity}
-The algebraic Tate diagonal is $\bF_p$-linear.
+\subsection{Monoidality}
+
+The identity functor $\id_{\cD (\Fp)}$ is a lax monoidal functor: for chain complexes $C$ and $D$, there is a natural morphism $\kappa$ in $\cD(\Fp)$ that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather $\kappa$ is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal.}
+\[
+\kappa_* \colon H(C)\otimes H(D)\longrightarrow H(C\otimes D).
+\]
+
+The functor $T_p$ is also a lax monoidal functor. Indeed, there is a natural morphism characterised by
+\[
+\mu_*\circ \kappa_*\colon H\big(\widehat W_p\otimes_{\cyc_p} C^{\otimes p}\big)\otimes H\big(\widehat W_p\otimes_{\cyc_p} D^{\otimes p}\big)
+\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big),
+\]
+where
+\[
+\mu_*\colon H\big((\widehat W_p\otimes_{\cyc_p} C^{\otimes p})\otimes (\widehat W_p\otimes_{\cyc_p} D^{\otimes p})\big)
+\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big)
+\]
+is induced by the assignment
+\[
+[(\rho^a e_i\otimes_{\cyc_p} \mathbf{c})\otimes (\rho^b e_j\otimes_{\cyc_p} \mathbf{d})]
+\longmapsto
+[\,e_{i+j}\otimes_{\cyc_p} \mathrm{Sh}(\rho^{-a}\mathbf{c}, \rho^{-b}\mathbf{d})\,],
+\]
+for $\mathbf{c}=c_1\otimes\cdots\otimes c_p \in C^{\otimes p}$ and $\mathbf{d}=d_1\otimes\cdots\otimes d_p \in D^{\otimes p}$. Here $\mathrm{Sh}$ denotes the shuffle map $C^{\otimes p}\times D^{\otimes p}\to(C\otimes D)^{\otimes p}$ given by
+\[
+((c_1\otimes\cdots\otimes c_p), (d_1\otimes\cdots\otimes d_p))
+\longmapsto
+(c_1\otimes d_1)\otimes\cdots\otimes (c_p\otimes d_p).
+\]
+
+The following diagram commutes for all chain complexes $C$ and $D$:
+\begin{center}
+\begin{tikzpicture}
+\node (a) at (-3,2){$H(C)\otimes H(D)$};
+\node (b) at (4,2){$H(\widehat W_p\otimes_{C_p} C^{\otimes p})\otimes H(\widehat W_p\otimes_{C_p} D^{\otimes p})$};
+\node (c) at (-3,0){$H(C\otimes D)$};
+\node (d) at (4,0){$H(\widehat W_p\otimes_{C_p} (C\otimes D)^{\otimes p})$};
+%
+\draw[->](a) -- node[above]{$(\Delta^t_p)_*\otimes (\Delta^t_p)_*$}(b);
+\draw[->](a)--node[right]{$\kappa_*$}(c);
+\draw[->](b)--node[right]{$\mu_*\circ\kappa_*$}(d);
+\draw[->](c)--node[above]{$(\Delta^t_p)_*\circ \otimes$}(d);
+
+\end{tikzpicture}
+\end{center}
+Thus, we conclude:
+
+\begin{lemma}
+The algebraic Tate diagonal is a monoidal natural transformation
+\[
+\Delta^t_p\colon \id_{\cD (\Fp)} \longrightarrow T_p.
+\]
 \end{lemma}
-\begin{proof}
-First we check scalar multiplicativity, let $a\in\bF_p$ and $x\in H_n(V)$.
-\[
-\Delta^t_p(ax)=\widehat e_{(1-p)n}\ot(ax)^{\ot p}=a^p(\widehat e_{(1-p)n}\ot x^{\ot p})=a\Delta^t_p(x),
-\]
-where the last equality holds in $\bF_p$ due to Fermat's little theorem.
 
-Now, for additivity, let $x$ and $y\in H_n(V)$. We have
-\[
-\Delta^t_p(x+y)=\widehat e_{(1-p)n}\ot(x+y)^{\ot p}.
-\]
-The term $(x+y)^{\ot p}$ is a sum of $2^p$ terms, corresponding to the set of all possible words of length $p$ using the letters $x$ and $y$. The cyclic group acts on this set by permutation, and there are two types of orbits: those consisting of a single element and those free with $p$ elements. There are two trivial orbits with a single element, corresponding to $x^{\otimes p}$ and $y^{\otimes p}$ respectively. Let ${\bf w}_1,\dots, {\bf w}_{(2^{p}-2)/p}$ be representatives of the remaining orbits. Thus, we can write
-\[
-\widehat e_{(1-p)n}\ot(x+y)^{\ot p}=\widehat e_{(1-p)n}\ot x^{\ot p}+\widehat e_{(1-p)n}\ot y^{\ot p}+\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i,
-\]
-%but 
-%\[
-%\widehat e_{(1-p)n}\ot_{\cyc_p}N{\bf w}_i=N\widehat e_{(1-p)n}\ot_{\cyc_p}{\bf w}_i=d\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i=d(\widehat e_{(1-p)n+1}\ot_{\cyc_p}{\bf w}_i),
-%\]
-%where the second equality holds because $(1-p)n+1$ is an odd number for $p$ prime (and $d\widehat e_j=N\widehat e_{j-1}$ for any $j$ if $p=2$), and the last equality holds since $x$ and $y$ are cycles. 
-but the elements $\widehat e_{(1-p)n}\ot N{\bf w}_i$ lie on the subcomplex of $\widehat W_p\ot  H(V)^{\ot p}$ of free orbits, which is acyclic, meaning that the term $\sum_{i=1}^{(2^{p}-2)/p}\widehat e_{(1-p)n}\ot N{\bf w}_i$ vanishes, and so
-\[
-\Delta^t_p(x+y)=\Delta^t_p(x)+ \Delta^t_p(y).\qedhere
-\]
-\end{proof}
-\subsection{A characterisation of the algebraic Tate diagonal}
-
-Consider the full subcategory  $\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))\subset \Fun(\cD(\Fp),\cD(\Fp))$ of exact functors. The version on $\cD(\Fp)$ of Proposition III.1.2 from [Nikolaus-Scholze] is the following:
-\begin{proposition}
-For any $F\in \Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))$, evaluation at the chain complex $\Fp$ concentrated in degree $0$ induces an equivalence
-\[
-\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, F)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
-\]
-\end{proposition}
-
-Therefore, there is an equivalence 
-\[
-\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)}, T_p)\longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp))\cong\Fp\{\widehat e_0\},
-\]
-and we can characterise the algebraic Tate diagonal in the following way:
-\begin{proposition}
-The algebraic Tate diagonal $\Delta^t_p$ is the natural transformation 
-\[
-\Delta^t_p\colon \id_{\cD(\Fp)}\to T_p
-\]
-that evaluated on the complex $\Fp$ concentrated in degree $0$ corresponds to the inclusion $\Fp\hookrightarrow T_p(\Fp)$ given by $1\mapsto \widehat e_0$. 
-\martin{This isn't completely canonical tho, it depends on the choice of the isomorphism $T_p(\Fp)_0\cong \Fp\{\widehat e_0\}$.} 
-\end{proposition}
-\subsection{Relations with the spectral Tate diagonal}
+\subsection{Relation with the spectral Tate diagonal}
 Let ${\mathsf {Sp}}$ denote the stable $\infty$-category of spectra, and $\wedge= \wedge_{\bS}$ its symmetric monoidal product. In [Nikolaus-Scholze], they define the following:
 \begin{definition}
 Let $X$ be a spectrum. 
@@ -221,56 +308,3 @@ Since the right square commutes, this implies that the upper row and the bottom 
 % \end{center}
 % Taking $f$ to be $1\in\pi_0(\sH \Fp)=\Fp$...\martin{I still have to figure out some details here}
 % \end{proof}
-\subsection{Monoidality}
-
-The identity functor $\id_{\cD (\Fp)}$ is a lax monoidal functor: for chain complexes $C$ and $D$, there is a natural morphism $\kappa$ in $\cD(\Fp)$ that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather $\kappa$ is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal.}
-\[
-\kappa_* \colon H(C)\otimes H(D)\longrightarrow H(C\otimes D).
-\]
-
-The functor $T_p$ is also a lax monoidal functor. Indeed, there is a natural morphism characterised by
-\[
-\mu_*\circ \kappa_*\colon H\big(\widehat W_p\otimes_{\cyc_p} C^{\otimes p}\big)\otimes H\big(\widehat W_p\otimes_{\cyc_p} D^{\otimes p}\big)
-\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big),
-\]
-where
-\[
-\mu_*\colon H\big((\widehat W_p\otimes_{\cyc_p} C^{\otimes p})\otimes (\widehat W_p\otimes_{\cyc_p} D^{\otimes p})\big)
-\longrightarrow H\big(\widehat W_p\otimes_{\cyc_p} (C\otimes D)^{\otimes p}\big)
-\]
-is induced by the assignment
-\[
-[(\rho^a e_i\otimes_{\cyc_p} \mathbf{c})\otimes (\rho^b e_j\otimes_{\cyc_p} \mathbf{d})]
-\longmapsto
-[\,e_{i+j}\otimes_{\cyc_p} \mathrm{Sh}(\rho^{-a}\mathbf{c}, \rho^{-b}\mathbf{d})\,],
-\]
-for $\mathbf{c}=c_1\otimes\cdots\otimes c_p \in C^{\otimes p}$ and $\mathbf{d}=d_1\otimes\cdots\otimes d_p \in D^{\otimes p}$. Here $\mathrm{Sh}$ denotes the shuffle map $C^{\otimes p}\times D^{\otimes p}\to(C\otimes D)^{\otimes p}$ given by
-\[
-((c_1\otimes\cdots\otimes c_p), (d_1\otimes\cdots\otimes d_p))
-\longmapsto
-(c_1\otimes d_1)\otimes\cdots\otimes (c_p\otimes d_p).
-\]
-
-The following diagram commutes for all chain complexes $C$ and $D$:
-\begin{center}
-\begin{tikzpicture}
-\node (a) at (-3,2){$H(C)\otimes H(D)$};
-\node (b) at (4,2){$H(\widehat W_p\otimes_{C_p} C^{\otimes p})\otimes H(\widehat W_p\otimes_{C_p} D^{\otimes p})$};
-\node (c) at (-3,0){$H(C\otimes D)$};
-\node (d) at (4,0){$H(\widehat W_p\otimes_{C_p} (C\otimes D)^{\otimes p})$};
-%
-\draw[->](a) -- node[above]{$(\Delta^t_p)_*\otimes (\Delta^t_p)_*$}(b);
-\draw[->](a)--node[right]{$\kappa_*$}(c);
-\draw[->](b)--node[right]{$\mu_*\circ\kappa_*$}(d);
-\draw[->](c)--node[above]{$(\Delta^t_p)_*\circ \otimes$}(d);
-
-\end{tikzpicture}
-\end{center}
-
-
-\begin{lemma}
-The algebraic Tate diagonal defines a monoidal natural transformation
-\[
-\Delta^t_p\colon \id_{\cD (\Fp)} \longrightarrow T_p.
-\]
-\end{lemma}
