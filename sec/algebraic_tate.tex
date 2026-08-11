@@ -12,18 +12,19 @@ Let \(V\) be a chain complex in \(\cD(\Fp)\).
 	T_p \coloneqq (- \otimes \overset{p}{\cdots} \otimes -)^{t\cyc_p} \colon \mathcal D(\Fp) \to \mathcal D(\Fp).
 	\]
 	Explicitly, \(T_pV\) is the \(\cyc_p\)-Tate construction of the chain complex of \(\Fp[\cyc_p]\)-modules \(V^{\otimes p}\), whose \(\cyc_p\)-action is given by permuting the factors.
+	\anibal{This is not right. The functor uses the diagonal functor of categories \(C \to Cx...xC\) and then the monoidal product to get back to C. Also you first land in D G-mod then back to D mod. Write this as a composition of functors with the xra{...} arrows }
 \end{definition}
 
 \begin{example}
-	Taking \(V = \Fp\), we have \(T_p(\Fp) = (\Fp^{\otimes p})^{t\cyc_p} \cong \Fp^{t\cyc_p}\).
+	Taking \(V = \Fp\), we have \(T_p(\Fp) = (\Fp^{\otimes p})^{t\cyc_p} \cong \Fp^{t\cyc_p}\).\anibal{what is \(\Fp^{t\cyc_p}\)? also, do it for a general suspension of \(\Fp\)}
 \end{example}
 
 \begin{lemma}
-	\(T_p\) is an exact functor.
+	\(T_p\) is an exact functor.\anibal{Proof? this cannot rely on spectra as your comment below might suggest. You might be missing a standard regerence in group cohomology. as this paper should sit in the intersection of the two fields. Also, I am assuming exact funtor is defined in the Derived Categories appendix? If so, add a link}
 \end{lemma}% immediate from Nikolaus-Scholze?
 
 \begin{definition}
-	An \defn{algebraic Tate diagonal} is a nontrivial (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\).
+	An \defn{algebraic Tate diagonal} is a nontrivial (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\).\anibal{What is nontrivial? Also, what are the morphisms in the target of the functors, that is what defines the type of maps that appear in the nat transf. This makes me think that I don't recall reading what the morphisms in the derived category are. I guess that is in the appendix}
 \end{definition}
 
 We will show that, up to scalar multiplication, there is only one algebraic Tate diagonal.
@@ -36,13 +37,14 @@ Consider the full subcategory \(\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp)) \subset \F
 	\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
 	\]
 \end{proposition}
+\anibal{Proof?}
 
 \begin{corollary}
 	There is an equivalence
 	\[
 	\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},T_p) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,T_p(\Fp)) \cong \Fp.
 	\]
-	Thus, the set of algebraic tate diagonals together with the trivial natural transformation is a one dimensional \(\Fp\)-vector space.
+	Thus, the set of algebraic tate diagonals together with the trivial natural transformation is a one dimensional \(\Fp\)-vector space.\anibal{No need to rewrite the diagram. What you want seems to be the conclusion after the diagram.}
 \end{corollary}
 
 % and we can characterise the algebraic Tate diagonal in the following way:
@@ -73,7 +75,7 @@ Let us fix an isomorphism \(\varphi \colon H(\widehat W_p \ot_{\cyc_p} V^{\ot p}
 \end{definition}
 
 We will often ommit the isomorphism \(\varphi\) for clarity of notation, and denote the components simply by \(\Delta^t_p\) instead of \(\Delta^t_pV\).
-Observe that \(\Delta^t_p\) is nontrivial.
+Observe that \(\Delta^t_p\) is nontrivial.\anibal{Nontrivial? do you mean nonzero}
 In fact, evaluated at \(\Fp\) corresponds to the inclusion \(\Fp \hookrightarrow T_p(\Fp)\) given by \(1 \mapsto \widehat e_0\).
 To conclude that \(\Delta^t_p\) is indeed an algebraic Tate diagonal, it remains to prove its linearity.
 
@@ -113,7 +115,7 @@ To conclude that \(\Delta^t_p\) is indeed an algebraic Tate diagonal, it remains
 
 \begin{corollary}
 	Every algebraic Tate diagonals is of the form \(a\Delta^t_p\), for \(a \in \Fp^\times\).
-	This means that, up to non-zero scalar multiplication, \(\Delta^t_p\) is the only algebraic Tate diagonal, thus, we refer to it as \defn{the algebraic Tate diagonal}.
+	This means that, up to non-zero scalar multiplication, \(\Delta^t_p\) is the only algebraic Tate diagonal, thus, we refer to it as \defn{the algebraic Tate diagonal}.\anibal{This sentence is not part of the corollary}
 \end{corollary}
 
 \begin{remark}
@@ -126,10 +128,11 @@ The image of \((\Delta^t_p)_*\) generates \(H(T_pV)\) as a \(\Fp[u,u^{-1}]\)-mod
 \[
 u \Delta^t_*(v) = u(\widehat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \widehat e_{(1-p)|v|+1} \ot v^{\ot p}.
 \]
-In other words, we have the following:
+\anibal{Where is the homology of V here? I see where it is, but it took me some time, so I think it can be said better: the image of \(HV\) via ... Also, is it a free module?}
+In other words, we have the following:\anibal{This is a point of debate in the comunity and I am siding with Milnor. Use period for this sentence. You can read it completely or you can link it to the first word below. i.e. replace : by .}
 
 \begin{lemma}\label{pTate_iso}
-	There is an isomorphism of free \(\Fp[u,u^{-1}]\)-modules:
+	There is an isomorphism of free \(\Fp[u,u^{-1}]\)-modules:\anibal{No ``there is'' you are defing it explicitly}
 	\[
 	\begin{tikzcd}[row sep=0, column sep=small]
 		\Fp[u,u^{-1}] \ot H(V) \arrow[r] & H(T_pV) \\
@@ -158,7 +161,7 @@ In other words, we have the following:
 \end{proof}
 
 \begin{lemma}\label{fibre_cofibre}
-	There is an equivalence \(T_pV[-1] \simeq T_pV\) in \(\cD(\Fp)\).
+	There is an equivalence \(T_pV[-1] \simeq T_pV\) in \(\cD(\Fp)\).\anibal{no ``there is''. If the map is not constructed then just say they are isomorphic ``equivalent'' is not defined.}
 \end{lemma}
 
 \begin{proof}
@@ -173,16 +176,17 @@ In other words, we have the following:
 	\[
 	\cdots \to (V^{\ot p})^{h\cyc_p}[-1] \to T_pV \to (V^{\ot p})_{h\cyc_p} \overset{Nm}\longrightarrow (V^{\ot p})^{h\cyc_p} \to T_pV \to \cdots.
 	\]
+	\anibal{I don't know about the name, but again the issue of indefinite versus definite article. Here is ``in the following''}
 \end{corollary}
 
 \subsection{Monoidality}
 
-The identity functor \(\id_{\cD(\Fp)}\) is a lax monoidal functor: for chain complexes \(C\) and \(D\), there is a natural morphism \(\kappa\) in \(\cD(\Fp)\) that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather \(\kappa\) is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal.}
+The identity functor \(\id_{\cD(\Fp)}\) is a lax monoidal functor: for chain complexes \(C\) and \(D\), there is a natural morphism \(\kappa\) in \(\cD(\Fp)\) that is characterised in homology by the Künneth isomorphism \martin{is this correctly formulated? Or rather \(\kappa\) is the identity, which is characterised in homology by the kunneth isomorphism? Thus the identity is monoidal, not lax monoidal. Anibal: The identity better be strong monoidal. }
 \[
 \kappa_* \colon H(C) \otimes H(D) \longrightarrow H(C \otimes D).
 \]
 
-The functor \(T_p\) is also a lax monoidal functor.
+The functor \(T_p\) is also a lax monoidal functor.\anibal{word functor appears too many time sin such a short sentence. Also, this should be a proposition.}
 Indeed, there is a natural morphism characterised by
 \[
 \mu_* \circ \kappa_* \colon H\big(\widehat W_p \otimes_{\cyc_p} C^{\otimes p}\big) \otimes H\big(\widehat W_p \otimes_{\cyc_p} D^{\otimes p}\big) \longrightarrow H\big(\widehat W_p \otimes_{\cyc_p} (C \otimes D)^{\otimes p}\big),
@@ -226,7 +230,12 @@ Thus, we conclude:
 	\]
 \end{lemma}
 
+\anibal{This kind of narrative structures are ok, but i discurage them in your first paper, stick to a statement followed by its proof.}
+
 \subsection{Relation with the spectral Tate diagonal}
+
+\anibal{You cannot go from defining the derived category of R-modules to just ``recalling'' the infinity category of spectra. I think this needs to be expanded to a whole section}
+\anibal{I am not engaging with this since it does not pass the ``smell test''. Your proof at the end of the subsection uses Z. Z does not exist in this paper. Whenever I read it, I suspect that you lost your way.}
 
 Let \({\mathsf{Sp}}\) denote the stable \(\infty\)-category of spectra, and \(\wedge = \wedge_{\bS}\) its symmetric monoidal product.
 In [Nikolaus-Scholze], they define the following:
