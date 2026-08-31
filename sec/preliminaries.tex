@@ -4,10 +4,10 @@
 
 Let \(\k\) be a field and let \(G\) be a finite abelian group.
 
-\subsection{\(\k[G]\)-modules}
+\subsection{\(\k[G]\)-modules}\label{Gmodules}
 
 First, we give our conventions for defining the \(G\)-tensor and the linear dual of (left) \(\k[G]\)-modules.\anibal{I suspect that the notion is G-Hom with linear obtained by mapping to a specific module to the unit of the G-tensor. It is probably a closed symmetric monoidal category, which is what the appedix might explain.}
-We refer to Appendix \cref{Groups} for a more detailed view on these algebraic notions.\anibal{Use cref not ref.}
+We refer to \cref{Groups} for a more detailed view on these algebraic notions.
 
 \begin{definition}
 	Let \(M\) and \(N\) be two left \(\k[G]\)-modules.
@@ -17,11 +17,7 @@ We refer to Appendix \cref{Groups} for a more detailed view on these algebraic n
 	\]
 \end{definition}
 
-If \(W\) and \(V\) chain complexes of \(\k[G]\)-modules, then the \(G\)-tensor \(W \otimes_G V\) is given by
-\[
-(W \otimes_G V)_n \coloneqq \bigoplus_{i+j=n} W_i \otimes_G V_j.
-\]
-\anibal{What's the differential. Also, this belongs to the derived category subsection. Here only modules.}
+We will denote elements in \(M \ot_G N\) simply by \(m \ot n\) (instead of \(m \ot_G n\)).
 
 % Replacing \(m\) by \(gm\) in the defining relation shows that \((m \otimes n) \sim (gm \otimes gn)\), and hence
 % \[
@@ -48,17 +44,16 @@ If \(W\) and \(V\) chain complexes of \(\k[G]\)-modules, then the \(G\)-tensor \
 % \]
 % relating invariants and coinvariants.
 
-\begin{definition}
-	Let \(W\) be a chain complex of left \(\k[G]\)-modules.
+\begin{definition}\label{defdual}
+	Let \(M\) be a left \(\k[G]\)-modules.
 	The \defn{linear dual}
 	\[
-	W^\dd \coloneqq \hom_{\k[G]}(W,\k[G])
+	M^\dd \coloneqq \hom_{\k[G]}(M,\k[G])
 	\]
-	is again a chain complex of left \(\k[G]\)-modules, with left \(G\)-action given by \((g \cdot f)(a) = f(a)g^{-1}\).
+	is again a left \(\k[G]\)-modules, with left \(G\)-action given by \((g \cdot f)(m) = f(m)g^{-1}\).
 \end{definition}
 
-Thus, if \(u^\dd\) is the dual of a basis element \(u\) of \(W\), we have that \(g \cdot u^\dd = (gu)^\dd\).
-\anibal{In the intro you used \((-)^\vee\) for linear dual of simplicial chains. Maybe change the notation there.}
+Thus, if \(u^\dd\) is the dual of a basis element \(u\) of \(M\), we have that \(g \cdot u^\dd = (gu)^\dd\).
 
 % Another option: defining the dual as a right-module and then showing how to construct a left action
 %
@@ -82,9 +77,8 @@ Thus, if \(u^\dd\) is the dual of a basis element \(u\) of \(W\), we have that \
 
 \subsection{Derived categories}
 
-Let \(\Ch(\k)\) be the category of unbounded chain complexes of \(\k\)-vector spaces.
-Also, let \(\Ch(\k[G])\) be the category of unbounded chain complexes of left \(\k[G]\)-modules equipped with the projective model structure, where weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
-Finally, let \(R\) denote either \(\k\) or \(\k[G]\).\anibal{This is confusing. Should you not start with R and then just define Ch(R)?}
+Let \(R\) denote either \(\k\) or \(\k[G]\).
+Let \(\Ch(R)\) be the category of unbounded chain complexes of left \(R\)-modules equipped with the projective model structure, where weak equivalences are quasi-isomorphisms and fibrations are degreewise surjections.
 
 \begin{definition}
 	The \defn{derived category} \(\mathcal D(R)\) is the localization of \(\Ch(R)\) at the class \(\mathcal W\) of quasi-isomorphisms:
@@ -93,18 +87,29 @@ Finally, let \(R\) denote either \(\k\) or \(\k[G]\).\anibal{This is confusing. 
 	\]
 \end{definition}
 
+\begin{remark} 
+	Since \(\k\) is a field, the derived category \(\cD(\k)\) has the property that any chain complex \(V\) is canonically isomorphic to the complex \(H_*(V)\) with zero differential.
+	Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its induced map on homology (this is explained in detail in \cref{derived}).
+\end{remark}
+
 The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\mathcal D(R)\).
 Moreover, homotopy pushouts and homotopy pullbacks coincide in \(\mathcal D(R)\).
-In particular, \(\hofib(f) \simeq \hocofib(f)[-1]\) for any map \(f\) in \(\mathcal D(R)\).
+In particular, \(\hofib(f) \cong \hocofib(f)[-1]\) for any map \(f\) in \(\mathcal D(R)\).
+
+We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as cofibre sequences and fibre sequences, respectively.
+Note that, by the above, they carry equivalent information.
+
+The mapping cone and mapping cocone constructions are models for the homotopy cofiber and fiber, respectively.
 
 \begin{definition}
-	We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as \defn{cofibre sequences} and \defn{fibre sequences}, respectively.
-	\anibal{These are not defined. def env are for math concepts not terminology.}
+	Let \(M=(M_*,d_*)\) and \(N=(N_*,d_*)\) in \(\cD(R)\), and let \(f \colon M \to N\) be a chain map. The \defn{mapping cone} \(\cone(f)\) is the chain complex
+	\[
+	\cone(f)_n \coloneqq N_n \oplus M_{n-1},
+	\]
+	with differential \(d((n,m)) \coloneqq (f(m)+dn, -dm)\).
+	The \defn{mapping cocone} is \(\cone(f)[-1]\). 
 \end{definition}
 
-Note that, by the above, they carry equivalent information.
-Since \(\k\) is a field, the derived category \(\mathcal D(\k)\) has the property that any chain complex \(V\) is canonically isomorphic to the complex \(H_*(V)\) with zero differential.
-Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its induced map on homology (this is explained in detail in Appendix \cref{derived}).
 
 % The category \(\Ch(K)\) is pointed, with zero object the complex \(0\).
 % \begin{definition}
@@ -122,6 +127,39 @@ Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its 
 	% 	\]
 	% 	respectively.
 	% \end{definition}
+	
+We now extend the definitions from \cref{Gmodules} to \(\cD(\k[G])\).
+
+\begin{definition}	
+	Let \(M = (M_*,d_*)\), where \(d_n \colon M_{n+1} \to M_n\), be a chain complex in \(\cD(\k[G])\). The linear dual is defined by setting
+	\[
+	(M^\vee)_n = (M_{-n})^\vee,
+	\]
+	with differential \((d^\vee)_n \colon (M^\vee)_n \to (M^\vee)_{n-1}\) given by
+	\[
+	(d^\vee)_n (f) \coloneqq (-1)^n (d_{-n})^\vee (f) = (-1)^n f \circ d_{-n},
+	\]
+	for \(f \in (M^\vee)_n\).
+\end{definition}
+Observe that \(d^\vee\) is indeed \(\k[G]\)-linear, with respect to the left action of \cref{defdual}:\martin{Is this worth writting here?}
+\[
+\left (g \cdot (d^\vee(f)\right ))(m) = \left (g \cdot (f \circ d)\right )(m) = f(dm)g^{-1} = (g\cdot f)(dm) = \left ((g \cdot f) \circ d\right )(m) = \left (d^\vee(g \cdot f)\right )(m).
+\]
+\begin{definition}
+	If \(M\) and \(N\) in \(\cD(\k[G])\), the \(G\)-tensor \(M \otimes_G N\) is the chain complex in \(\cD(\k)\) defined as
+	\[
+	(M \otimes_G N)_n \coloneqq \bigoplus_{i+j=n} M_i \otimes_G N_j,
+	\]
+	with differential
+	\[
+	d(m \ot n) = (d m \ot n) + (-1)^{|m|} (m \ot dn).
+	\]
+\end{definition}
+Note that it is well defined, \(d(g^{-1}m \ot n) = d(m \ot gn)\).
+%\[
+%d(g^{-1}m \ot n) = (dg^{-1}m) \ot n + (-1)^{|m|} (g^{-1}m \ot dn) = (g^{-1}dm) \ot n + (-1)^{|m|}(m \ot gdn) = (dm \ot gn) + (-1)^{|m|}(m \ot dgn) = d(m \ot gn).
+%\]
+
 
 \subsection{The Tate construction}
 
@@ -162,8 +200,8 @@ where the final isomorphism holds because \(W\) consists of finitely generated p
 	\]
 \end{definition}
 
-The homology of \(M^{tG}\) agrees with the \defn{Tate cohomology groups} \(\widehat H^*(G;M)\) when \(M\) is concentrated in degree \(0\).
-\anibal{The word agrees mekes me expect a reference.}
+The homology of \(M^{tG}\) recovers the \defn{Tate cohomology groups} \(\widehat H^*(G;M)\) when \(M\) is concentrated in degree \(0\).
+\anibal{The word agrees makes me expect a reference.}\martin{Is recover better?}
 The resulting cofibre sequence
 \[
 M_{hG} \xrightarrow{\Nm} M^{hG} \longrightarrow M^{tG}
@@ -189,19 +227,19 @@ W_p = \quad R\set{e_0} \xla{T} R\set{e_1} \xla{N} R\set{e_2} \xla{T} R\set{e_3} 
 where each \(R\set{e_i}\) is a free \(R\)-module of rank one concentrated in homological degree \(i \geq 0\).
 Since each \(R\set{e_i} \cong R\) is finitely generated and free, the linear dual is the complex
 \[
-W^\vee_p = \dots \xla{-N} R\set{e_3^\vee} \xla{\overline T} R\set{e_2^\vee} \xla{-N} R\set{e_1^\vee} \xla{\overline T} R\set{e_0^\vee},
+W^\vee_p = \dots \xla{-N} R\set{e_3^\vee} \xla{T^\vee} R\set{e_2^\vee} \xla{-N} R\set{e_1^\vee} \xla{T^\vee} R\set{e_0^\vee},
 \]
-where \(\overline T \coloneqq (\rho^{-1}-1)\), and \(e_i^\dd\) has degree \(-i\).
+where \(T^\vee = (\rho^{-1}-1)\), and \(e_i^\dd\) has degree \(-i\).
 
 Let \(N_{W_p} \colon W_p \xrightarrow{\sim} W^\vee_p\) be the map that is \(0\) in positive and negative degrees and sends \(e_0\) to \(N \cdot e_0^\vee\).
-Its mapping cone is the complex\anibal{Mapping cones should be introduced earlier in connection with cofibre and fibre and their derived versions. Oh, maybe this is in the appendix. If so, have a link to it}
+Its mapping cone is the complex
 \[
-\dots \xla{\overline T} R\set{e_2^\vee} \xla{-N} R\set{e_1^\vee} \xla{\overline T} R\set{e_0^\vee} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} \dots
+\dots \xla{T^\vee} R\set{e_2^\vee} \xla{-N} R\set{e_1^\vee} \xla{T^\vee} R\set{e_0^\vee} \xla{N} R\set{e_0} \xla{T} R\set{e_1} \xla{N} \dots
 \]
 with \(e_i^\vee\) in degree \(-i\), and \(e_i\) in degree \(i+1\).
 We denote by \(\widehat W_p\) the complex obtained by relabeling the generators to match their degree:
 \[
-\dots \xla{\overline T} R\set{\widehat e_{-2}} \xla{-N} R\set{\widehat e_{-1}} \xla{\overline T} R\set{\widehat e_0} \xla{N} R\set{\widehat e_1} \xla{T} R\set{\widehat e_2} \xla{N} \dots
+\dots \xla{T^\vee} R\set{\widehat e_{-2}} \xla{-N} R\set{\widehat e_{-1}} \xla{T^\vee} R\set{\widehat e_0} \xla{N} R\set{\widehat e_1} \xla{T} R\set{\widehat e_2} \xla{N} \dots
 \]
 
 Consider the cofibre sequence
@@ -215,32 +253,30 @@ M_{h\cyc_p} \xra{\Nm} M^{h\cyc_p} \to M^{t\cyc_p}.
 In particular, \(\widehat W_p \otimes_{\cyc_p} M\) is a model for \(M^{t\cyc_p}\).
 
 \begin{remark}
-	In Appedix \cref{multiplications} we give an explicit chain level formula for a multiplication on \(\widehat W_p\), which therefore induces the cup product on Tate cohomology. % at least with \(\Fp\) coefficients.
-	\anibal{Good example of why to use cref only}
+	In \cref{multiplications} we give an explicit chain level formula for a multiplication on \(\widehat W_p\), which therefore induces the cup product on Tate cohomology. % at least with \(\Fp\) coefficients.
 \end{remark}
 
 Let \(\widetilde W_p\) be the mapping cocone of the norm map.
 Explicitly, \(\widetilde W_p = \widehat W_p[-1]\) is the complex
 \[
-\dots \xla{-N} R\set{\widetilde e_{-2}} \xla{\overline T} R\set{\widetilde e_{-1}} \xla{N} R\set{\widetilde e_0} \xla{T} R\set{\widetilde e_1} \xla{N} R\set{\widetilde e_2} \xla{T} \dots,
+\dots \xla{-N} R\set{\widetilde e_{-2}} \xla{T^\vee} R\set{\widetilde e_{-1}} \xla{N} R\set{\widetilde e_0} \xla{T} R\set{\widetilde e_1} \xla{N} R\set{\widetilde e_2} \xla{T} \dots,
 \]
 with \(\widetilde e_i \coloneqq \widehat e_{i+1}[-1]\) in degree \(i\).
 Since it fits in the fibre sequence
 \[
 \widetilde W_p \to W_p \xra{N} W^\vee_p,
 \]
-we have that \(\widetilde W_p \otimes_{\cyc_p} M \simeq M^{t\cyc_p}[-1]\) for any \(\Fp[\cyc_p]\)-module \(M\).
+we have that \(\widetilde W_p \otimes_{\cyc_p} M \simeq M^{t\cyc_p}[-1]\) for any \(M \in \cD(R)\).
 \anibal{\(\simeq\) vs \(\cong\), worth making explicit}
-\anibal{I am not enjoying how much \(M\) is moved around. Is it a complex, a k-module, a kG-module, ... By forgetting structure, it is all, but that is putting unnecesary demands on the reader.}
 
 \begin{remark}
-	There are some cases for which \(M^{t\cyc_p}[-1] \simeq M^{t\cyc_p}\).\anibal{important cases?}
+	There are some important cases for which \(M^{t\cyc_p}[-1] \simeq M^{t\cyc_p}\).
 	Let \(M = \Fp\), then \(H(\Fp^{t\cyc_p})\) is precisely the Tate cohomology of the cyclic group with trivial coefficients \(\widehat H^*(\cyc_p;\Fp)\), and is given by
 	\[
 	\widehat H^i(\cyc_p;\Fp) \cong H_i(\widehat W_p \otimes_{\cyc_p} \Fp) = H_i((\widehat W_p)_{\cyc_p}) \cong \Fp\set{\widehat e_i}.
 	\]
 	Similarly, we have that \(H_i(\Fp^{t\cyc_p}[-1]) = H_i(\widetilde W_p \otimes_{\cyc_p} \Fp) \cong \Fp\set{\widetilde e_i}\), which means that the isomorphism \(\widetilde e_i \mapsto \widehat e_i\) induces an equivalence \(\Fp^{t\cyc_p}[-1] \simeq \Fp^{t\cyc_p}\) in \(\cD(\Fp)\).
-	Lemma \cref{fibre_cofibre} will sow that this is also the case for \(M = V^{\ot p}\) for \(V\) in \(\cD(\Fp)\). \anibal{cref}
+	\cref{fibre_cofibre} will sow that this is also the case for \(M = V^{\ot p}\) for \(V\) in \(\cD(\Fp)\). 
 \end{remark}
 
 \begin{remark}
