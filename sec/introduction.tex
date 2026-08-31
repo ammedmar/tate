@@ -6,26 +6,26 @@ Steenrod squares and power operations were discovered by Steenrod and others aro
 \[
 \Sq^k\colon H^n(C;\Ftwo)\to H^{n+k}(C;\Ftwo)\quad  \text{and} \quad\Pow^k \colon H^n(C; \Fp)\to H^{n+2k(p-1)}(C;\Fp),
 \]
-for the case $p=2$ and $p$ an odd prime respectively.
+for the case \(p=2\) and \(p\) an odd prime respectively.
 
 In recent years, interest for effective constructions has grown \cite{??}... \martin{More historical context required.}
 
-The usual way of effectively defining Steenrod operations on the homology of a chain complex $C$ relies on two ingredients: the diagonal assignment $\alpha\mapsto \alpha\ot\overset{p}{\cdots}\ot \alpha$ and some equivariant map $W_{\cyc_p}\ot C^{\ot p}\to C$ encoding a homotopy commutative multiplication, where $W_{\cyc_p}$ is a free resolution of the trivial $\Fp[\cyc_p]$-module. The former can be defined on every chain complex, but it is not a map, since it does not preserve degrees; while the latter requires some additional structure on $C$ in order to be constructed.
+The usual way of effectively defining Steenrod operations on the homology of a chain complex \(C\) relies on two ingredients: the diagonal assignment \(\alpha\mapsto \alpha\ot\overset{p}{\cdots}\ot \alpha\) and some equivariant map \(W_{\cyc_p}\ot C^{\ot p}\to C\) encoding a homotopy commutative multiplication, where \(W_{\cyc_p}\) is a free resolution of the trivial \(\Fp[\cyc_p]\)-module. The former can be defined on every chain complex, but it is not a map, since it does not preserve degrees; while the latter requires some additional structure on \(C\) in order to be constructed.
 
-For example, for $C=\cochains (X;\Fp)$, \martin{change notation for duality.} the normalised cochains of a simplicial set $X$, Steenrod defined explicit cup-$(p,i)$ products that assemble to such equivariant map and give effective formulas for the cohomology operations.\anibal{Steenrod did \(p=2\).}
+For example, for \(C=\cochains (X;\Fp)\), \martin{change notation for duality.} the normalised cochains of a simplicial set \(X\), Steenrod defined explicit cup-\(i\) products that assemble to such equivariant map for the case \(p=2\) and give effective formulas for the cohomology operations. This was later generalised to odd primes via cup-\((p,i)\) products by \cite{??}...
 
-In this work we give an alternative construction, in which the first ingredient is promoted to an actual map, the \defn{algebraic Tate diagonal} $\Delta_p^t$, that is characterised on homology by
+In this work we give an alternative construction, in which the first ingredient is promoted to an actual map, the \defn{algebraic Tate diagonal} \(\Delta_p^t\), that is characterised on homology by
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
 	(\Delta^t_p)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
 	& v \arrow[r, |->] & \widehat{e}_{(1-p)|v|} \ot (v\ot \overset{p}{\cdots}\ot v),
 \end{tikzcd}
 \]
-where $V$ is a chain complex in the derived category $\cD(\Fp)$ and $T_pV\coloneqq (V^{\ot p})^{t\cyc_p}$ denotes the \defn{Tate construction} of $V^{\ot p}$. This itself is an algebraic version of the one defined in [Nikolaus-Scholze], defined as the homotopy cofibre of the norm map $\Nm$ from homotopy coinvariants to homotopy invariants.
+where \(V\) is a chain complex in the derived category \(\cD(\Fp)\) and \(T_pV\coloneqq (V^{\ot p})^{t\cyc_p}\) denotes the \defn{Tate construction} of \(V^{\ot p}\). This itself is an algebraic version of the one defined in [Nikolaus-Scholze], defined as the homotopy cofibre of the norm map \(\Nm\) from homotopy coinvariants to homotopy invariants.
 
-The second ingredient is then replaced by a \defn{Tate multiplication} $T_pV\to V$. In [Oddp], it is shown how to effectively build Tate multiplications for the normalised cochains of augmented simplicial modules with a cyclic $p$-diagonal from a combinatorial data called $p$-cyclic straightenings with duality. In particular, this includes the case of simplicial sets.
+The second ingredient is then replaced by a \defn{Tate multiplication} \(T_pV\to V\). In [Oddp], it is shown how to effectively build Tate multiplications for the normalised cochains of augmented simplicial modules with a cyclic \(p\)-diagonal from a combinatorial data called \(p\)-cyclic straightenings with duality. In particular, this includes the case of simplicial sets.
 
-{\bf Outline.} We will first give some background revolving the Tate construction in the derived category of $\Fp$-chain complexes $\cD(\Fp)$, together with some useful models that will be used subsequently. This is carried out throughout Section \ref{Preliminaries}.
-In Section \ref{Tatediag}, we define the algebraic Tate diagonal, give some properties and explore its relation with the spectral version of [Nikolaus-Scholze].
-Finally, in Section \ref{Steenrod} we describe how to obtain Steenrod operations by means of the algebraic Tate diagonal and a Tate multiplication. %remove section 5?
+{\bf Outline.} We will first give some background revolving the Tate construction in the derived category of \(\Fp\)-chain complexes \(\cD(\Fp)\), together with some useful models that will be used subsequently. This is carried out throughout \cref{Preliminaries}.
+In \cref{Tatediag}, we define the algebraic Tate diagonal, give some properties and explore its relation with the spectral version of [Nikolaus-Scholze].
+Finally, in \cref{Steenrod} we describe how to obtain Steenrod operations by means of the algebraic Tate diagonal and a Tate multiplication. %remove section 5?
 Additionally, we have included some appendices that give a more in depth review of the background and elaborate further on related topics.

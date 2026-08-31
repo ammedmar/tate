@@ -86,8 +86,9 @@ Let \(\Ch(R)\) be the category of unbounded chain complexes of left \(R\)-module
 	\mathcal D(R) = \Ch(R)[\mathcal W^{-1}].
 	\]
 \end{definition}
+\martin{add morphisms of the derived category here or in appendix.}
 
-\begin{remark} 
+\begin{remark}\label{DFpmorph}
 	Since \(\k\) is a field, the derived category \(\cD(\k)\) has the property that any chain complex \(V\) is canonically isomorphic to the complex \(H_*(V)\) with zero differential.
 	Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its induced map on homology (this is explained in detail in \cref{derived}).
 \end{remark}
@@ -99,7 +100,7 @@ In particular, \(\hofib(f) \cong \hocofib(f)[-1]\) for any map \(f\) in \(\mathc
 We refer to sequences \(X \to Y \to \hocofib(f)\) and \(\hofib(f) \to X \to Y\) as cofibre sequences and fibre sequences, respectively.
 Note that, by the above, they carry equivalent information.
 
-The mapping cone and mapping cocone constructions are models for the homotopy cofiber and fiber, respectively.
+The mapping cone and mapping cocone constructions give models for the homotopy cofiber and fiber, respectively.
 
 \begin{definition}
 	Let \(M=(M_*,d_*)\) and \(N=(N_*,d_*)\) in \(\cD(R)\), and let \(f \colon M \to N\) be a chain map. The \defn{mapping cone} \(\cone(f)\) is the chain complex
@@ -286,7 +287,7 @@ we have that \(\widetilde W_p \otimes_{\cyc_p} M \simeq M^{t\cyc_p}[-1]\) for an
 	\]
 \end{remark}
 
-\subsection{Tate spectral sequences}
+\subsection{Tate spectral sequences}\martin{relocate this section}
 
 Using \(\widehat W_p\) we can prove the following lemma:
 
@@ -302,6 +303,90 @@ Using \(\widehat W_p\) we can prove the following lemma:
 	Since \(H_*(M^{t\cyc_p}) \cong H_*(\widehat W_p \otimes_{\cyc_p} M)\), there is a filtration that gives rise to a spectral sequence with first page \(E^1 = \widehat W_p \ot_{\cyc_p}H_*(M)\).
 	The second page is then \(E^2 = H_*(\widehat W_p \ot_{\cyc_p}H_*(M))\), which is isomorphic to \(\widehat H_*(\cyc_p;H_*(M))\).\qedhere
 \end{proof}
+
+\subsection{Spectra}
+
+\begin{definition}
+	The stable \(\infty\)-category of spectra.
+\end{definition}
+
+\begin{definition}
+	Smash product.
+\end{definition}
+
+\begin{definition}
+	Ring spectra.
+\end{definition}
+
+\subsection{The spectral tate diagonal}
+
+Let \({\mathsf{Sp}}\) denote the stable \(\infty\)-category of spectra, and \(\wedge = \wedge_{\bS}\) its symmetric monoidal product.
+In [Nikolaus-Scholze], they define the following:
+
+\begin{definition}
+	Let \(X\) be a spectrum.
+	Let \(T^{\mathsf{Sp}}_p\) denote the functor \(\mathsf{Sp} \to \mathsf{Sp}\) given by
+	\[
+	T^{\mathsf{Sp}}_p(X) \coloneqq (X^{\wedge p})^{t\cyc_p} = \cofib(Nm \colon (X \wedge \overset{p}{\dots} \wedge X)_{h\cyc_p} \to (X \wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}),
+	\]
+	the Tate construction of \(X^{\wedge p}\), with \(\cyc_p\)-action given by permuting the factors.
+\end{definition}
+
+They prove that it is an exact functor and give
+
+\begin{proposition}
+	For any \(F \in \Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})\), evaluation at the sphere spectrum \(\bS\) induces an equivalence
+	\[
+	\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})}(\id_{\mathsf{Sp}},F) \longrightarrow \Hom_{\mathsf{Sp}}(\bS,F(\bS)) = \Omega^\infty F(\bS).
+	\]
+\end{proposition}
+
+Thus, the space of natural transformations \(\id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) is equivalent to \(\Hom_{\mathsf{Sp}}(\bS,T_p^{\mathsf{Sp}}(\bS)) = \Omega^\infty T^{\mathsf{Sp}}_p(\bS)\).
+This allows them to define
+
+\begin{definition}
+	The \defn{spectral Tate diagonal} is the natural transformation \(\Delta_p^{t,\mathsf{Sp}} \colon \id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) that corresponds to the composition
+	\[
+	\bS \to \bS^{h\cyc_p} \to \bS^{t\cyc_p} = T_p^{\mathsf{Sp}}(\bS).
+	\]
+\end{definition}
+
+
+\subsection{\(\sH\Fp\)-modules}\label{HFpmod}
+
+The derived category \(\cD(\Fp)\) is equivalent to the subcategory \(\sH\Fp\text{-}\mathrm{Mod} \subset \mathsf{Sp}\) of \(\sH\Fp\)-modules, or \(\sH\Fp\)-linear spectra, via the Eilemberg-MacLane functor
+\[
+\sH \colon \cD(\Fp) \longrightarrow \sH\Fp\text{-}\mathrm{Mod},
+\]
+that sends a chain complex \(V\) in \(\cD(\Fp)\) to the spectrum \(\sH V = \bigvee_i X_i\), where each \(X_i\) is the Eilemberg-MacLane spectra with \(\pi_i X_i = H_i(V)\) and \(\pi_jX_i = 0\) if \(i \neq j\).\martin{Or is it better to say \(\sH V = \bigvee_i \Sigma^i\sH(H_i(V))\)? The thing is that \(\sH\) is used to define \(\sH\).}
+On the other direction, the functor
+\[
+\pi_* \colon \sH\Fp\text{-}\mathrm{Mod} \longrightarrow \cD(\Fp)
+\]
+takes a \(\sH\Fp\)-module \(X\) to the chain complex with \(\pi_i(X)\) in degree \(i\) and zero differential.
+
+\(\sH\) is a strong symmetric monoidal functor with respect to the tensor products \(\ot_\Fp\) of \(\cD(\Fp)\) and \(\ot_{\sH\Fp}\) of \(\sH\Fp\text{-}\mathrm{Mod}\), that is, there is an isomorphism
+\[
+\sH V \ot_{\sH\Fp} \sH V \xra{\cong} \sH(V \ot_\Fp V).
+\]
+Also, the forgetful functor \(\sH\Fp\text{-}\mathrm{Mod} \to \mathsf{Sp}\) has a lax symmetric monoidal structure given by the canonical projection
+\[
+\sH V \wedge_{\bS} \sH V \to \sH V \ot_{\sH\Fp} \sH V.
+\]
+% If \(X\) is a \(\sH\Fp\)-module, then \(T_p^{\mathsf{Sp}}(X)\) is also a \(\sH\Fp\)-module.
+Their composition induces a (natural) map that Nikoulaus and Scholze denote by \(\can\)
+\[
+\can \colon T_p^{\mathsf{Sp}}(\sH V) = (\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p} \longrightarrow \left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p}.
+\]
+Furthermore, both \(\sH\) and the forgetful functor preserve all limits and colimits, so the Tate construction in spectra is compatible to the algebraic version:
+\[
+\left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p} \cong \sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right) = \sH(T_pV),
+\]
+thus, we will instead write \(\can \colon T_p^{\mathsf{Sp}}(\sH V) \to \sH(T_pV)\).
+
+\begin{remark}
+	Behavior of \(\can\) with respect to the spectral ring structure
+\end{remark}
 
 % Is the \(\cyc_p\)-action on \(H_*(M)\) trivial?
 % If so we can say a bit more.
