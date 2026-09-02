@@ -315,8 +315,10 @@ Using \(\widehat W_p\) we can prove the following lemma:
 \end{definition}
 
 \begin{definition}
-	Ring spectra.
+	An associative and unital \defn{ring spectrum} is a \(\bE_1\)-algebra in \(\mathsf{Sp}\).
 \end{definition}
+
+For such a ring spectrum \(X\), its corresponding homotopy associative multiplication will be denoted by \(m_X^{\mathsf{Sp}}\). An important example will be studied in \cref{rcan}.
 
 \subsection{The spectral tate diagonal}
 
@@ -327,7 +329,7 @@ In [Nikolaus-Scholze], they define the following:
 	Let \(X\) be a spectrum.
 	Let \(T^{\mathsf{Sp}}_p\) denote the functor \(\mathsf{Sp} \to \mathsf{Sp}\) given by
 	\[
-	T^{\mathsf{Sp}}_p(X) \coloneqq (X^{\wedge p})^{t\cyc_p} = \cofib(Nm \colon (X \wedge \overset{p}{\dots} \wedge X)_{h\cyc_p} \to (X \wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}),
+	T^{\mathsf{Sp}}_p(X) \coloneqq (X^{\wedge p})^{t\cyc_p} = \cofib(Nm_{\cyc_p} \colon (X \wedge \overset{p}{\dots} \wedge X)_{h\cyc_p} \to (X \wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}),
 	\]
 	the Tate construction of \(X^{\wedge p}\), with \(\cyc_p\)-action given by permuting the factors.
 \end{definition}
@@ -384,10 +386,44 @@ Furthermore, both \(\sH\) and the forgetful functor preserve all limits and coli
 \]
 thus, we will instead write \(\can \colon T_p^{\mathsf{Sp}}(\sH V) \to \sH(T_pV)\).
 
-\begin{remark}
-	Behavior of \(\can\) with respect to the spectral ring structure
+\begin{remark}\label{rcan}
+	If \(A\) is a unital associative algebra over \(\Fp\) with multiplication \(m_A\), then, \(\sH A\) is a unital associative ring spectrum, since \(m_A\) induces via \(\sH\) a map \(m_{\sH A}^{\sH \Fp} \colon \sH A \ot_{\sH \Fp} \sH A \to \sH A\), and precomposition with the canonical projection gives \(m_{\sH A}^{\mathsf{Sp}}\).
+	
+	
+	Taking \(A = \Fp\), we have the following commutative diagram that will be needed for the proof of \cref{yesgo}.	
+	\begin{center}
+		\begin{tikzpicture}
+			\node (0) at (-5,3){\(T_p^{\mathsf{Sp}}(\sH \Fp)\)};
+			\node (00) at (-5,-3){\(\sH(T_pV)\)};
+			%
+			\node (1) at (0,3){\((\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p}\)};
+			\node (2) at (0,1){\((\sH V \ot_{\sH \Fp} \overset{p}{\cdots} \ot_{\sH \Fp} \sH V)^{t\cyc_p}\)};
+			\node (3) at (0,-1){\(\left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p}\)};
+			\node (4) at (0,-3){\(\sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right)\)};
+			%
+			\node (a) at (5,3){\((\sH \Fp)^{t\cyc_p}\)};
+			\node (b) at (5,1){\((\sH \Fp)^{t\cyc_p}\)};
+			\node (c) at (5,-1){\((\sH \Fp)^{t\cyc_p}\)};
+			\node (d) at (5,-3){\(\sH (\Fp^{t\cyc_p})\)};
+			%
+			\draw[double, double distance=2pt] (0)--(1);
+			\draw[double, double distance=2pt] (00)--(4);
+			\draw[double, double distance=2pt] (a)--(b);
+			\draw[double, double distance=2pt] (b)--(c);
+			%
+			\draw[->](1)--node[above]{\((m_{\sH \Fp}^{\mathsf{Sp}})^{t\cyc_p}\)}(a);
+			\draw[->](2)--node[above]{\((m_{\sH \Fp}^{\sH \Fp})^{t\cyc_p}\)}(b);
+			\draw[->](3)--node[above]{\((\sH m_{\Fp})^{t\cyc_p}\)}(c);
+			\draw[->](4)--node[above]{\(\sH \left ((m_{\Fp})^{t\cyc_p}\right )\)}(d);
+			%
+			\draw[->](0)--node[right]{\(\can\)}(00);
+			\draw[->](1)--(2);
+			\draw[->](2)--node[right]{\(\cong\)}(3);
+			\draw[->](3)--node[right]{\(\cong\)}(4);
+			\draw[->](c)--node[right]{\(\cong\)}(d);
+		\end{tikzpicture}
+	\end{center}
 \end{remark}
-
 % Is the \(\cyc_p\)-action on \(H_*(M)\) trivial?
 % If so we can say a bit more.
 

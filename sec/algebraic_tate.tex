@@ -113,7 +113,7 @@ To conclude that \(\Delta^t_p\) is indeed an algebraic Tate diagonal, it remains
 \end{proof}
 
 \begin{corollary}
-	Every algebraic Tate diagonals is of the form \(a\Delta^t_p\), for \(a \in \Fp^\times\).
+	Every algebraic Tate diagonal is of the form \(a\Delta^t_p\), for \(a \in \Fp^\times\).
 \end{corollary}
 
 This means that, up to non-zero scalar multiplication, \(\Delta^t_p\) is the only algebraic Tate diagonal, thus, we refer to it as \defn{the algebraic Tate diagonal}.
@@ -165,7 +165,7 @@ In other words, we have the following.
 \end{lemma}
 
 \begin{proof}
-	The proof of Lemma \cref{pTate_iso} works analogously for \(H(T_pV[-1])\), which means that there are isomorphisms
+	The proof of \cref{pTate_iso} works analogously for \(H(T_pV[-1])\), which means that there are isomorphisms
 	\[
 	H(T_pV[-1]) \cong H(\widetilde W_p \otimes_{\cyc_p} V^{\ot p}) \cong \Fp[u,u^{-1}] \ot H(V) \cong H(\widehat W_p \otimes_{\cyc_p} V^{\ot p}) \cong H(T_pV).
 	\]
@@ -252,9 +252,9 @@ Recall the map \(\can\) from \cref{HFpmod} and consider the following diagram, w
 		\draw[->](THFF)--node[right]{\(\can\)}(HFFT);
 	\end{tikzpicture}
 \end{center}
-It is natural to ask if it commutes form some value of \(a\), that is, whether the spectral Tate diagonal induces the algebraic Tate diagonal via \(\can\). We answer this question in the negative.\martin{Should we comment about the no-go theorem here?}
+It is natural to ask if it commutes form some value of \(a\), that is, whether the spectral Tate diagonal induces the algebraic Tate diagonal via \(\can\). We answer this question in the negative.
 
-\begin{proposition}
+\begin{proposition}\label{yesgo}
 	Let \(a \in \Fp\).
 	\[
 	\can \circ a\Delta_p^{t,\mathsf{Sp}} \neq \sH(\Delta_p^t)
@@ -263,9 +263,7 @@ It is natural to ask if it commutes form some value of \(a\), that is, whether t
 \end{proposition}
 
 \begin{proof}
-	By \cref{DFpclassification}, we only need to check the case \(V=\Fp\).
-	We argue by contradiction.
-	If they were the same map, then the following diagram would commute.
+	By \cref{DFpclassification}, we only need to check the case \(V=\Fp\). Consider this diagram, where the right sqare commutes, as we saw in \cref{rcan}. 
 	\begin{center}
 		\begin{tikzpicture}
 			\node (HF1) at (-5,1){\(\sH \Fp\)};
@@ -277,16 +275,21 @@ It is natural to ask if it commutes form some value of \(a\), that is, whether t
 			%
 			\draw[->] (HF1)--node[above]{\(a\Delta_p^{t,\mathsf{Sp}}\)}(THFF);
 			\draw[->] (HF2)--node[above]{\(\sH(\Delta_p^t)\)}(HFFT);
-			\draw[->] (THFF)--node[above]{\(m_{\sH \Fp}^{t\cyc_p}\)}(HFT1);
-			\draw[->](HFFT)--node[above]{\(\sH (m_{\Fp}^{t\cyc_p})\)}(HFT2);
+			\draw[->] (THFF)--node[above]{\((m_{\sH \Fp}^{\mathsf{Sp}})^{t\cyc_p}\)}(HFT1);
+			\draw[->](HFFT)--node[above]{\(\sH \left ((m_{\Fp})^{t\cyc_p}\right )\)}(HFT2);
 			\draw[double, double distance=2pt](HF1)--(HF2);
 			\draw[->](THFF)--node[right]{\(\can\)}(HFFT);
-			\draw[double, double distance=2pt](HFT1)--(HFT2);
+			\draw[->](HFT1)--node[right]{\(\cong\)}(HFT2);
 		\end{tikzpicture}
 	\end{center}
+	We argue by contradiction.
+	If the maps from the statement were the same, then the left square would also commute.
 	In particular, this implies that the upper row and the bottom row coincide.
-	However, it is shown in [Nikolaus-Scholze] that the upper row is not \(\sH\Fp\)-linear unless \(a = 0\), but \(\Delta_p^t\) is nonzero, and we proved in \cref{linearity} that the bottom row is indeed linear, which means that they are not the same.
+	However, it is proved in [Nikolaus-Scholze] that the upper row is not \(\sH\Fp\)-linear unless \(a = 0\), but \(\Delta_p^t\) is nonzero, and \cref{linearity} shows that the bottom row is indeed linear, which means that they are not the same map.
 \end{proof}
+
+\begin{remark}\martin{Comment on the gap of the no-go theorem here.}
+\end{remark}
 
 % We have that the algebraic Tate diagonal is a shadow of the Tate diagonal, in the following sense:
 % \begin{proposition}
