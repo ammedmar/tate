@@ -346,7 +346,7 @@ They prove that it is an exact functor and give
 Thus, the space of natural transformations \(\id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) is equivalent to \(\Hom_{\mathsf{Sp}}(\bS,T_p^{\mathsf{Sp}}(\bS)) = \Omega^\infty T^{\mathsf{Sp}}_p(\bS)\).
 This allows them to define
 
-\begin{definition}
+\begin{definition}\label{dspectraltate}
 	The \defn{spectral Tate diagonal} is the natural transformation \(\Delta_p^{t,\mathsf{Sp}} \colon \id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) that corresponds to the composition
 	\[
 	\bS \to \bS^{h\cyc_p} \to \bS^{t\cyc_p} = T_p^{\mathsf{Sp}}(\bS).
@@ -394,12 +394,12 @@ thus, we will instead write \(\can \colon T_p^{\mathsf{Sp}}(\sH V) \to \sH(T_pV)
 	\begin{center}
 		\begin{tikzpicture}
 			\node (0) at (-5,3){\(T_p^{\mathsf{Sp}}(\sH \Fp)\)};
-			\node (00) at (-5,-3){\(\sH(T_pV)\)};
+			\node (00) at (-5,-3){\(\sH(T_p\Fp)\)};
 			%
-			\node (1) at (0,3){\((\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p}\)};
-			\node (2) at (0,1){\((\sH V \ot_{\sH \Fp} \overset{p}{\cdots} \ot_{\sH \Fp} \sH V)^{t\cyc_p}\)};
-			\node (3) at (0,-1){\(\left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p}\)};
-			\node (4) at (0,-3){\(\sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right)\)};
+			\node (1) at (0,3){\((\sH \Fp \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH \Fp)^{t\cyc_p}\)};
+			\node (2) at (0,1){\((\sH \Fp \ot_{\sH \Fp} \overset{p}{\cdots} \ot_{\sH \Fp} \sH \Fp)^{t\cyc_p}\)};
+			\node (3) at (0,-1){\(\left(\sH( \Fp\ot_\Fp \overset{p}{\cdots} \ot_\Fp \Fp )\right)^{t\cyc_p}\)};
+			\node (4) at (0,-3){\(\sH\left((\Fp \ot_\Fp \overset{p}{\cdots} \ot_\Fp \Fp)^{t\cyc_p}\right)\)};
 			%
 			\node (a) at (5,3){\((\sH \Fp)^{t\cyc_p}\)};
 			\node (b) at (5,1){\((\sH \Fp)^{t\cyc_p}\)};
