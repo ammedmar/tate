@@ -1,3 +1,239 @@
+\section{The spectral Tate diagonal}
+
+In this section we assume familiarity with the stable \(\infty\)-category of spectra \(\mathsf{Sp}\) and its symmetric monoidal product \(\wedge=\wedge_\bS\).
+
+\subsection{The spectral tate diagonal}
+
+In [Nikolaus-Scholze], they define the following:
+
+\begin{definition}
+	Let \(X\) be a spectrum.
+	Let \(T^{\mathsf{Sp}}_p\) denote the functor \(\mathsf{Sp} \to \mathsf{Sp}\) given by
+	\[
+	T^{\mathsf{Sp}}_p(X) \coloneqq (X^{\wedge p})^{t\cyc_p} = \cofib(Nm_{\cyc_p} \colon (X \wedge \overset{p}{\dots} \wedge X)_{h\cyc_p} \to (X \wedge \overset{p}{\dots} \wedge X)^{h\cyc_p}),
+	\]
+	the Tate construction of \(X^{\wedge p}\), with \(\cyc_p\)-action given by permuting the factors.
+\end{definition}
+
+They prove that it is an exact functor and give
+
+\begin{proposition}
+	For any \(F \in \Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})\), evaluation at the sphere spectrum \(\bS\) induces an equivalence
+	\[
+	\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\mathsf{Sp},\mathsf{Sp})}(\id_{\mathsf{Sp}},F) \longrightarrow \Hom_{\mathsf{Sp}}(\bS,F(\bS)) = \Omega^\infty F(\bS).
+	\]
+\end{proposition}
+
+Thus, the space of natural transformations \(\id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) is equivalent to \(\Hom_{\mathsf{Sp}}(\bS,T_p^{\mathsf{Sp}}(\bS)) = \Omega^\infty T^{\mathsf{Sp}}_p(\bS)\).
+This allows them to define
+
+\begin{definition}\label{dspectraltate}
+	The \defn{spectral Tate diagonal} is the natural transformation \(\Delta_p^{t,\mathsf{Sp}} \colon \id_{\mathsf{Sp}} \to T_p^{\mathsf{Sp}}\) that corresponds to the composition
+	\[
+	\bS \to \bS^{h\cyc_p} \to \bS^{t\cyc_p} = T_p^{\mathsf{Sp}}(\bS).
+	\]
+\end{definition}
+
+
+\subsection{\(\sH\Fp\)-modules}\label{HFpmod}
+
+The derived category \(\cD(\Fp)\) is equivalent to the subcategory \(\sH\Fp\text{-}\mathrm{Mod} \subset \mathsf{Sp}\) of \(\sH\Fp\)-modules, or \(\sH\Fp\)-linear spectra, via the Eilemberg-MacLane functor
+\[
+\sH \colon \cD(\Fp) \longrightarrow \sH\Fp\text{-}\mathrm{Mod},
+\]
+that sends a chain complex \(V\) in \(\cD(\Fp)\) to the spectrum \(\sH V = \bigvee_i X_i\), where each \(X_i\) is the Eilemberg-MacLane spectra with \(\pi_i X_i = H_i(V)\) and \(\pi_jX_i = 0\) if \(i \neq j\).\martin{Or is it better to say \(\sH V = \bigvee_i \Sigma^i\sH(H_i(V))\)? The thing is that \(\sH\) is used to define \(\sH\).}
+On the other direction, the functor
+\[
+\pi_* \colon \sH\Fp\text{-}\mathrm{Mod} \longrightarrow \cD(\Fp)
+\]
+takes a \(\sH\Fp\)-module \(X\) to the chain complex with \(\pi_i(X)\) in degree \(i\) and zero differential.
+
+\(\sH\) is a strong symmetric monoidal functor with respect to the tensor products \(\ot_\Fp\) of \(\cD(\Fp)\) and \(\ot_{\sH\Fp}\) of \(\sH\Fp\text{-}\mathrm{Mod}\), that is, there is an isomorphism
+\[
+\sH V \ot_{\sH\Fp} \sH V \xra{\cong} \sH(V \ot_\Fp V).
+\]
+Also, the forgetful functor \(\sH\Fp\text{-}\mathrm{Mod} \to \mathsf{Sp}\) has a lax symmetric monoidal structure given by the canonical projection
+\[
+\sH V \wedge_{\bS} \sH V \to \sH V \ot_{\sH\Fp} \sH V.
+\]
+% If \(X\) is a \(\sH\Fp\)-module, then \(T_p^{\mathsf{Sp}}(X)\) is also a \(\sH\Fp\)-module.
+Their composition induces a (natural) map in \(\sH\Fp\text{-}\mathrm{Mod}\) that Nikoulaus and Scholze denote by \(\can\)
+\[
+\can \colon T_p^{\mathsf{Sp}}(\sH V) = (\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p} \longrightarrow \left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p}.
+\]
+Furthermore, both \(\sH\) and the forgetful functor preserve all limits and colimits, so the Tate construction in spectra is compatible to the algebraic version:
+\[
+\left(\sH(V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)\right)^{t\cyc_p} \cong \sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right) = \sH(T_pV),
+\]
+thus, we will instead write \(\can \colon T_p^{\mathsf{Sp}}(\sH V) \to \sH(T_pV)\).
+
+\subsection{Ring spectra}\label{rcan}
+
+Recall that a unitary and associative (resp. commutative) ring spectrum \(X\) is a \(\bE_1\)-algebra (resp. \(\bE_\infty\)-algebra) in \(\mathsf{Sp}\).
+We denote its corresponding homotopy asoociative (resp.commutative) multiplication by \(m_X^{\mathsf{Sp}}\).
+
+If \(A\) is a unital and associative (resp. commutative) algebra over \(\Fp\) with multiplication \(m_A\), then, \(\sH A\) is a unital and associative (resp. commutative) ring spectrum, since \(m_A\) induces via \(\sH\) a map \(m_{\sH A}^{\sH \Fp} \colon \sH A \ot_{\sH \Fp} \sH A \to \sH A\), and precomposition with the canonical projection gives \(m_{\sH A}^{\mathsf{Sp}}\).
+	
+	
+Taking \(A = \Fp\), we have the following commutative diagram that will be needed for the proof of \cref{yesgo}.	
+\begin{center}
+	\begin{tikzpicture}
+		\node (0) at (-5,3){\(T_p^{\mathsf{Sp}}(\sH \Fp)\)};
+		\node (00) at (-5,-3){\(\sH(T_p\Fp)\)};
+		%
+		\node (1) at (0,3){\((\sH \Fp \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH \Fp)^{t\cyc_p}\)};
+		\node (2) at (0,1){\((\sH \Fp \ot_{\sH \Fp} \overset{p}{\cdots} \ot_{\sH \Fp} \sH \Fp)^{t\cyc_p}\)};
+		\node (3) at (0,-1){\(\left(\sH( \Fp\ot_\Fp \overset{p}{\cdots} \ot_\Fp \Fp )\right)^{t\cyc_p}\)};
+		\node (4) at (0,-3){\(\sH\left((\Fp \ot_\Fp \overset{p}{\cdots} \ot_\Fp \Fp)^{t\cyc_p}\right)\)};
+		%
+		\node (a) at (5,3){\((\sH \Fp)^{t\cyc_p}\)};
+		\node (b) at (5,1){\((\sH \Fp)^{t\cyc_p}\)};
+		\node (c) at (5,-1){\((\sH \Fp)^{t\cyc_p}\)};
+		\node (d) at (5,-3){\(\sH (\Fp^{t\cyc_p})\)};
+		%
+		\draw[double, double distance=2pt] (0)--(1);
+		\draw[double, double distance=2pt] (00)--(4);
+		\draw[double, double distance=2pt] (a)--(b);
+		\draw[double, double distance=2pt] (b)--(c);
+		%
+		\draw[->](1)--node[above]{\((m_{\sH \Fp}^{\mathsf{Sp}})^{t\cyc_p}\)}(a);
+		\draw[->](2)--node[above]{\((m_{\sH \Fp}^{\sH \Fp})^{t\cyc_p}\)}node[below]{\(\cong\)}(b);
+		\draw[->](3)--node[above]{\((\sH m_{\Fp})^{t\cyc_p}\)}node[below]{\(\cong\)}(c);
+		\draw[->](4)--node[above]{\(\sH \left ((m_{\Fp})^{t\cyc_p}\right )\)}node[below]{\(\cong\)}(d);
+		%
+		\draw[->](0)--node[right]{\(\can\)}(00);
+		\draw[->](1)--(2);
+		\draw[->](2)--node[right]{\(\cong\)}(3);
+		\draw[->](3)--node[right]{\(\cong\)}(4);
+		\draw[->](c)--node[right]{\(\cong\)}(d);
+	\end{tikzpicture}
+\end{center}
+
+\subsection{Comparison with the algebraic Tate diagonal}
+
+In this section we will show that the algebraic tate diagonal \(\Delta^t_p\) is not induced by the spectral Tate diagonal \(\Delta_p^{t,\mathsf{Sp}}\) from \cref{dspectraltate}. The composite
+\[
+\sH V\xra{\Delta_p^{t,\mathsf{Sp}}} (\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p} \xra{\can} \sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right) = \sH (T_pV)
+\]
+is a map in \(\mathsf{Sp}\) that is natural with respect to \(\sH\Fp\)-linear maps, and so, it induces an assignment \(V\to T_p V\), natural with respect to \(\Fp\)-linear maps.
+It is reasonable to ask whether this assignment is an algebraic Tate diagonal, that is, if it is an actual nonzero map in \(\cD(\Fp)\).
+
+\begin{proposition}\label{yesgo}
+	\(\can \circ \Delta_p^{t,\mathsf{Sp}}\) does not induce an algebraic Tate diagonal.
+\end{proposition}
+
+\begin{proof}
+	We argue by contradiction.
+	If the statement was false, then there would exist a scalar \(a\in \Fp^\times\) such that \(\can \circ a\Delta_p^{t,\mathsf{Sp}} = \sH(\Delta^t_p)\) as natural maps in \(\sH\Fp\text{-}\mathrm{Mod}\). 
+	By \cref{DFpclassification}, this is equivalent to saying that the left square in the following diagram commutes. 
+	\begin{center}
+		\begin{tikzpicture}
+			\node (HF1) at (-5,1){\(\sH \Fp\)};
+			\node (HF2) at (-5,-1){\(\sH \Fp\)};
+			\node (THFF) at (0,1){\((\sH \Fp \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH \Fp)^{t\cyc_p}\)};
+			\node (HFFT) at (0,-1){\(\sH\left((\Fp \ot_\Fp \overset{p}{\cdots} \ot_\Fp \Fp)^{t\cyc_p}\right)\)};
+			\node (HFT1) at (5,1){\((\sH \Fp)^{t\cyc_p}\)};
+			\node (HFT2) at (5,-1){\(\sH (\Fp^{t\cyc_p})\)};
+			%
+			\draw[->] (HF1)--node[above]{\(a\Delta_p^{t,\mathsf{Sp}}\)}(THFF);
+			\draw[->] (HF2)--node[above]{\(\sH(\Delta_p^t)\)}(HFFT);
+			\draw[->] (THFF)--node[above]{\((m_{\sH \Fp}^{\mathsf{Sp}})^{t\cyc_p}\)}(HFT1);
+			\draw[->](HFFT)--node[above]{\(\sH \left ((m_{\Fp})^{t\cyc_p}\right )\)}node[below]{\(\cong\)}(HFT2);
+			\draw[double, double distance=2pt](HF1)--(HF2);
+			\draw[->](THFF)--node[right]{\(\can\)}(HFFT);
+			\draw[->](HFT1)--node[right]{\(\cong\)}(HFT2);
+		\end{tikzpicture}
+	\end{center}
+	The right square commutes, as we showed in \cref{rcan}, which then implies that the top and bottom compositions coincide.
+	
+	However, the upper row is a multiple of the Frobenius \(\varphi_{\sH \Fp}\) from [Nikolaus-Scholze, \S{IV.1}], and a consequence of [Nikolaus-Scholze, Theorem IV.1.15] is that it is not \(\sH \Fp\)-linear.
+	This contradicts the fact that the lower row is \(\sH \Fp\)-linear, which means that the left square cannot commute.
+\end{proof}
+
+\begin{remark}
+	Let \(T_p^\bZ\) denote the endofunctor of \(\cD(\bZ\)) given by \(T_p^\bZ(C)= (C\ot_{\bZ} \overset{p}{\cdots} \ot_{\bZ} C)^{t\cyc_p}\).
+	Theorem III.1.10 in [Nikolaus-Scholze] states the following.\martin{what is the right way of quoting the theorem if we are about to say that it is not yet a theorem?}
+	\begin{quote}
+		\begin{theorem}[No-go theorem]
+			Every natural transformation \(\Delta_p^{t, \bZ} \colon \id_{\cD(\bZ)} \to T_p^\bZ\) of functors \(\cD(\bZ)\to\cD(\bZ)\) induces the zero map in homology.
+		\end{theorem}
+	\end{quote}
+	Observe that the existence of algebraic Tate diagonals is a counterexample of this no-go theorem in \(\cD(\Fp)\).
+	Yet, the proof of the theorem translates directly to \(\cD(\Fp)\).
+	This is only possible because there is a gap in the proof, which was pointed out to the author by Federico Cantero Morán.
+	
+	In the proof they use the version of \cref{DFpclassification} for \(\cD(\bZ)\), which applied to the functor \(T_p^{\bZ}\) gives
+	\begin{quote}
+		\begin{theorem}
+			Evaluation at the chain complex \(\bZ\in\cD(\bZ)\) induces an equivalence
+			\[
+			\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)},T_p^{\bZ}) \longrightarrow \Hom_{\cD(\bZ)}(\bZ,T_p^{\bZ}(\bZ))\cong \Hom_{\cD(\bZ)}(\bZ,\Fp).
+			\]
+		\end{theorem}
+	\end{quote}
+	This classifies all possible natural transformations \(\Delta_p^{t, \bZ}\).
+	
+	Then, they claim that \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) induces on \(\pi_0\) the canonical projection \(\bZ\to\Fp\), and conclude that for every \(\Delta_p^{t, \bZ}\), the underlying transformation of spectra factors as \(\can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}}\), for some \(a\in\Fp\).
+	This is a crucial step, since it is later proved that the scalar \(a\) must be zero, and so, any \(\Delta_p^{t, \bZ}\) must induce the zero map in homology.
+	
+	But, although indeed \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) induces an assignment \(C \to T_p^\bZ(C)\) for each \(C\in\cD(\bZ)\), it remains to show that it is an actual map in \(\cD(\bZ)\). The key subtlety is that \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is a map in \(\mathsf{Sp}\), but not necessarily a map in \(\sH\bZ\text{-}\mathrm{Mod}\).
+	
+	We just proved that this is not true in \(\cD(\Fp)\), and the same argument works for \(\cD(\bZ)\): the upper row in the diagram is the Frobenius \(\varphi_{\sH\bZ}\), which is not \(\sH\bZ\)-linear.
+		\begin{center}
+		\begin{tikzpicture}
+			\node (HF1) at (-5,1){\(\sH \bZ\)};
+			%\node (HF2) at (-5,-1){\(\sH \bZ\)};
+			\node (THFF) at (0,1){\((\sH \bZ \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH \bZ)^{t\cyc_p}\)};
+			\node (HFFT) at (0,-1){\(\sH\left((\bZ \ot_\bZ \overset{p}{\cdots} \ot_\bZ \bZ)^{t\cyc_p}\right)\)};
+			\node (HFT1) at (5,1){\((\sH \bZ)^{t\cyc_p}\)};
+			\node (HFT2) at (5,-1){\(\sH (\bZ^{t\cyc_p})\)};
+			%
+			\draw[->] (HF1)--node[above]{\(\Delta_p^{t,\mathsf{Sp}}\)}(THFF);
+			%\draw[->] (HF2)--node[above]{\(\sH(\Delta_p^t)\)}(HFFT);
+			\draw[->] (THFF)--node[above]{\((m_{\sH \bZ}^{\mathsf{Sp}})^{t\cyc_p}\)}(HFT1);
+			\draw[->](HFFT)--node[above]{\(\sH \left ((m_{\bZ})^{t\cyc_p}\right )\)}node[below]{\(\cong\)}(HFT2);
+			%\draw[double, double distance=2pt](HF1)--(HF2);
+			\draw[->](THFF)--node[right]{\(\can^\bZ\)}(HFFT);
+			\draw[->](HFT1)--node[right]{\(\cong\)}(HFT2);
+		\end{tikzpicture}
+	\end{center}
+	Thus, whereas both sets \(\{ \can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}} \mid a\in \Fp\}\) and \(\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)},T_p^{\bZ})\) are indexed by \(\Fp\), they are not the same set, since \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is not \(\sH\bZ\)-linear.
+	
+	Nevertheless, we do not have a counterexample \(\Delta_p^{t,\bZ}\) for the no-go theorem in \(\cD(\bZ)\).
+
+\end{remark}
+
+% We have that the algebraic Tate diagonal is a shadow of the Tate diagonal, in the following sense:
+% \begin{proposition}
+	% 	For any \(V\) in \(\cD(\Fp)\),
+	% 	\[
+	% 	\Delta^t_p(V) = \pi_*(\Delta_p(\sH V))
+	% 	\]
+	% 	as maps \(V \to T_p(V)\) in \(\cD(\Fp)\).
+	% \end{proposition}
+% \begin{proof}
+	% 	It is enough to prove that \(\pi_*(\Delta_p(\sH\Fp))\) is the inclusion map \(\Fp \hookrightarrow T_p(\Fp)\) given by \(1 \mapsto \widehat e_0\).
+	% 	By naturality, for any \(f \in \pi_0(\sH\Fp)\) we have a commuting square
+	% 	\begin{center}
+		% 		\begin{tikzpicture}
+			% 			\node (S) at (0,0) {\(\bS\)};
+			% 			\node (TS) at (4,0) {\(T_p^{\mathsf{Sp}}(\bS)\)};
+			% 			\node (F) at (0,-2) {\(\sH\Fp\)};
+			% 			\node (TF) at (4,-2) {\(T_p^{\mathsf{Sp}}(\sH\Fp)\)};
+			% 			%
+			% 			\draw[->] (S) -- node[right] {\(f\)} (F);
+			% 			\draw[->] (TS) -- node[right] {\(T_p^{\mathsf{Sp}}(f)\)} (TF);
+			% 			\draw[->] (S) -- node[above] {\(\Delta_p(\bS)\)} (TS);
+			% 			\draw[->] (F) -- node[above] {\(\Delta_p(\sH\Fp)\)} (TF);
+			% 		\end{tikzpicture}
+		% 	\end{center}
+	% 	Taking \(f\) to be \(1 \in \pi_0(\sH\Fp) = \Fp\)...\martin{I still have to figure out some details here}
+	% \end{proof}
+
+
+%Recall that a unitary associative ring spectra is a \(\bE_1\)-algebra object in \(\mathsf{Sp}\).
+
+
 %\section{Relation with spectra}
 
 %\begin{remark}[Tate diagonal]\federico{Needs review}
@@ -49,7 +285,7 @@
 %	\eqref{eq:tate2} is an instance of a map of the form \eqref{eq:tate1} and therefore of a stable homotopy cyclic $p$-diagonal.
 %\end{remark}
 
-%\begin{theorem}[Algebraic shadow of the spectral Tate diagonal]
+%\begin{theorem}[Algebraic shadow of the spectral Tate diagonal] %I now think this is not true
 %	Let \(V \in \cD(\Ftwo)\), and let \(HV\) denote the associated \(H\Ftwo\)-module spectrum. The absolute spectral Tate diagonal
 %	\[
 %	\Delta^{t,\mathrm{abs}}_{HV} \colon HV \to (HV \wedge_{\mathbb S} HV)^{t\cyc_2}
