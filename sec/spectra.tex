@@ -4,7 +4,7 @@ In this section we assume familiarity with the stable \(\infty\)-category of spe
 
 \subsection{The spectral tate diagonal}
 
-In [Nikolaus-Scholze], they define the following:
+In [Nikolaus-Scholze], they define the following.
 
 \begin{definition}
 	Let \(X\) be a spectrum.
@@ -70,7 +70,7 @@ thus, we will instead write \(\can \colon T_p^{\mathsf{Sp}}(\sH V) \to \sH(T_pV)
 \subsection{Ring spectra}\label{rcan}
 
 Recall that a unitary and associative (resp. commutative) ring spectrum \(X\) is a \(\bE_1\)-algebra (resp. \(\bE_\infty\)-algebra) in \(\mathsf{Sp}\).
-We denote its corresponding homotopy asoociative (resp.commutative) multiplication by \(m_X^{\mathsf{Sp}}\).
+We denote its corresponding homotopy associative (resp.commutative) multiplication by \(m_X^{\mathsf{Sp}}\).
 
 If \(A\) is a unital and associative (resp. commutative) algebra over \(\Fp\) with multiplication \(m_A\), then, \(\sH A\) is a unital and associative (resp. commutative) ring spectrum, since \(m_A\) induces via \(\sH\) a map \(m_{\sH A}^{\sH \Fp} \colon \sH A \ot_{\sH \Fp} \sH A \to \sH A\), and precomposition with the canonical projection gives \(m_{\sH A}^{\mathsf{Sp}}\).
 	
@@ -115,8 +115,8 @@ In this section we will show that the algebraic tate diagonal \(\Delta^t_p\) is 
 \[
 \sH V\xra{\Delta_p^{t,\mathsf{Sp}}} (\sH V \wedge_{\bS} \overset{p}{\cdots} \wedge_{\bS} \sH V)^{t\cyc_p} \xra{\can} \sH\left((V \ot_\Fp \overset{p}{\cdots} \ot_\Fp V)^{t\cyc_p}\right) = \sH (T_pV)
 \]
-is a map in \(\mathsf{Sp}\) that is natural with respect to \(\sH\Fp\)-linear maps, and so, it induces an assignment \(V\to T_p V\), natural with respect to \(\Fp\)-linear maps.
-It is reasonable to ask whether this assignment is an algebraic Tate diagonal, that is, if it is an actual nonzero map in \(\cD(\Fp)\).
+is a map in \(\mathsf{Sp}\) that is natural with respect to \(\sH\Fp\)-linear maps, and so, it induces via \(\pi_*\) a homomorphism \(H_*(V)\to H_*(T_p V)\), natural with respect to \(\Fp\)-linear maps.
+It is reasonable to ask whether this homomorphism is an algebraic Tate diagonal, that is, if it is an actual nonzero map in \(\cD(\Fp)\).
 
 \begin{proposition}\label{yesgo}
 	\(\can \circ \Delta_p^{t,\mathsf{Sp}}\) does not induce an algebraic Tate diagonal.
@@ -124,7 +124,7 @@ It is reasonable to ask whether this assignment is an algebraic Tate diagonal, t
 
 \begin{proof}
 	We argue by contradiction.
-	If the statement was false, then there would exist a scalar \(a\in \Fp^\times\) such that \(\can \circ a\Delta_p^{t,\mathsf{Sp}} = \sH(\Delta^t_p)\) as natural maps in \(\sH\Fp\text{-}\mathrm{Mod}\). 
+	If the statement was false, then there would exist a scalar \(a\in \Fp^\times\) such that \(\can \circ a\Delta_p^{t,\mathsf{Sp}} = \sH(\Delta^t_p)\) as natural maps in \(\sH\Fp\text{-}\mathrm{Mod}\).\martin{I'm having second thoughts about this. The actual implication is that then there exists \(a\in\Fp^\times\) such that \(a\pi_*(\can\circ\Delta_p^{t,\mathsf{Sp}})=\Delta_p^t\). I am not entirely sure that this means that \(\can \circ a\Delta_p^{t,\mathsf{Sp}} = \sH(\Delta^t_p)\). If it doesn't, the there is still room for the spectral Tate diagonal to induce the algebraic Tate diagonal. Either way, the statement in the proposition can be changed to say that there is no \(a\in\Fp^\times\) such that \(\can \circ a\Delta_p^{t,\mathsf{Sp}} = \sH(\Delta^t_p)\), or simply that \(\can \circ\Delta_p^{t,\mathsf{Sp}}\) is not \(\sH\Fp\)-linear, which is really what we are proving.}
 	By \cref{DFpclassification}, this is equivalent to saying that the left square in the following diagram commutes. 
 	\begin{center}
 		\begin{tikzpicture}
@@ -176,9 +176,10 @@ It is reasonable to ask whether this assignment is an algebraic Tate diagonal, t
 	Then, they claim that \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) induces on \(\pi_0\) the canonical projection \(\bZ\to\Fp\), and conclude that for every \(\Delta_p^{t, \bZ}\), the underlying transformation of spectra factors as \(\can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}}\), for some \(a\in\Fp\).
 	This is a crucial step, since it is later proved that the scalar \(a\) must be zero, and so, any \(\Delta_p^{t, \bZ}\) must induce the zero map in homology.
 	
-	But, although indeed \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) induces an assignment \(C \to T_p^\bZ(C)\) for each \(C\in\cD(\bZ)\), it remains to show that it is an actual map in \(\cD(\bZ)\). The key subtlety is that \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is a map in \(\mathsf{Sp}\), but not necessarily a map in \(\sH\bZ\text{-}\mathrm{Mod}\).
+	But, although indeed \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) induces a homomorphism \(H_*(C) \to H_*(T_p^\bZ(C))\) for each \(C\in\cD(\bZ)\), it remains to show that it is an actual map in \(\cD(\bZ)\).
 	
-	We just proved that this is not true in \(\cD(\Fp)\), and the same argument works for \(\cD(\bZ)\): the upper row in the diagram is the Frobenius \(\varphi_{\sH\bZ}\), which is not \(\sH\bZ\)-linear.
+	The key subtlety is that \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is a map in \(\mathsf{Sp}\), but not necessarily a map in \(\sH\bZ\text{-}\mathrm{Mod}\).
+	We just proved that this is what happens in \(\cD(\Fp)\), and the same argument works for \(\cD(\bZ)\): the upper row in the diagram is the Frobenius \(\varphi_{\sH\bZ}\), which is not \(\sH\bZ\)-linear.
 		\begin{center}
 		\begin{tikzpicture}
 			\node (HF1) at (-5,1){\(\sH \bZ\)};
@@ -197,7 +198,7 @@ It is reasonable to ask whether this assignment is an algebraic Tate diagonal, t
 			\draw[->](HFT1)--node[right]{\(\cong\)}(HFT2);
 		\end{tikzpicture}
 	\end{center}
-	Thus, whereas both sets \(\{ \can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}} \mid a\in \Fp\}\) and \(\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)},T_p^{\bZ})\) are indexed by \(\Fp\), they are not the same set, since \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is not \(\sH\bZ\)-linear.
+	Thus, whereas both sets \(\{ \can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}} \mid a\in \Fp\}\) and \(\{\sH(\Delta_p^{t,\bZ}) \mid \Delta_p^{t,\bZ}\in \mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)},T_p^{\bZ})\}\) are indexed by \(\Fp\), they are not the same set, since \(\can^{\bZ}\circ \Delta_p^{t,\mathsf{Sp}}\) is not \(\sH\bZ\)-linear.\martin{However, it is possible that the sets \(\{ \pi_*(\can^{\bZ}\circ a \Delta_p^{t,\mathsf{Sp}}) \mid a\in \Fp\}\) and \(\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\bZ),\cD(\bZ))}(\id_{\cD(\bZ)},T_p^{\bZ})\) are the same.}
 	
 	Nevertheless, we do not have a counterexample \(\Delta_p^{t,\bZ}\) for the no-go theorem in \(\cD(\bZ)\).
 
