@@ -23,27 +23,43 @@ Let \(V\) be a chain complex in \(\cD(\Fp)\).
 \end{example}
 
 \begin{lemma}%%%%%%%%%%%%%%%%
-	\(T_p\) is an exact functor.\anibal{Proof? this cannot rely on spectra as your comment below might suggest. You might be missing a standard regerence in group cohomology. as this paper should sit in the intersection of the two fields. Also, I am assuming exact funtor is defined in the Derived Categories appendix? If so, add a link}
+	\(T_p\) is an exact functor.\anibal{Proof? this cannot rely on spectra as your comment below might suggest. You might be missing a standard regerence in group cohomology. as this paper should sit in the intersection of the two fields. Also, I am assuming exact funtor is defined in the Derived Categories appendix? If so, add a link}\martin{I am not entirely sure if it is actually an exact functor, since \(T_p(V[n])=(T_pV)[pn]\), instead of \((T_pV)[n]\), a priori. However, since \(T_pV[-1] \cong T_pV\) that could be fixed. Either way, we no longer need exactness of \(T_p\) to prove \cref{DFpclassification}.}
 \end{lemma}
 
 \begin{definition}
-	An \defn{algebraic Tate diagonal} is a nonzero (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\).\anibal{What are the morphisms in the target of the functors, that is what defines the type of maps that appear in the nat transf.}\martin{\(T_p\) is an endofunctor of \(\cD(\Fp)\), so morphisms of the derived category, which are explained in \cref{DFpmorph} and in \cref{derived}.}
+	An \defn{algebraic Tate diagonal} is a nonzero (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\) of endofunctors of \(\cD(\Fp)\).\anibal{What are the morphisms in the target of the functors, that is what defines the type of maps that appear in the nat transf.}\martin{\(T_p\) is an endofunctor of \(\cD(\Fp)\), so morphisms of the derived category, which are explained in \cref{DFpmorph} and in \cref{derived}.}
 \end{definition}
 
 We will show that, up to scalar multiplication, there is only one algebraic Tate diagonal.
-To do so we will first state the version on \(\cD(\Fp)\) of Proposition III.1.2 from [Nikolaus-Scholze].
-Consider the full subcategory \(\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp)) \subset \Fun(\cD(\Fp),\cD(\Fp))\) of exact functors.
+%To do so we will first state the version on \(\cD(\Fp)\) of Proposition III.1.2 from [Nikolaus-Scholze].
+%Consider the full subcategory \(\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp)) \subset \Fun(\cD(\Fp),\cD(\Fp))\) of exact functors.
 
 \begin{proposition}\label{DFpclassification}
-	For any \(F \in \Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))\), evaluation at the chain complex \(\Fp\) concentrated in degree \(0\) induces an equivalence
+	For any \(F \in \Fun(\cD(\Fp),\cD(\Fp))\), evaluation at the chain complex \(\Fp\) concentrated in degree \(0\) induces an equivalence
 	\[
-	\mathrm{Map}_{\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
+	\Map_{\Fun(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
 	\]
 \end{proposition}
-\anibal{Proof?}
+
+\begin{proof}
+	Recall that \(\Hom_{\cD(\Fp)}(V_1,V_2)\cong H_0(\underline{\Hom}(V_1,V_2))\), where \(\underline{\Hom}\) denotes the internal or enriched \(\hom\) of \(\cD(\Fp)\).\martin{Add this into the preliminaries of the derived category}
+	We have that \(\id_{\cD(\Fp)} \cong \underline{\Hom}(\Fp, - )\) as endofunctors of \(\cD(\Fp)\).
+	
+	Similarly, we can consider the category \(\Fun(\cD(\Fp),\cD(\Fp))\) enriched in \(\cD(\Fp)\), and denote by \(\underline{\Map}\) the corresponding \(\hom\) chain complexes.
+	Again, \(H_0(\underline{\Map}(F_1,F_2))\) recovers he usual \(\hom\) set of natural transformations \(\Map_{\Fun(\cD(\Fp),\cD(\Fp))}(F_1,F_2)\).
+	
+	Thus, the enriched version of the Yoneda lemma gives us an equivalence
+	\[
+	\underline{\mathrm{Map}}(\underline{\Hom}(\Fp, - ), F) \longrightarrow F(\Fp) \cong \underline{\Hom}(\Fp, F(\Fp)),
+	\]
+	and taking \(H_0\) gives the desired result.
+\end{proof}
+
+Therefore, 
+
 
 \begin{corollary}
-	The set of algebraic tate diagonals together with the zero natural transformation is a one dimensional \(\Fp\)-vector space.
+	The set of algebraic tate diagonals, together with the zero natural transformation, is a one dimensional \(\Fp\)-vector space.
 \end{corollary}
 
 % and we can characterise the algebraic Tate diagonal in the following way:
@@ -57,7 +73,7 @@ Consider the full subcategory \(\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp)) \subset \F
 	% \end{proposition}
 
 We now describe a generator of such \(\Fp\)-vector space.
-Let us fix an isomorphism \(\varphi \colon H(\widehat W_p \ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)\).
+Let us identify \(H(\widehat W_p \ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)\).\martin{previously we fixed an isomorphism, but i think its better to just identify \(T_pV\) with the model \(\widehat W \ot_{\cyc_p} V^{\ot p}\).}
 
 \begin{definition}
 	Let \(\Delta^t_p\) be the natural transformation
@@ -68,12 +84,14 @@ Let us fix an isomorphism \(\varphi \colon H(\widehat W_p \ot_{\cyc_p} V^{\ot p}
 	\[
 	\begin{tikzcd}[row sep=0, column sep=small]
 		(\Delta^t_pV)_* &[-20pt] \colon H(V) \arrow[r] & H(T_pV) \\
-		& v \arrow[r, |->] & \varphi\left(\widehat{e}_{(1-p)|v|} \ot (v \ot \overset{p}{\cdots} \ot v)\right).
+		& v \arrow[r, |->] & \widehat{e}_{(1-p)|v|} \ot (v \ot \overset{p}{\cdots} \ot v).
 	\end{tikzcd}
 	\]
 \end{definition}
 
-We will often ommit the isomorphism \(\varphi\) for clarity of notation, and denote the components simply by \(\Delta^t_p\) instead of \(\Delta^t_pV\).
+%We will often ommit the isomorphism \(\varphi\) for clarity of notation, and denote the components simply by \(\Delta^t_p\) instead of \(\Delta^t_pV\).
+For clarity of notation, we will often denote the components simply by \(\Delta^t_p\) instead of \((\Delta^t_p)_V\).
+
 Observe that \(\Delta^t_p\) is nonzero.
 In fact, evaluated at \(\Fp\) corresponds to the inclusion \(\Fp \hookrightarrow T_p(\Fp)\) given by \(1 \mapsto \widehat e_0\).
 To conclude that \(\Delta^t_p\) is indeed an algebraic Tate diagonal, it remains to prove its linearity.
@@ -118,9 +136,9 @@ To conclude that \(\Delta^t_p\) is indeed an algebraic Tate diagonal, it remains
 
 This means that, up to non-zero scalar multiplication, \(\Delta^t_p\) is the only algebraic Tate diagonal, thus, we refer to it as \defn{the algebraic Tate diagonal}.
 
-\begin{remark}
-	Note that \(\Delta^t_p\) is not canonical, since it depends on the choice of the isomorphism \(\varphi\).
-\end{remark}
+%\begin{remark}
+%	Note that \(\Delta^t_p\) is not canonical, since it depends on the choice of the isomorphism \(\varphi\).
+%\end{remark}
 
 \subsection{Properties of \(T_pV\)}
 
@@ -142,9 +160,9 @@ In other words, we have the following.
 \end{lemma}
 
 \begin{proof}
-	First, we have that
+	First, since \(T_p\) is an endofunctor of \(\cD(\Fp)\), and \(V \cong H(V)\) in \(\cD(\Fp)\), we have that
 	\[
-	H(T_pV) \cong H(\widehat W_p \otimes_{\cyc_p} V^{\otimes p}) \cong H(\widehat W_p \otimes_{\cyc_p} H(V)^{\otimes p}). \martin{This first step is delicate, I am not fully sure that it is true without any extra assumptions. In particular, this implies that the spectral sequence in Lemma \cref{spectral_seq} converges at the second page for the case \(M = V^{\ot p}\), which should be true.}
+	T_pV \cong T_pH(V) \cong H(\widehat W_p \otimes_{\cyc_p} H(V)^{\otimes p}). %\martin{This first step is delicate, I am not fully sure that it is true without any extra assumptions. I think \(V\) bounded below is sufficient. In particular, this implies that the spectral sequence in Lemma \cref{spectral_seq} converges at the second page for the case \(M = V^{\ot p}\), which should be true.}
 	\]
 	Now, \(H(V)\) is a graded \(\Fp\)-vector space, so we can consider a basis \(\set{v_\alpha}_{\alpha \in A}\) for \(H(V)\).
 	Since \(H(V)^{\ot p}\) is a permutation module, we can decompose it into orbits.
@@ -152,7 +170,7 @@ In other words, we have the following.
 	\[
 	H(V)^{\ot p} \cong \left(\bigoplus_{\alpha \in A} \Fp\set{v_\alpha^{\ot p}}\right) \oplus \left(\bigoplus_{\text{free orbits}} \Fp[\cyc_p]\right).
 	\]
-	Tensoring over \(\cyc_p\) with \(\widehat W_p\) gives
+	\(\cyc_p\)-tensoring with \(\widehat W_p\) gives
 	\[
 	\widehat W_p \ot_{\cyc_p} H(V)^{\ot p} \cong \left(\bigoplus_{\alpha \in A} \widehat W_p \ot_{\cyc_p} \Fp\set{v_\alpha^{\ot p}}\right) \oplus \left(\bigoplus_{\text{free orbits}} \widehat W_p\right),
 	\]
