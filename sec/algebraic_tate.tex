@@ -37,7 +37,7 @@ We will show that, up to scalar multiplication, there is only one algebraic Tate
 \begin{proposition}\label{DFpclassification}
 	For any \(F \in \Fun(\cD(\Fp),\cD(\Fp))\), evaluation at the chain complex \(\Fp\) concentrated in degree \(0\) induces an equivalence
 	\[
-	\Map_{\Fun(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
+	\Nat_{\Fun(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
 	\]
 \end{proposition}
 
@@ -45,12 +45,12 @@ We will show that, up to scalar multiplication, there is only one algebraic Tate
 	Recall that \(\Hom_{\cD(\Fp)}(V_1,V_2)\cong H_0(\underline{\Hom}(V_1,V_2))\), where \(\underline{\Hom}\) denotes the internal or enriched \(\hom\) of \(\cD(\Fp)\).\martin{Add this into the preliminaries of the derived category}
 	We have that \(\id_{\cD(\Fp)} \cong \underline{\Hom}(\Fp, - )\) as endofunctors of \(\cD(\Fp)\).
 	
-	Similarly, we can consider the category \(\Fun(\cD(\Fp),\cD(\Fp))\) enriched in \(\cD(\Fp)\), and denote by \(\underline{\Map}\) the corresponding \(\hom\) chain complexes.
-	Again, \(H_0(\underline{\Map}(F_1,F_2))\) recovers he usual \(\hom\) set of natural transformations \(\Map_{\Fun(\cD(\Fp),\cD(\Fp))}(F_1,F_2)\).
+	Similarly, we can consider the category \(\Fun(\cD(\Fp),\cD(\Fp))\) enriched in \(\cD(\Fp)\), and denote by \(\underline{\Nat}\) the corresponding \(\hom\) chain complexes (see \cref{enrichments}).
+	Again, \(H_0(\underline{\Nat}(F_1,F_2))\) recovers the natural transformations in \(\Nat(F_1,F_2)\).
 	
-	Thus, the enriched version of the Yoneda lemma gives us an equivalence
+	Thus, the enriched version of the Yoneda lemma (\cref{eyoneda}) gives us an equivalence
 	\[
-	\underline{\mathrm{Map}}(\underline{\Hom}(\Fp, - ), F) \longrightarrow F(\Fp) \cong \underline{\Hom}(\Fp, F(\Fp)),
+	\underline{\Nat}(\underline{\Hom}(\Fp, - ), F) \longrightarrow F(\Fp) \cong \underline{\Hom}(\Fp, F(\Fp)),
 	\]
 	and taking \(H_0\) gives the desired result.
 \end{proof}

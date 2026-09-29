@@ -1,0 +1,46 @@
+% !TEX root = ../tate.tex
+
+\section{Enrichments}\label{enrichments}
+
+Recall from \cref{Pderived} that we regard the derived category \(\cD(R)\) as a \(\mathsf{dg}\)-category, or as a category enriched in \(\cD(R)\), by considering \(\hom\) chain complexes \(\underline{\Hom}_{\cD(R)}(M,N)\) rather than \(\hom\) sets.
+Nevertheless, we still have a notion of a morphism \(M \to N\), an element of \(H_0 (\underline{\Hom}_{\cD(R)}(M,N))\), and denote that \(R\)-module by \(\Hom_{\cD(R)}(M,N)\).
+
+In a similar fashion, the functor category \(\Fun(\cD(R),\cD(R))\) can be treated as a \(\mathsf{dg}\)-category.
+
+\begin{definition}
+	Let \(F_1\) and \(F_2\) in \(\Fun(\cD(R),\cD(R))\). The \defn{internal} or \defn{enriched \(\hom\)} is the chain complex \(\underline{\Nat}_{\Fun(\cD(R),\cD(R))}(F_1,F_2)\), or simply \(\underline{\Nat}(F_1,F_2)\).
+	An element \(\tau \in (\underline{\Nat}(F_1,F_2))_r\) is a family of graded \(R\)-linear maps
+	\[
+	\tau_{M} \in (\underline{\Hom}_{\cD(R)}(F_1M, F_2 M))_r,
+	\]
+	that are graded natural with respect to maps in \(\underline{\Hom}_{\cD(R)}(M, N)\), that is,
+	\[
+	F_2(f) \circ \tau_M = (-1)^{rs} \tau_N \circ F_1(f),
+	\]
+	for every \(f\in (\underline{\Hom}_{\cD(R)}(M, N))_s\).
+	The differential is given by
+	\[
+	(d\tau)_M = (-1)^r \tau_M \circ d_{F_1M} - d_{F_2M} \circ \tau_M.
+	\]
+\end{definition}
+
+Observe that \(d\tau = 0\) means that \(\tau_M\) is a \(r\)-cycle of \((\underline{\Hom}_{\cD(R)}(F_1M, F_2N))\) for every \(M\) in \(\cD(R)\).
+In particular, if \(\tau\) is a \(0\)-cycle, then each \(\tau_M\) is a chain map.
+
+We refer to elements in \(H_0(\underline{\Hom}_{\cD(R)}(F_1M, F_2N))\) as (\(\mathsf{dg}\)) natural transformations \(F_1 \to F_2\) and denote that \(R\)-module by \(\Nat(F_1,F_2)\).
+
+\begin{remark}
+	Note that this \(\mathsf{dg}\) natural transformations are not the same as the ordinary natural transformations of functors of non enriched categories.
+	
+	Take \(F_1 = \id_{\cD(R)} = F_2\).
+	The ordinary natural transformations \(\alpha \colon \id_{\cD(R)} \to \id_{\cD(R)}\) are in bijection with \(\Pi_{n\in \bZ} R\), since every \(\alpha_M\) is of the form \(\alpha_M(m)=a_n m\) for \(m\in M_n\) and some \(a_n\in R\). Thus, they are encoded by a \(\bZ\)-tuple \((\dots, a_{-1}, a_0, a_1, \dots)\).
+	
+	However, a \(\mathsf{dg}\) natural transformation is natural not only with respect to maps of degree \(0\), it is natural with respect to maps of any degree. This forces every scalar in the tuple to be equal to \(a_0\), and so they are in bijection with \(R\).
+\end{remark}
+
+\begin{theorem}[Enriched version of the Yoneda lemma]\label{eyoneda}
+	Let \(F\) be a functor \(\cD(R) \to \cD(R)\) and \(M\) in \(\cD(R)\). There is an isomorphism of chain complexes %natural isom?
+	\[
+	\yoneda \colon \underline{\Nat}(\underline{\Hom}_{\cD(R)}(M, -), F)\xra{\cong} F(M).
+	\]
+\end{theorem}
