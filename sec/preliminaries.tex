@@ -86,11 +86,27 @@ Let \(\Ch(R)\) be the category of unbounded chain complexes of left \(R\)-module
 	\mathcal D(R) = \Ch(R)[\mathcal W^{-1}].
 	\]
 \end{definition}
-\martin{add morphisms of the derived category here or in appendix.}
+
+We will consider \(\cD(R)\) as a \(\mathsf{dg}\)-category enriched in \(\cD(R)\). %(see \cref{enrichments}).
+
+\begin{definition}
+	For \(M\) and \(N\) in \(\cD(R)\), the \defn{internal} or \defn{enriched \(\hom\)} is the chain complex \(\underline{\Hom}_{\cD(R)}(M, N)\) given by
+	\[
+	(\underline{\Hom}_{\cD(R)}(M, N))_r \coloneqq \Hom_{\gr R\text{-}\Mod}(P[r], N),
+	\]
+	where \(P \to M\) is a projective resolution of \(M\), with differential
+	\[
+	d (f) \coloneqq (-1)^r f \circ d_M - d_N \circ f,
+	\]
+	for \(f\) a degree \(r\) \(R\)-linear map \(P \to N\).
+\end{definition}
+
+Note that degree \(0\) cycles correspond to chain maps.
+We will refer to elements in \(\Hom_{\cD(R)}(M, N) \coloneqq H_0(\underline{\Hom}_{\cD(R)}(M, N))\) as morphisms in \(\cD(R)\).
 
 \begin{remark}\label{DFpmorph}
 	Since \(\k\) is a field, the derived category \(\cD(\k)\) has the property that any chain complex \(V\) is canonically isomorphic to the complex \(H_*(V)\) with zero differential.
-	Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its induced map on homology (this is explained in detail in \cref{derived}).
+	Furthermore, any morphism in \(\mathcal D(\k)\) is completely determined by its induced map on homology. This is explained in detail in \cref{derived}.
 \end{remark}
 
 The suspension functor \([1]\) is induced by the shift of complexes and is an autoequivalence of \(\mathcal D(R)\).
@@ -105,7 +121,7 @@ The mapping cone and mapping cocone constructions give models for the homotopy c
 \begin{definition}
 	Let \(M=(M_*,d_*)\) and \(N=(N_*,d_*)\) in \(\cD(R)\), and let \(f \colon M \to N\) be a chain map. The \defn{mapping cone} \(\cone(f)\) is the chain complex
 	\[
-	\cone(f)_n \coloneqq N_n \oplus M_{n-1},
+	\cone(f)_r \coloneqq N_r \oplus M_{r-1},
 	\]
 	with differential \(d((n,m)) \coloneqq (f(m)+dn, -dm)\).
 	The \defn{mapping cocone} is \(\cone(f)[-1]\). 
@@ -132,15 +148,16 @@ The mapping cone and mapping cocone constructions give models for the homotopy c
 We now extend the definitions from \cref{Gmodules} to \(\cD(\k[G])\).
 
 \begin{definition}	
-	Let \(M = (M_*,d_*)\), where \(d_n \colon M_{n+1} \to M_n\), be a chain complex in \(\cD(\k[G])\). The linear dual is defined by setting
+	Let \(M = (M_*,d_*)\), where \(d_r \colon M_{r+1} \to M_r\), be a chain complex in \(\cD(\k[G])\). The linear dual \(M^\vee\) is the chain complex \(\underline{\Hom}_{\cD(\k[G])}(M, \k[G])\).
+	More explicitly, 
 	\[
-	(M^\vee)_n = (M_{-n})^\vee,
+	(M^\vee)_r = (M_{-r})^\vee,
 	\]
-	with differential \((d^\vee)_n \colon (M^\vee)_n \to (M^\vee)_{n-1}\) given by
+	with differential \((d^\vee)_r \colon (M^\vee)_r \to (M^\vee)_{r-1}\) given by
 	\[
-	(d^\vee)_n (f) \coloneqq (-1)^n (d_{-n})^\vee (f) = (-1)^n f \circ d_{-n},
+	(d^\vee)_r (f) \coloneqq (-1)^r (d_{-r})^\vee (f) = (-1)^r f \circ d_{-r},
 	\]
-	for \(f \in (M^\vee)_n\).
+	for \(f \in (M^\vee)_r\).
 \end{definition}
 Observe that \(d^\vee\) is indeed \(\k[G]\)-linear, with respect to the left action of \cref{defdual}:\martin{Is this worth writting here?}
 \[
@@ -149,7 +166,7 @@ Observe that \(d^\vee\) is indeed \(\k[G]\)-linear, with respect to the left act
 \begin{definition}
 	If \(M\) and \(N\) in \(\cD(\k[G])\), the \(G\)-tensor \(M \otimes_G N\) is the chain complex in \(\cD(\k)\) defined as
 	\[
-	(M \otimes_G N)_n \coloneqq \bigoplus_{i+j=n} M_i \otimes_G N_j,
+	(M \otimes_G N)_r \coloneqq \bigoplus_{i+j=r} M_i \otimes_G N_j,
 	\]
 	with differential
 	\[
