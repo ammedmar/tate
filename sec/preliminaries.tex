@@ -87,14 +87,14 @@ Let \(\Ch(R)\) be the category of unbounded chain complexes of left \(R\)-module
 	\]
 \end{definition}
 
-We will consider \(\cD(R)\) as a \(\mathsf{dg}\)-category enriched in \(\cD(R)\). %(see \cref{enrichments}).
+We will consider \(\cD(R)\) as a category enriched in \(\cD(R)\). %(see \cref{enrichments}).
 
 \begin{definition}
 	Let \(M\) and \(N\) in \(\cD(R)\). The \defn{internal} or \defn{enriched \(\hom\)} is the chain complex \(\underline{\Hom}_{\cD(R)}(M, N)\) given by
 	\[
 	(\underline{\Hom}_{\cD(R)}(M, N))_r \coloneqq \Hom_{\gr R\text{-}\Mod}(P[r], N),
 	\]
-	where \(P \to M\) is a projective resolution of \(M\), with differential
+	where \(P \to M\) is a cofibrant replacement of \(M\), with differential
 	\[
 	d (f) \coloneqq (-1)^r f \circ d_M - d_N \circ f,
 	\]
@@ -204,7 +204,7 @@ The homology groups of \(M_{hG}\) and \(M^{hG}\) recover group homology \(H_*(G;
 	that derives the classical map \(M_G \to M^G\) given by the action of the norm element \(N = \sum_{g \in G} g \in \k[G]\).
 \end{definition}
 
-Concretely, since \(\Hom_{\k[G]}(\k,\k[G]) \cong \k\), the linear dual \(W^\vee = \Hom_{\k[G]}(W,\k[G])\) is itself a cofibrant resolution of \(\k\).
+Concretely, since \(\Hom_{\k[G]}(\k,\k[G]) \cong \k\), the linear dual \(W^\vee = \Hom_{\k[G]}(W,\k[G])\) is itself a cofibrant resolution of \(\k\).\martin{Shouldn't it be a fibrant resolution?}
 Thus, any chain homotopy equivalence \(W \xrightarrow{\sim} W^\vee\) induces the norm map via
 \[
 W \otimes_G M \longrightarrow W^\vee \otimes_G M \cong \Hom_G(W,M),
@@ -284,17 +284,17 @@ Since it fits in the fibre sequence
 \[
 \widetilde W_p \to W_p \xra{N} W^\vee_p,
 \]
-we have that \(\widetilde W_p \otimes_{\cyc_p} M \simeq M^{t\cyc_p}[-1]\) for any \(M \in \cD(R)\).
+we have that \(\widetilde W_p \otimes_{\cyc_p} M \cong M^{t\cyc_p}[-1]\) for any \(M \in \cD(R)\).
 \anibal{\(\simeq\) vs \(\cong\), worth making explicit}
 
 \begin{remark}
-	There are some important cases for which \(M^{t\cyc_p}[-1] \simeq M^{t\cyc_p}\).
+	There are some important cases for which \(M^{t\cyc_p}[-1] \cong M^{t\cyc_p}\) in \(\cD(\Fp)\).
 	Let \(M = \Fp\), then \(H(\Fp^{t\cyc_p})\) is precisely the Tate cohomology of the cyclic group with trivial coefficients \(\widehat H^*(\cyc_p;\Fp)\), and is given by
 	\[
 	\widehat H^i(\cyc_p;\Fp) \cong H_i(\widehat W_p \otimes_{\cyc_p} \Fp) = H_i((\widehat W_p)_{\cyc_p}) \cong \Fp\set{\widehat e_i}.
 	\]
-	Similarly, we have that \(H_i(\Fp^{t\cyc_p}[-1]) = H_i(\widetilde W_p \otimes_{\cyc_p} \Fp) \cong \Fp\set{\widetilde e_i}\), which means that the isomorphism \(\widetilde e_i \mapsto \widehat e_i\) induces an equivalence \(\Fp^{t\cyc_p}[-1] \simeq \Fp^{t\cyc_p}\) in \(\cD(\Fp)\).
-	\cref{fibre_cofibre} will sow that this is also the case for \(M = V^{\ot p}\) for \(V\) in \(\cD(\Fp)\). 
+	Similarly, we have that \(H_i(\Fp^{t\cyc_p}[-1]) = H_i(\widetilde W_p \otimes_{\cyc_p} \Fp) \cong \Fp\set{\widetilde e_i}\), which means that the isomorphism \(\widetilde e_i \mapsto \widehat e_i\) induces an isomorphism \(\Fp^{t\cyc_p}[-1] \cong \Fp^{t\cyc_p}\) in \(\cD(\Fp)\).
+	\cref{fibre_cofibre} will show that this is also the case for \(M = V^{\ot p}\) for \(V\) in \(\cD(\Fp)\). 
 \end{remark}
 
 \begin{remark}

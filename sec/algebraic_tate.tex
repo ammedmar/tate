@@ -22,12 +22,36 @@ Let \(V\) be a chain complex in \(\cD(\Fp)\).
 	\]
 \end{example}
 
-\begin{lemma}%%%%%%%%%%%%%%%%
-	\(T_p\) is an exact functor.\anibal{Proof? this cannot rely on spectra as your comment below might suggest. You might be missing a standard regerence in group cohomology. as this paper should sit in the intersection of the two fields. Also, I am assuming exact funtor is defined in the Derived Categories appendix? If so, add a link}\martin{I am not entirely sure if it is actually an exact functor, since \(T_p(V[n])=(T_pV)[pn]\), instead of \((T_pV)[n]\), a priori. However, since \(T_pV[-1] \cong T_pV\) that could be fixed. Either way, we no longer need exactness of \(T_p\) to prove \cref{DFpclassification}.}
+For every chain complexes \(V_1\) and \(V_2\) in \(\cD(\Fp)\), there is a chain map in \(\cD(\Fp)\)
+\[
+\Phi \colon \underline{\Hom}_{\cD(\Fp)}(V_1,V_2) \to \underline{\Hom}_{\cD(\Fp)}(T_pV_1,T_pV_2)
+\]
+characterised in homology as follows.
+Let \(f\) be a homology class in \(H_r(\underline{\Hom}_{\cD(\Fp)}(V_1, V_2))\) and assume that \(V_1\) is already cofibrant.
+Thus, \(f\) corresponds to a morphism \(V_1 [r] \to V_2\) in \(\cD(\Fp)\).
+We define \(\Phi_*f \) to be the class in \(H_r(\underline{\Hom}_{\cD(\Fp)}(T_p V_1, T_p V_2))\) that corresponds to the morphism \((T_p V_1)[r] \to T_p V_2\) in \(\cD(\Fp)\) characterised in homology by the assignment
+\[
+\begin{tikzcd}[row sep=0, column sep=small]
+	H((T_p V_1)[r]) \arrow[r] & H(T_p V_2) \\
+	\widehat{e}_q \ot (v_1 \ot \cdots \ot v_p) \arrow[r, |->] & \widehat{e}_{q+(1-p)r} \ot (f_*v_1 \ot \cdots \ot f_*v_p).
+\end{tikzcd}
+\]
+In other words, \((\Phi_*f)_* = (\theta_{(1-p)r})_* \ot (f_*)^{\ot p}\), where \(\theta_{(1-p)r} \colon \widehat W_p[(1-p)r] \to \widehat W_p\) is the isomorphism in \(\cD(\Fp)\) characterised in homology by \(\widehat{e}_{q} \mapsto \widehat{e}_{q+(1-p)r}\).\martin{Maybe remove this paragraph.}
+
+In particular, if \(f \colon V_1 \to V_2\) is a morphism in \(\cD(\Fp)\), we denote \(T_p f \coloneqq \Phi_*f\).
+
+We thus have the following.
+\begin{lemma}
+	\(\Phi\) makes \(T_p\) into a \(\cD(\Fp)\)-enriched functor \(\cD(\Fp) \to \cD(\Fp)\).\martin{maybe it remains to show \(\Fp\)-linearity of \(\Phi\). The proof for that is analogous to the linearity of \(\Delta^t_p\).}
 \end{lemma}
 
+
+%\begin{lemma}%%%%%%%%%%%%%%%%
+%	\(T_p\) is an exact functor.\anibal{Proof? this cannot rely on spectra as your comment below might suggest. You might be missing a standard regerence in group cohomology. as this paper should sit in the intersection of the two fields. Also, I am assuming exact funtor is defined in the Derived Categories appendix? If so, add a link}\martin{I am not entirely sure if it is actually an exact functor, since \(T_p(V[n])=(T_pV)[pn]\), instead of \((T_pV)[n]\), a priori. However, since \(T_pV[-1] \cong T_pV\) that could be fixed. Either way, we no longer need exactness of \(T_p\) to prove \cref{DFpclassification}.}
+%\end{lemma}
+
 \begin{definition}
-	An \defn{algebraic Tate diagonal} is a nonzero (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\) of endofunctors of \(\cD(\Fp)\).\anibal{What are the morphisms in the target of the functors, that is what defines the type of maps that appear in the nat transf.}\martin{\(T_p\) is an endofunctor of \(\cD(\Fp)\), so morphisms of the derived category, which are explained in \cref{DFpmorph} and in \cref{derived}.}
+	An \defn{algebraic Tate diagonal} is a nonzero (\(\Fp\)-linear) natural transformation \(\id_{\cD(\Fp)} \to T_p\) of (\(\cD(\Fp)\)-enriched) endofunctors of \(\cD(\Fp)\).\anibal{What are the morphisms in the target of the functors, that is what defines the type of maps that appear in the nat transf.}\martin{\(T_p\) is an endofunctor of \(\cD(\Fp)\), so morphisms of the derived category, which are explained in \cref{DFpmorph} and in \cref{derived}.}
 \end{definition}
 
 We will show that, up to scalar multiplication, there is only one algebraic Tate diagonal.
@@ -35,14 +59,14 @@ We will show that, up to scalar multiplication, there is only one algebraic Tate
 %Consider the full subcategory \(\Fun^{\mathrm{Ex}}(\cD(\Fp),\cD(\Fp)) \subset \Fun(\cD(\Fp),\cD(\Fp))\) of exact functors.
 
 \begin{proposition}\label{DFpclassification}
-	For any \(F \in \Fun(\cD(\Fp),\cD(\Fp))\), evaluation at the chain complex \(\Fp\) concentrated in degree \(0\) induces an equivalence
+	For any \(\cD(\Fp)\)-enriched functor \(F \colon \cD(\Fp) \to \cD(\Fp)\), evaluation at the chain complex \(\Fp\) concentrated in degree \(0\) induces an equivalence
 	\[
 	\Nat_{\Fun(\cD(\Fp),\cD(\Fp))}(\id_{\cD(\Fp)},F) \longrightarrow \Hom_{\cD(\Fp)}(\Fp,F(\Fp)).
 	\]
 \end{proposition}
 
 \begin{proof}
-	Recall that \(\Hom_{\cD(\Fp)}(V_1,V_2)\cong H_0(\underline{\Hom}(V_1,V_2))\), where \(\underline{\Hom}\) denotes the internal or enriched \(\hom\) of \(\cD(\Fp)\).\martin{Add this into the preliminaries of the derived category}
+	Recall that \(\Hom_{\cD(\Fp)}(V_1,V_2)\cong H_0(\underline{\Hom}(V_1,V_2))\), where \(\underline{\Hom}\) denotes the internal or enriched \(\hom\) of \(\cD(\Fp)\).
 	We have that \(\id_{\cD(\Fp)} \cong \underline{\Hom}(\Fp, - )\) as endofunctors of \(\cD(\Fp)\).
 	
 	Similarly, we can consider the category \(\Fun(\cD(\Fp),\cD(\Fp))\) enriched in \(\cD(\Fp)\), and denote by \(\underline{\Nat}\) the corresponding \(\hom\) chain complexes (see \cref{enrichments}).
@@ -50,7 +74,7 @@ We will show that, up to scalar multiplication, there is only one algebraic Tate
 	
 	Thus, the enriched version of the Yoneda lemma (\cref{eyoneda}) gives us an equivalence
 	\[
-	\underline{\Nat}(\underline{\Hom}(\Fp, - ), F) \longrightarrow F(\Fp) \cong \underline{\Hom}(\Fp, F(\Fp)),
+	\underline{\Nat}(\underline{\Hom}_{\cD(\Fp)}(\Fp, - ), F) \longrightarrow F(\Fp) \cong \underline{\Hom}_{\cD(\Fp)}(\Fp, F(\Fp)),
 	\]
 	and taking \(H_0\) gives the desired result.
 \end{proof}
@@ -73,7 +97,7 @@ Therefore,
 	% \end{proposition}
 
 We now describe a generator of such \(\Fp\)-vector space.
-Let us identify \(H(\widehat W_p \ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)\).\martin{previously we fixed an isomorphism, but i think its better to just identify \(T_pV\) with the model \(\widehat W \ot_{\cyc_p} V^{\ot p}\).}
+Let us identify \(H(\widehat W_p \ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)\).\martin{Maybe write this identification before}
 
 \begin{definition}
 	Let \(\Delta^t_p\) be the natural transformation
@@ -90,7 +114,7 @@ Let us identify \(H(\widehat W_p \ot_{\cyc_p} V^{\ot p}) \xra{\cong} H(T_pV)\).\
 \end{definition}
 
 %We will often ommit the isomorphism \(\varphi\) for clarity of notation, and denote the components simply by \(\Delta^t_p\) instead of \(\Delta^t_pV\).
-For clarity of notation, we will often denote the components simply by \(\Delta^t_p\) instead of \((\Delta^t_p)_V\).
+For clarity of notation, we will often denote the components simply by \(\Delta^t_p\) instead of \(\Delta^t_pV\).
 
 Observe that \(\Delta^t_p\) is nonzero.
 In fact, evaluated at \(\Fp\) corresponds to the inclusion \(\Fp \hookrightarrow T_p(\Fp)\) given by \(1 \mapsto \widehat e_0\).
@@ -142,7 +166,7 @@ This means that, up to non-zero scalar multiplication, \(\Delta^t_p\) is the onl
 
 \subsection{Properties of \(T_pV\)}
 
-The image of \(HV\) via \((\Delta^t_p)_*\) generates \(H(T_pV)\) as a free \(\Fp[u,u^{-1}]\)-module with action
+The image of \(H(V)\) via \((\Delta^t_p)_*\) generates \(H(T_pV)\) as a free \(\Fp[u,u^{-1}]\)-module with action
 \[
 u \Delta^t_*(v) = u(\widehat e_{(1-p)|v|} \ot v^{\ot p}) \coloneqq \widehat e_{(1-p)|v|+1} \ot v^{\ot p}.
 \]
