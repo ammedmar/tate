@@ -218,7 +218,15 @@ Thus, by \cref{DFpclassification}, we conclude:
 			\]
 		\end{theorem}
 	\end{quote}
-	This classifies all possible natural transformations \(\Delta_p^{t, \bZ}\).
+	This classifies all possible natural transformations \(\Delta_p^{t, \bZ}\). \textcolor{red}{Warning, see this todo}\martin{This classification theorem is the key of the matter. It is true for \(\Fp\), but I have tried to prove it for \(\bZ\) without any success, for example, a proof using the enriched Yoneda lemma would require to prove that \(T_p^{\bZ}\) is an enriched functor, and that is the same as defining a chain level lift of the algebraic Tate diagonal. Furthermore, it is not even clear wether \(T_p^{\bZ}\) is \(\sH\bZ\)-linear, since the argument used for the \(\Fp\) case only works at homology level.
+	
+	Nikolaus and Scholze say that this theorem is not true precisely because of \(T_p^{\bZ}\) not being \(\sH\bZ\)-linear. However, they use it in the proof of the no-go theorem.
+	
+	If the classification theorem is true, then everything below \cref{ZTatediag} works, and we can define a nonzero \(\bZ\)-algebraic Tate diagonal which disproves the no-go theorem.
+	
+	But if it is not true I don't think we can say much. Nikolaus and Scholze write a comment about that, saying that they have shown that every natural transformation is pointwise zero but they can't prove that they are all the actual zero natural transformation.
+	
+	What I think is that in \(\bZ\) either there are \(p-1\) nonzero natural transformations that disprove the no-go theorem, plus the zero one, just like in the \(\Fp\) case; or that there is only one valid transformation, the zero one, which therefore would make the no-go theorem true. In both scenarios the current proof has issues, since it relies in this classification theorem, which if true, then the no-go is false, and if not true then you can't use it in the proof.}
 	
 	Then, they claim that \(\can^{\bZ}\circ \Delta_p^{t,\Sp}\) induces on \(\pi_0\) the canonical projection \(\bZ\to\Fp\).
 	Indeed, the Tate valued Frobenius \(\varphi_{\sH \bZ}\) is the upper row of the diagram below, and \cref{Tfrobenius} states that it induces on \(\pi_0\) precisely \(\id_{\Fp}\circ r\), where \(r\) is the reduction modulo \(p\). %But then \(\Delta_p^{t, \bZ} \coloneqq \pi_*(\can^{\bZ}\circ \Delta_p^{t,\Sp})\) is already a counterexample of the no-go theorem, since the induced map on homology is not the zero map.
@@ -254,7 +262,7 @@ Thus, by \cref{DFpclassification}, we conclude:
 	Meanwhile, there are \(p-1\) natural transformations \(\id_{\bZ} \to T_p^{\bZ}\) remaining that may not induce the zero map on homology. We will now show that indeed they serve as counterexamples for the no-go theorem.
 \end{remark}
 
-\begin{definition}
+\begin{definition}\label{ZTatediag}
 	We define the \defn{\(\bZ\)-algebraic Tate diagonal} \(\Delta_p^{t,\bZ}\) as the natural transformation \(\id_{\bZ} \to T_p^{\bZ}\) that corresponds to the canonical projection \(\bZ\to\Fp\) under the equivalence of \cref{DZclassification}.
 \end{definition}
 
