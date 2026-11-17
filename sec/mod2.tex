@@ -1,3 +1,5 @@
+% !TEX root = ../tate.tex
+
 %\subsection{Steenrod squares}
 %
 %We work in the derived category \(\cD(\Ftwo)\) of unbounded chain complexes of vector spaces over the field with two elements.
@@ -555,7 +557,7 @@ Consider a Tate multiplication \(\widehat\mu\) on \(V\).
 	\]
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma}\label{linstability}
 	\(\widehat\mu\) has the instability property if and only if it factors as follows:
 	\[
 	\begin{tikzcd}[column sep=24pt]
@@ -580,9 +582,9 @@ or, more sugestively,
 \[
 H(V; H^{\bullet-1}(\cyc_2)) \to H(V; \widehat H_{\bullet}(\cyc_2)) \to H(V; H_{\bullet}(\cyc_2)).
 \]
-Recall from \cref{p:tate_iso} that the middle term is isomorphic to \(H(T_2 V)\).
+Recall from \cref{pTate_iso} that the middle term is isomorphic to \(H(T_2 V)\).%redundant with what follows, needs adjustment.
 
-\begin{lemma}
+\begin{lemma}\label{lconnectivity}
 	A Tate multiplication \(\widehat\mu\) on \(V\) has the connectivity property if and only if it factors as follows:
 	\[
 	\begin{tikzcd}[column sep=24pt]
@@ -594,3 +596,60 @@ Recall from \cref{p:tate_iso} that the middle term is isomorphic to \(H(T_2 V)\)
 	\end{tikzcd}
 	\]
 \end{lemma}
+
+\begin{remark}
+	Let us compare the Tate sequences that appear in \cref{linstability} and \cref{lconnectivity}.
+	Observe that the middle terms of both sequences are isomorphic by \cref{pTate_iso}.
+	Recall that the proof relied on the decomposition of \(H(V)^{\otimes 2}\) into trivial orbits and free orits, which lead to the isomorphism
+	\[
+	T_2V \cong \widehat W_2 \ot_{\cyc_2} H(V)^{\ot 2} \cong \left(\bigoplus_{\alpha \in A} \widehat W_2 \ot_{\cyc_2} \Ftwo\set{v_\alpha^{\ot p}}\right) \oplus \left(\bigoplus_{\text{free orbits}} \widehat W_2\right),
+	\]
+	for \(A\) a basis of \(H(V)\).
+
+	Analogously, we have the following isomorphisms.\martin{is this the appropiate way for coding this? Or should there be some text between the displays?}
+	\[
+	(V^{\otimes 2})_{h\cyc_2} \cong W_2 \ot_{\cyc_2} H(V)^{\ot 2} \cong \left(\bigoplus_{\alpha \in A} W_2 \ot_{\cyc_2} \Ftwo\set{v_\alpha^{\ot p}}\right) \oplus \left(\bigoplus_{\text{free orbits}} W_2\right),
+	\]
+	\[
+	(V^{\otimes 2})^{h\cyc_2} \cong W_2^\vee \ot_{\cyc_2} H(V)^{\ot 2} \cong \left(\bigoplus_{\alpha \in A} W_2^\vee \ot_{\cyc_2} \Ftwo\set{v_\alpha^{\ot p}}\right) \oplus \left(\bigoplus_{\text{free orbits}} W_2^\vee \right).
+	\]
+	Passing to homology we have \martin{Perhaps we need to use \(H(V)^{(2)}\) (Federico's dilated complex) instead of \(H(V)\), because if \(|v|>0\), then the mapping \(e_0 \otimes v \mapsto u^{-|v|} \otimes v \otimes v\) does not land in \(\Ftwo[u] \otimes H(V)\), while there wouldn't be any problem with  \(e_0 \otimes v \mapsto u^{0} \otimes \vec v\in \Ftwo[u] \otimes H(V)^{(2)}\).}
+	\[
+	H((V^{\otimes 2})_{h\cyc_2}) \cong \Ftwo[u] \otimes H(V) \oplus \left(\bigoplus_{\text{free orbits}} \Ftwo \right),
+	\]
+	\[
+	H((V^{\otimes 2})^{h\cyc_2}) \cong \Ftwo[u^{-1}] \otimes H(V) \oplus \left(\bigoplus_{\text{free orbits}} \Ftwo \right).
+	\]
+Thus, there are inclusion maps
+	\[
+	\Ftwo[u]\otimes H(V) \hookrightarrow H((V^{\otimes 2})_{h\cyc_2}) \quad \text{and} \quad \Ftwo[u^{-1}]\otimes H(V) \hookrightarrow H((V^{\otimes 2})^{h\cyc_2}),
+	\]
+	which charcaterize, respectively, maps that fit in the following (a priori not commutative \martin{A posteriori commutative I believe.}) diagram.
+		\begin{center}
+		\begin{tikzpicture}
+			\node (A) at (-6,1){\(T_2 V\)};
+			\node (a) at (-6,-1){\(T_2(\Ftwo) \ot V\)};
+			\node (B) at (-2,1){\((V^{\ot 2})_{h\cyc_2}\)};
+			\node (b) at (-2,-1){\((\Ftwo^{\ot 2})_{h\cyc_2} \ot V\)};
+			\node (C) at (2,1){\((V^{\ot 2})^{h\cyc_2}\)};
+			\node (c) at (2,-1){\((\Ftwo^{\ot 2})^{h\cyc_2} \ot V\)};
+			\node (D) at (6,1){\(T_2 V\)};
+			\node (d) at (6,-1){\(T_2(\Ftwo) \ot V\)};
+			%
+			\draw[->] (A)--(B);
+			\draw[->] (a)--(b);
+			\draw[->] (B)--node[above]{\(Nm\)}(C);
+			\draw[->](b)--node[above]{\(Nm\ot \id\)}(c);
+			\draw[->] (C)--(D);
+			\draw[->] (c)--(d);
+			\draw[->](a)--node[right]{\(\cong\)}(A);
+			\draw[->](b)--(B);
+			\draw[->](c)--(C);
+			\draw[->](d)--node[right]{\(\cong\)}(D);
+		\end{tikzpicture}
+	\end{center}
+\end{remark}
+
+
+
+
